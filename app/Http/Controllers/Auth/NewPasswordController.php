@@ -29,7 +29,8 @@ class NewPasswordController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        /** @var array<string, string> */
+        $data = $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -40,9 +41,9 @@ class NewPasswordController extends Controller
         // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) use ($request) {
+            function ($user) use ($data) {
                 $user->forceFill([
-                    'password' => Hash::make($request->password),
+                    'password' => Hash::make($data['password']),
                     'remember_token' => Str::random(60),
                 ])->save();
 
@@ -56,6 +57,7 @@ class NewPasswordController extends Controller
         return Password::PASSWORD_RESET === $status
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withInput($request->only('email'))
+                            /* @phpstan-ignore-next-line * */
                             ->withErrors(['email' => __($status)]);
     }
 }
