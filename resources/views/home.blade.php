@@ -6,23 +6,23 @@
                 <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                     <ul class="flex flex-col gap-4">
                         <li class="flex items-center gap-3">
-                            <x-icons.check class="w-6 h-6 text-yellow-500"/>
+                            <x-icons.check class="w-6 h-6 text-yellow-500" />
                             <p>Challenge yourself online anytime, anywhere</p>
                         </li>
                         <li class="flex items-center gap-3">
-                            <x-icons.check class="w-6 h-6 text-yellow-500"/>
+                            <x-icons.check class="w-6 h-6 text-yellow-500" />
                             <p>Byte sized lessons</p>
                         </li>
                         <li class="flex items-center gap-3">
-                            <x-icons.check class="w-6 h-6 text-yellow-500"/>
+                            <x-icons.check class="w-6 h-6 text-yellow-500" />
                             <p>Instant feedback</p>
                         </li>
                         <li class="flex items-center gap-3">
-                            <x-icons.check class="w-6 h-6 text-yellow-500"/>
+                            <x-icons.check class="w-6 h-6 text-yellow-500" />
                             <p>Earn points</p>
                         </li>
                         <li class="flex items-center gap-3">
-                            <x-icons.check class="w-6 h-6 text-yellow-500"/>
+                            <x-icons.check class="w-6 h-6 text-yellow-500" />
                             <p>Gain real programming experience</p>
                         </li>
                     </ul>
