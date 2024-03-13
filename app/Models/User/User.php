@@ -1,12 +1,22 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Database\Factories\UserFactory;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property int    $id
+ * @property string $user_id
+ * @property string $name
+ * @property string $email
+ * @property int    $user_kind_id
+ */
 class User extends Authenticatable
 {
     use HasFactory;
@@ -44,5 +54,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Factories\Factory<User>
+     */
+    protected static function newFactory(): Factory
+    {
+        return UserFactory::new();
     }
 }
