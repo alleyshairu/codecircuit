@@ -16,6 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                @if (Gate::allows('teacher'))
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="/units" active="request()->routeIs('units')">
+                            {{ __('Unit') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

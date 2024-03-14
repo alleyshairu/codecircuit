@@ -56,6 +56,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function isTeacher(): bool
+    {
+        return UserKind::Teacher->value === $this->user_kind_id;
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Factories\Factory<User>
      */
