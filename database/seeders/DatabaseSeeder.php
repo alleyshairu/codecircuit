@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Support\Str;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User\UserKind;
 use Illuminate\Database\Seeder;
+use Database\Factories\UserFactory;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,12 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+        UserFactory::new()->create([
             'user_id' => Str::orderedUuid()->toString(),
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Student',
+            'email' => 'student@test.com',
+            'password' => Hash::make('secret'),
+            'user_kind_id' => UserKind::Student->value,
+        ]);
+
+        UserFactory::new()->create([
+            'user_id' => Str::orderedUuid()->toString(),
+            'name' => 'Teacher',
+            'email' => 'teacher@test.com',
+            'password' => Hash::make('secret'),
+            'user_kind_id' => UserKind::Teacher->value,
         ]);
     }
 }
