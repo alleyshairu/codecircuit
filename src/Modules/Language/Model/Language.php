@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int     $id
- * @property string  $title
+ * @property string  $name
  * @property string  $logo
  * @property string  $color
  * @property string  $website
@@ -18,14 +18,14 @@ class Language extends Model
 
     protected $dateFormat = 'Y-m-d H:i:s';
 
-    public function id(): string
+    public function id(): int
     {
         return $this->id;
     }
 
-    public function title(): string
+    public function name(): string
     {
-        return $this->title;
+        return $this->name;
     }
 
     public function description(): ?string

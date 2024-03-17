@@ -21,7 +21,7 @@ class TeacherMiddleware
             abort(403, 'Access denied! You need to login to access this page.');
         }
 
-        /** @var User */
+        /** @var ?User */
         $user = Auth::user();
         if ($user && !$user->isTeacher()) {
             abort(403, 'Access denied! Only teachers have access to this page.');

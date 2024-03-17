@@ -12,6 +12,15 @@
                             <span class="ml-3" sidebar-toggle-item>Dashboard</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('language.index') }}"
+                            class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                            <x-icons.unit class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                            <span class="ml-3" sidebar-toggle-item>Languages</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{ route('unit.index') }}"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">

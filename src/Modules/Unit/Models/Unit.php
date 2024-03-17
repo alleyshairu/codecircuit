@@ -29,7 +29,7 @@ class Unit extends Model
 
     public function id(): string
     {
-        return $this->unit;
+        return $this->unit_id;
     }
 
     public function title(): string
