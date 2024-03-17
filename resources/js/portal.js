@@ -1,2 +1,2 @@
-import 'flowbite';
-import './portal/sidebar'
+import "flowbite";
+import "./portal/sidebar";

@@ -4,6 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
+        "format:assets": "prettier --write 'resources/{css,js,ts}/**/*.{css,js,ts,tsx}'",
         "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/**/*.blade.php'"
     },
     "devDependencies": {
@@ -15,6 +16,7 @@
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.31",
         "postcss-import": "^16.0.1",
+        "prettier": "3.2.5",
         "tailwindcss": "^3.1.0",
         "vite": "^5.0"
     },
