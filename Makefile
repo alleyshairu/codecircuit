@@ -1,4 +1,4 @@
-.PHONY: lint-php lint format-php format-views format
+.PHONY: check test lint-php lint format-php format-views format
 
 check: format lint test
 
