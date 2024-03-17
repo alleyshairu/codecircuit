@@ -9,40 +9,49 @@
                         <a href="/dashboard"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                             <x-icons.dashboard class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                            <span class="ml-3" sidebar-toggle-item>Dashboard</span>
+                            <span class="ml-3">Dashboard</span>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="{{ route('language.index') }}"
-                            class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
-                            <x-icons.unit class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                            <span class="ml-3" sidebar-toggle-item>Languages</span>
-                        </a>
-                    </li>
+                    @can('teacher')
+                        <li>
+                            <a href="{{ route('language.index') }}"
+                                class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                                <x-icons.unit class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                                <span class="ml-3">Languages</span>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="{{ route('unit.index') }}"
-                            class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
-                            <x-icons.unit class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                            <span class="ml-3" sidebar-toggle-item>Units</span>
-                        </a>
+                        <li>
+                            <a href="{{ route('unit.index') }}"
+                                class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                                <x-icons.unit class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                                <span class="ml-3">Units</span>
+                            </a>
                     </li>
+                    @endcan
 
                     <li>
                         <a href="{{ route('profile.edit') }}"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                             <x-icons.gear class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                            <span class="ml-3" sidebar-toggle-item>Settings</span>
+                            <span class="ml-3">Settings</span>
                         </a>
                     </li>
                 </ul>
                 <div class="pt-2 space-y-2">
-                    <a href="https://github.com/alleyshairu/codecircuit" target="_blank"
+                    <a href="/"
+                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                        <x-icons.home
+                            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+                        <span class="ml-3">Home</span>
+                    </a>
+
+                    <a href="https://github.com/alleyshairu/uclearncode" target="_blank"
                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                         <x-icons.github
                             class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
-                        <span class="ml-3" sidebar-toggle-item>GitHub</span>
+                        <span class="ml-3">GitHub</span>
                     </a>
                 </div>
             </div>

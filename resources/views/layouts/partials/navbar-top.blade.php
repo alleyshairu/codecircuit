@@ -18,7 +18,7 @@
                     </svg>
                 </button>
                 <a href="" class="flex ml-2 md:mr-24">
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">UC Learn Code</span>
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">UCLearn (Code)</span>
                 </a>
             </div>
             <div class="flex items-center">

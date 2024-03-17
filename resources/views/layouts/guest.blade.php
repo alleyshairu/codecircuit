@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Code Circuit') }}</title>
+    <title>{{ config('app.name', 'UCLearn Code') }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
         <nav class="bg-brand-yellow">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4 border-b">
                 <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <span class="text-3xl font-black">Code Circuit</span>
+                    <span class="text-3xl font-black">UCLearn Code;</span>
                 </a>
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
                     <a href="/login" class="font-black uppercase">Login</a>
@@ -38,7 +38,7 @@
 
                 <div class="">
                     <a href="#" class="flex mb-5 text-2xl font-black">
-                        Code Circuit
+                       UCLearn Code;
                     </a>
                     <a href="https://github.com/alleyshairu/codecircuit" class="text-gray-500 hover:text-gray-900">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
