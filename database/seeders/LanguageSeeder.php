@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Uc\Modules\Language\Service\LanguageService;
-use Uc\Modules\Language\Request\LanguageCreateRequest;
+use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\Language\Request\LanguageCreateRequest;
 
 class LanguageSeeder extends Seeder
 {

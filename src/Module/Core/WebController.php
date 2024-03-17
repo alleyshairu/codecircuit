@@ -1,6 +1,6 @@
 <?php
 
-namespace Uc\Modules\Core;
+namespace Uc\Module\Core;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;

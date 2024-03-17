@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Support\Str;
-use Uc\Modules\Unit\Models\Unit;
+use Uc\Module\Unit\Model\Unit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

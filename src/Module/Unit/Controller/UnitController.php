@@ -1,8 +1,8 @@
 <?php
 
-namespace Uc\Modules\Unit\Controllers;
+namespace Uc\Module\Unit\Controller;
 
-use Uc\Modules\Core\WebController;
+use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 
 class UnitController extends WebController

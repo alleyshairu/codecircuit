@@ -1,10 +1,10 @@
 <?php
 
-namespace Uc\Modules\Language\Controller;
+namespace Uc\Module\Language\Controller;
 
-use Uc\Modules\Core\WebController;
+use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
-use Uc\Modules\Language\Query\LanguageQueryInterface;
+use Uc\Module\Language\Query\LanguageQueryInterface;
 
 class LanguageController extends WebController
 {

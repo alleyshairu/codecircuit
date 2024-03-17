@@ -38,7 +38,7 @@
 
                 <div class="">
                     <a href="#" class="flex mb-5 text-2xl font-black">
-                       UCLearn Code;
+                        UCLearn Code;
                     </a>
                     <a href="https://github.com/alleyshairu/codecircuit" class="text-gray-500 hover:text-gray-900">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

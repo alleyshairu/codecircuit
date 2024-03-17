@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Uc\Modules\Language\Request;
+namespace Uc\Module\Language\Request;
 
 readonly class LanguageCreateRequest
 {

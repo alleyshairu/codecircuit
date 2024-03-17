@@ -1,12 +1,12 @@
 <?php
 
-namespace Uc\Modules\Core;
+namespace Uc\Module\Core;
 
 use Illuminate\Support\ServiceProvider;
-use Uc\Modules\Language\Query\LanguageQuery;
-use Uc\Modules\Language\Service\LanguageService;
-use Uc\Modules\Language\Query\LanguageQueryInterface;
-use Uc\Modules\Language\Service\LanguageServiceInterface;
+use Uc\Module\Language\Query\LanguageQuery;
+use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\Language\Query\LanguageQueryInterface;
+use Uc\Module\Language\Service\LanguageServiceInterface;
 
 class UcServiceProvider extends ServiceProvider
 {

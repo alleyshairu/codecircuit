@@ -1,6 +1,6 @@
 <?php
 
-use Uc\Modules\Core\UcServiceProvider;
+use Uc\Module\Core\UcServiceProvider;
 
 return [
     App\Providers\AppServiceProvider::class,

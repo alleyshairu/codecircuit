@@ -28,7 +28,7 @@
                                 <x-icons.unit class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                                 <span class="ml-3">Units</span>
                             </a>
-                    </li>
+                        </li>
                     @endcan
 
                     <li>
