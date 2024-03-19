@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use Uc\Module\Core\Controller\HomeController;
+use Uc\Module\Core\Controller\TeamController;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', HomeController::class)->name('home');
+Route::get('/team', TeamController::class)->name('team');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
