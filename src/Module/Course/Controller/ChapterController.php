@@ -5,6 +5,7 @@ namespace Uc\Module\Course\Controller;
 use Illuminate\Http\Request;
 use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
+use Uc\Module\Course\Model\Problem;
 use Illuminate\Http\RedirectResponse;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Course\Request\ChapterStoreRequest;
@@ -69,8 +70,11 @@ class ChapterController extends WebController
             abort(404, 'Chapter not found');
         }
 
+        $problems = Problem::query()->where('chapter_id', $ch->id())->get();
+
         return $this->view('chapter.show', [
             'chapter' => $ch,
+            'problems' => $problems,
         ]);
     }
 }
