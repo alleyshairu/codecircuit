@@ -4,7 +4,6 @@ namespace Tests\Feature\Language;
 
 use Tests\TestCase;
 use App\Models\User\User;
-use Database\Factories\UnitFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LanguageControllerTest extends TestCase
@@ -14,7 +13,6 @@ class LanguageControllerTest extends TestCase
     public function test_student_cannot_view_language_index(): void
     {
         $user = User::factory()->student()->create();
-        UnitFactory::new()->create();
 
         $response = $this
             ->actingAs($user)

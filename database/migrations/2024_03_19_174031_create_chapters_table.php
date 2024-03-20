@@ -10,12 +10,16 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('units', function (Blueprint $table) {
-            $table->uuid('unit_id')->unique();
+        Schema::create('chapters', function (Blueprint $table) {
+            $table->uuid('chapter_id')->unique();
             $table->integer('number');
             $table->string('title');
             $table->text('description');
+            $table->text('learning_outcome');
+            $table->unsignedInteger('language_id');
             $table->timestamps();
+
+            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 
@@ -24,6 +28,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('chapters');
     }
 };

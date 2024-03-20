@@ -3,15 +3,15 @@
 namespace Database\Factories;
 
 use Illuminate\Support\Str;
-use Uc\Module\Unit\Model\Unit;
+use Uc\Module\Course\Model\Chapter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<Unit>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<Chapter>
  */
-class UnitFactory extends Factory
+class ChapterFactory extends Factory
 {
-    protected $model = Unit::class;
+    protected $model = Chapter::class;
 
     /**
      * Define the model's default state.
@@ -21,7 +21,7 @@ class UnitFactory extends Factory
     public function definition(): array
     {
         return [
-            'unit_id' => Str::orderedUuid()->toString(),
+            'chapter_id' => Str::orderedUuid()->toString(),
             'number' => fake()->randomNumber(),
             'title' => fake()->name(),
             'description' => fake()->sentence(),
