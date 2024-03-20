@@ -2,9 +2,12 @@
 
 namespace Uc\Module\Course\Controller;
 
+use Illuminate\Http\Request;
 use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Uc\Module\Course\Query\ChapterQueryInterface;
+use Uc\Module\Course\Request\ChapterStoreRequest;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 
@@ -35,6 +38,39 @@ class ChapterController extends WebController
 
         return $this->view('chapter.create', [
             'language' => $lang,
+        ]);
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $data = $this->validate($request, [
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'course_id' => ['required', 'integer'],
+        ]);
+
+        $lang = $this->langQuery->get($data['course_id']);
+        if (null === $lang) {
+            abort(404, 'Language not found');
+        }
+
+        $req = ChapterStoreRequest::fromArray($lang, $data);
+
+        $chapter = $this->service->store($req);
+        flash('Chapter added!')->success();
+
+        return $this->redirectRoute('chapter.show', ['id' => $chapter->id()]);
+    }
+
+    public function show(string $id): View
+    {
+        $ch = $this->chQuery->get($id);
+        if (null === $ch) {
+            abort(404, 'Chapter not found');
+        }
+
+        return $this->view('chapter.show', [
+            'chapter' => $ch,
         ]);
     }
 }

@@ -10,7 +10,7 @@ use Uc\Module\Language\Model\Language;
 
 interface ChapterQueryInterface
 {
-    public function get(int $id): ?Chapter;
+    public function get(string $id): ?Chapter;
 
     /**
      * @return Collection<int, Chapter>

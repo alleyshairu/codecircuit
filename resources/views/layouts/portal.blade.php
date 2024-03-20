@@ -18,6 +18,7 @@
     <div class="flex pt-16 overflow-hidden bg-gray-50">
         @include('layouts.partials.sidebar')
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64">
+            @include('layouts.flash')
             <main>
 
                 @if (isset($header))

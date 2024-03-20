@@ -10,7 +10,7 @@
         <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
             <h3 class="mb-4 text-xl font-semibold dark:text-white">New Chapter</h3>
 
-            <form class="grid gap-5">
+            <form class="grid gap-5" method="post" action="{{ route('chapter.store')}}">
                 @csrf
                 <div>
                     <x-input-label for="title" :value="__('Title')" />
@@ -23,6 +23,9 @@
                     <x-textarea id="description" class="block mt-1 w-full" name="description">{{ old('description') }}</x-textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
+
+                <input type="hidden" name="course_id" value="{{ $language->id() }}" />
+
                 <div>
                     <x-primary-button>{{ __('Save') }}</x-primary-button>
                 </div>

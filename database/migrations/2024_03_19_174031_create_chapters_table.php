@@ -15,7 +15,7 @@ return new class() extends Migration {
             $table->integer('number');
             $table->string('title');
             $table->text('description');
-            $table->text('learning_outcome');
+            $table->text('learning_outcome')->nullable();
             $table->unsignedInteger('language_id');
             $table->timestamps();
 

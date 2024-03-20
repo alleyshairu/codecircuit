@@ -2,7 +2,9 @@
 
 namespace Uc\Module\Course\Model;
 
+use Uc\Module\Language\Model\Language;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string  $chapter_id
@@ -52,5 +54,13 @@ class Chapter extends Model
     public function learningOutCome(): ?string
     {
         return $this->learning_outcome;
+    }
+
+    /**
+     * @return BelongsTo<Language, Chapter>
+     */
+    public function language(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'language_id');
     }
 }

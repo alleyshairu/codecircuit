@@ -57,7 +57,14 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($chapters as $chapter)
                             <tr>
-                                <td>{{ $chapter->title() }}</td>
+                                <td>
+                                    <div>{{ $chapter->title() }}</div>
+                                    <small class="text-gray-500">{{ $chapter->description}}</small>
+                                </td>
+                                <td>0</td>
+                                <td>
+                                    <a href="{{ route('chapter.show', $chapter->id()) }}"class="btn-white">Edit Chapter</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

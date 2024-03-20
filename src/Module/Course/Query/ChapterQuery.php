@@ -10,10 +10,11 @@ use Uc\Module\Language\Model\Language;
 
 class ChapterQuery implements ChapterQueryInterface
 {
-    public function get(int $id): ?Chapter
+    public function get(string $id): ?Chapter
     {
         /** @var ?Chapter */
         $ch = Chapter::query()
+            ->where('chapter_id', $id)
             ->find($id);
 
         return $ch;
