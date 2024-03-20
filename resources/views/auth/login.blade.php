@@ -1,3 +1,7 @@
+@section('title')
+    Login
+@endsection
+
 <x-guest-layout>
     <div class="grid max-w-screen-sm px-4 pt-16 pb-8 mx-auto lg:py-16">
         <!-- Session Status -->

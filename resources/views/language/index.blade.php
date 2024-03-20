@@ -1,6 +1,6 @@
 <x-portal-layout>
     <x-slot name="header">
-        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">Languages</h1>
+        <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">Courses</h1>
     </x-slot>
 
     <div class="flex flex-col">
@@ -26,7 +26,7 @@
                                         <div class="h-2.5 w-2.5 rounded-full" style="background-color: {{ $language->color }}"></div>
                                     </td>
                                     <td>
-                                        <a href="" class="btn-white">View Syllabus</a>
+                                        <a href="{{ route('course.show', $language->id()) }}" class="btn-white">View Syllabus</a>
                                     </td>
                                 </tr>
                             @endforeach

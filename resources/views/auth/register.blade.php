@@ -1,3 +1,7 @@
+@section('title')
+    Register
+@endsection
+
 <x-guest-layout>
     <div class="grid lg:grid-cols-2 gap-8 max-w-screen-xl px-4 pt-16 pb-8 mx-auto lg:py-16">
         <div>

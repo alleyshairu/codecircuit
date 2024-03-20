@@ -1,0 +1,35 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: uc
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - uc-network
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./storage/app/public:/var/www/html/storage/app/public
+  db:
+    image: postgres:14.4-alpine
+    environment:
+      POSTGRES_DB: uclearncode
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    restart: unless-stopped
+    volumes:
+      - uc_data_volume:/var/lib/postgresql/data
+    networks:
+      - uc-network
+volumes:
+  uc_data_volume:
+networks:
+  uc-network:
+    driver: bridge
