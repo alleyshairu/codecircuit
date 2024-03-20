@@ -9,7 +9,7 @@
             <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex sm:p-6">
                 <div class="w-full">
                     <h3 class="text-base font-normal">Chapers</h3>
-                    <div class="my-3 text-2xl font-bold leading-none text-gray-900 sm:text-3xl ">0</div>
+                    <div class="my-3 text-2xl font-bold leading-none text-gray-900 sm:text-3xl ">{{ $chapters->count() }}</div>
                     <div class="text-xs text-gray-500">Total numbers of chapters added for this course</div>
                 </div>
             </div>
