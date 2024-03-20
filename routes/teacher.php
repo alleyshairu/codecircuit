@@ -5,6 +5,7 @@ use Uc\Module\Core\TeacherMiddleware;
 use Uc\Module\Course\Controller\CourseController;
 use Uc\Module\Course\Controller\ChapterController;
 use Uc\Module\Student\Controller\StudentController;
+use Uc\Module\Feedback\Controller\FeedbackController;
 use Uc\Module\Language\Controller\LanguageController;
 
 Route::middleware(['auth', TeacherMiddleware::class])->group(function () {
@@ -19,4 +20,7 @@ Route::middleware(['auth', TeacherMiddleware::class])->group(function () {
     Route::get('/courses/{id}/chapter-create', [ChapterController::class, 'create'])->name('chapter.create');
     Route::post('/chapter/store', [ChapterController::class, 'store'])->name('chapter.store');
     Route::get('/chapter/{id}', [ChapterController::class, 'show'])->name('chapter.show');
+
+    // feedback
+    Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedback.index');
 });
