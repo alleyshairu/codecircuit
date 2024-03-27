@@ -1,5 +1,5 @@
 @section('title')
-Dashboard
+    Dashboard
 @endsection
 <x-portal-layout>
     <x-slot name="header">
