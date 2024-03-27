@@ -21,15 +21,17 @@
     <div class="m-4">
 
         <form method="get" action="" class="mb-4 flex items-center gap-4">
-            <x-text-input name="name" type="text" class="block w-full" placeholder="teacher name..." value="{{ $filters->name }}" />
-            <button class="btn btn-white" type="submit">
-                <x-icons.search class="w-5 h-5" />
-                Search
-            </button>
+            <x-text-input name="name" type="text" class="block text-sm w-1/3" placeholder="Teacher name..." value="{{ $filters->name }}" />
+            <div class="flex items-center justify-end gap-4">
+                <button class="btn btn-white" type="submit">
+                    <x-icons.search class="w-5 h-5" />
+                    Search
+                </button>
 
-            <a href="{{ route('teacher.index') }} "class="btn btn-white" type="submit">
-                Clear
-            </a>
+                <a href="{{ route('teacher.index') }} "class="btn btn-white" type="submit">
+                    Clear
+                </a>
+            </div>
         </form>
     </div>
 
