@@ -1,11 +1,21 @@
 @layer utilities {
     .portal {
-        .btn-primary {
-            @apply inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-800 focus:focus:ring-blue-300 sm:w-auto;
+        .text-muted {
+            @apply text-gray-500;
         }
 
-        .btn-white {
-            @apply inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 sm:w-auto;
+        .btn {
+            @apply inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 shadow h-8 rounded-md px-3 text-xs ml-auto gap-1.5 bg-white text-black;
+            &.btn-primary {
+                @apply bg-black hover:bg-black/90 text-white;
+            }
+            &.btn-white {
+                @apply border shadow-sm hover:bg-gray-100 h-9 px-4 py-2
+            }
+        }
+
+        .card {
+            @apply rounded-xl border shadow;
         }
 
         table {

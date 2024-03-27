@@ -12,12 +12,13 @@ use Uc\Module\Teacher\Request\TeacherSearchRequest;
 
 class TeacherQuery implements TeacherQueryInterface
 {
-    public function get(int $id): ?Teacher
+    public function get(string $id): ?Teacher
     {
         /** @var ?User */
         $user = User::query()
             ->where('user_kind_id', UserKind::Teacher->value)
-            ->find($id);
+            ->where('user_id', $id)
+            ->first();
 
         if (null === $user) {
             return null;

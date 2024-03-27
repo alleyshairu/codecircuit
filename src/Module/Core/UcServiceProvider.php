@@ -4,19 +4,25 @@ namespace Uc\Module\Core;
 
 use App\Models\User\User;
 use App\Models\User\UserKind;
+use Uc\Module\User\Query\UserQuery;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Uc\Module\User\Service\UserService;
 use Uc\Module\Course\Query\ChapterQuery;
 use Uc\Module\Student\Query\StudentQuery;
 use Uc\Module\Teacher\Query\TeacherQuery;
 use Uc\Module\Language\Query\LanguageQuery;
 use Uc\Module\Course\Service\ChapterService;
+use Uc\Module\User\Query\UserQueryInterface;
+use Uc\Module\Teacher\Service\TeacherService;
 use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Student\Query\StudentQueryInterface;
 use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
+use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Uc\Module\Language\Service\LanguageServiceInterface;
 
 class UcServiceProvider extends ServiceProvider
@@ -77,6 +83,18 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             TeacherQueryInterface::class, TeacherQuery::class
+        );
+
+        $this->app->singleton(
+            TeacherServiceInterface::class, TeacherService::class
+        );
+
+        $this->app->singleton(
+            UserQueryInterface::class, UserQuery::class
+        );
+
+        $this->app->singleton(
+            UserServiceInterface::class, UserService::class
         );
     }
 }

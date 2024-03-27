@@ -10,7 +10,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface TeacherQueryInterface
 {
-    public function get(int $id): ?Teacher;
+    public function get(string $id): ?Teacher;
 
     /**
      * @return LengthAwarePaginator<Teacher>

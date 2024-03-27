@@ -34,12 +34,13 @@
     </div>
     <div class="p-4">
         <div class="flex items-center justify-between gap-3">
-        <h3 class="text-lg font-bold mt-5 mb-3">Chapters</h3>
-        <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
-            <a href="{{ route('chapter.create', $language->id()) }}"class="btn-primary">
-                <x-icons.plus class="w-5 h-5 mr-2" />
-                Add new chapter
-            </a>
+            <h3 class="text-lg font-bold mt-5 mb-3">Chapters</h3>
+            <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
+                <a href="{{ route('chapter.create', $language->id()) }}"class="btn-primary">
+                    <x-icons.plus class="w-5 h-5 mr-2" />
+                    Add new chapter
+                </a>
+            </div>
         </div>
     </div>
 
@@ -59,7 +60,7 @@
                             <tr>
                                 <td>
                                     <div>{{ $chapter->title() }}</div>
-                                    <small class="text-gray-500">{{ $chapter->description}}</small>
+                                    <small class="text-gray-500">{{ $chapter->description }}</small>
                                 </td>
                                 <td>0</td>
                                 <td>
