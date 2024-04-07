@@ -4,17 +4,15 @@
 
 <x-portal-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between gap-3">
-            <div>
-                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">Teachers</h1>
-                <p class="text-sm text-muted">Manage teachers accounts</p>
-            </div>
-            <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
-                <a href="{{ route('teacher.create') }}"class="btn btn-primary">
-                    <x-icons.plus class="w-5 h-5 mr-2" />
-                    New Teacher Account
-                </a>
-            </div>
+        <div>
+            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">Teachers</h1>
+            <p class="text-sm text-muted">Manage teachers accounts</p>
+        </div>
+        <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
+            <a href="{{ route('teacher.create') }}"class="btn btn-primary">
+                <x-icons.plus class="w-5 h-5 mr-2" />
+                New Teacher Account
+            </a>
         </div>
     </x-slot>
 

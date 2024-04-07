@@ -26,7 +26,7 @@
                                         <div class="h-2.5 w-2.5 rounded-full" style="background-color: {{ $language->color }}"></div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('course.show', $language->id()) }}" class="btn-white">View Syllabus</a>
+                                        <a href="{{ route('course.show', $language->id()) }}" class="btn btn-white">View Syllabus</a>
                                     </td>
                                 </tr>
                             @endforeach

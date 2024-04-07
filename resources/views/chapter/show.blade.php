@@ -4,18 +4,41 @@
             <x-course.breadcrumb-link link="#" title="Chaper - {{ $chapter->title() }}" />
         </x-course.breadcrumb>
         <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">{{ $chapter->title() }}</h1>
-        <small class="text-gray-500">{{ $chapter->description() }}</small>
     </x-slot>
 
     <div class="p-4">
         <div class="flex items-center justify-between gap-3">
             <h3 class="text-lg font-bold mt-5 mb-3">Problems</h3>
             <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
-                <a href="{{ route('problem.create', $chapter->id()) }}" class="btn-primary">
+                <a href="{{ route('problem.create', $chapter->id()) }}" class="btn btn-primary">
                     <x-icons.plus class="w-5 h-5 mr-2" />
                     Add new Problem
                 </a>
             </div>
+        </div>
+
+
+        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
+            <h3 class="mb-4 text-xl font-semibold dark:text-white">New Chapter</h3>
+
+            <form class="grid gap-5" method="post" action="{{ route('chapter.update', $chapter->id()) }}">
+                @csrf
+                <div>
+                    <x-input-label for="title" :value="__('Title')" />
+                    <x-text-input id="title" class="block mt-1 w-1/3" type="text" name="title" :value="$chapter->title()" required />
+                    <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                </div>
+
+                <div>
+                    <x-input-label for="description" :value="__('Description')" />
+                    <div data-name="description" class="js-editor-component" data-html="{{ $chapter->description() }}"></div>
+                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                </div>
+
+                <div>
+                    <x-primary-button>{{ __('Save') }}</x-primary-button>
+                </div>
+            </form>
         </div>
 
         <div class="overflow-x-auto">

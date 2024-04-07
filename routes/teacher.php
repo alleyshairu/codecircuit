@@ -21,6 +21,7 @@ Route::middleware(['auth', TeacherMiddleware::class])->group(function () {
     Route::get('/courses/{id}/chapter-create', [ChapterController::class, 'create'])->name('chapter.create');
     Route::post('/chapter/store', [ChapterController::class, 'store'])->name('chapter.store');
     Route::get('/chapter/{id}', [ChapterController::class, 'show'])->name('chapter.show');
+    Route::post('/chapter/{id}/update', [ChapterController::class, 'update'])->name('chapter.update');
 
     // chapter
     Route::get('/chapters/{id}/problem-create', [ProblemController::class, 'create'])->name('problem.create');

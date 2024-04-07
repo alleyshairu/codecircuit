@@ -9,6 +9,7 @@ use Uc\Module\Course\Model\Problem;
 use Illuminate\Http\RedirectResponse;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Course\Request\ChapterStoreRequest;
+use Uc\Module\Course\Request\ChapterUpdateRequest;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 
@@ -70,11 +71,33 @@ class ChapterController extends WebController
             abort(404, 'Chapter not found');
         }
 
-        $problems = Problem::query()->where('chapter_id', $ch->id())->get();
+        $problems = Problem::query()->get();
 
         return $this->view('chapter.show', [
             'chapter' => $ch,
             'problems' => $problems,
         ]);
+    }
+
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        $data = $this->validate($request, [
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+        ]);
+
+        $chapter = $this->chQuery->get($id);
+        if (null === $chapter) {
+            abort(404, 'Chapter not found');
+        }
+
+        dd($chapter);
+
+        $req = ChapterUpdateRequest::fromArray($data);
+        $this->service->update($chapter, $req);
+
+        flash('Chapter updated!')->success();
+
+        return $this->redirectRoute('chapter.show', ['id' => $chapter->id()]);
     }
 }

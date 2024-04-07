@@ -1,3 +1,7 @@
+@section('title')
+    {{ $language->name }} Course
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <x-course.breadcrumb :language="$language"></x-course.breadcrumb>
@@ -33,10 +37,10 @@
 
     </div>
     <div class="p-4">
-        <div class="flex items-center justify-between gap-3">
+        <div class="">
             <h3 class="text-lg font-bold mt-5 mb-3">Chapters</h3>
             <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
-                <a href="{{ route('chapter.create', $language->id()) }}"class="btn-primary">
+                <a href="{{ route('chapter.create', $language->id()) }}"class="btn btn-primary">
                     <x-icons.plus class="w-5 h-5 mr-2" />
                     Add new chapter
                 </a>
@@ -60,11 +64,10 @@
                             <tr>
                                 <td>
                                     <div>{{ $chapter->title() }}</div>
-                                    <small class="text-gray-500">{{ $chapter->description }}</small>
                                 </td>
                                 <td>0</td>
                                 <td>
-                                    <a href="{{ route('chapter.show', $chapter->id()) }}"class="btn-white">Edit Chapter</a>
+                                    <a href="{{ route('chapter.show', $chapter->id()) }}"class="btn btn-white">Edit Chapter</a>
                                 </td>
                             </tr>
                         @endforeach

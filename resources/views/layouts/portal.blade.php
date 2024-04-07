@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;900&display=swap" rel="stylesheet">
 
-    @vite(['resources/css/app.css', 'resources/js/portal.js'])
+    @vite(['resources/css/app.css', 'resources/css/editor.css', 'resources/js/portal.js', 'resources/js/components.tsx'])
 </head>
 
 <body class="portal font-code antialiased">
