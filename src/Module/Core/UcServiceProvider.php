@@ -20,10 +20,12 @@ use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Student\Query\StudentQueryInterface;
 use Uc\Module\Teacher\Query\TeacherQueryInterface;
+use Uc\Module\Student\Query\StudentPreferenceQuery;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Uc\Module\Language\Service\LanguageServiceInterface;
+use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
 class UcServiceProvider extends ServiceProvider
 {
@@ -95,6 +97,10 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             UserServiceInterface::class, UserService::class
+        );
+
+        $this->app->singleton(
+            StudentPreferenceQueryInterface::class, StudentPreferenceQuery::class
         );
     }
 }

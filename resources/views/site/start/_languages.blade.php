@@ -1,4 +1,6 @@
 <div class="card">
+    <form action="{{ route('student.preference.languages') }}" method="post">
+        @csrf
     <div class="card-header">
         <h3 class="font-semibold leading-none tracking-tight">Language</h3>
         <p class="text-sm text-muted-foreground">Choose the programming languages whose skills you want to improve.</p>
@@ -14,14 +16,15 @@
                         <p class="mt-1 text-muted-foreground">5 Chapters</p>
                     </div>
 
-                    <input id="language-{{ $language->id() }}" type="checkbox" name="language_id" value="{{ $language->id() }}"
-                        class="size-5 border-gray-300 text-blue-500" />
+                    <input id="language-{{ $language->id() }}" type="checkbox" name="language_id[]" value="{{ $language->id() }}"
+                        class="size-5 border-gray-300 text-blue-500" {{$preferences->languages->contains($language->id()) ? "checked": "" }}/>
                 </label>
             </div>
         @endforeach
     </div>
 
     <div class="card-footer">
-        <div class="btn-primary">Save</div>
+            <button type="submit" class="btn-primary">Save</button>
     </div>
+    </form>
 </div>

@@ -12,12 +12,13 @@ use Uc\Module\Student\Request\StudentSearchRequest;
 
 class StudentQuery implements StudentQueryInterface
 {
-    public function get(int $id): ?Student
+    public function get(string $id): ?Student
     {
         /** @var ?User */
         $user = User::query()
             ->where('user_kind_id', UserKind::Student->value)
-            ->find($id);
+            ->where('user_id', $id)
+            ->first($id);
 
         if (null === $user) {
             return null;
@@ -29,7 +30,7 @@ class StudentQuery implements StudentQueryInterface
     /**
      * @return LengthAwarePaginator<Student>
      */
-    public static function filter(StudentSearchRequest $request): LengthAwarePaginator
+    public function filter(StudentSearchRequest $request): LengthAwarePaginator
     {
         $query = User::query()
             ->where('user_kind_id', UserKind::Student->value);

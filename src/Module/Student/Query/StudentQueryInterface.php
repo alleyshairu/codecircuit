@@ -10,10 +10,10 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface StudentQueryInterface
 {
-    public function get(int $id): ?Student;
+    public function get(string $id): ?Student;
 
     /**
      * @return LengthAwarePaginator<Student>
      */
-    public static function filter(StudentSearchRequest $request): LengthAwarePaginator;
+    public function filter(StudentSearchRequest $request): LengthAwarePaginator;
 }
