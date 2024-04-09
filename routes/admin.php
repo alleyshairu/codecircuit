@@ -1,12 +1,11 @@
 <?php
 
-use Uc\Module\Core\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use Uc\Module\User\Controller\PasswordController;
 use Uc\Module\Teacher\Controller\TeacherController;
 
 Route::prefix('a')->group(function () {
-    Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::middleware(['auth', 'admin'])->group(function () {
         // users
         Route::put('/users/{id}/password', PasswordController::class)->name('user.password-update');
 

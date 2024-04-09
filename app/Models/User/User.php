@@ -58,6 +58,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function isStudent(): bool
+    {
+        return UserKind::Student->value === $this->user_kind_id;
+    }
+
     public function isAdmin(): bool
     {
         return UserKind::Admin->value === $this->user_kind_id;

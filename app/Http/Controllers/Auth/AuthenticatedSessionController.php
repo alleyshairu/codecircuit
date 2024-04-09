@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,6 +28,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        /**
+         * @var User
+         */
+        $user = Auth::user();
+        if ($user->IsStudent()) {
+            return redirect()->intended(route('student.welcome', absolute: false));
+        }
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Uc\Module\Core\TeacherMiddleware;
 use Uc\Module\Course\Controller\CourseController;
 use Uc\Module\Course\Controller\ChapterController;
 use Uc\Module\Course\Controller\ProblemController;
@@ -10,7 +9,7 @@ use Uc\Module\Feedback\Controller\FeedbackController;
 use Uc\Module\Language\Controller\LanguageController;
 
 Route::prefix('t')->group(function () {
-    Route::middleware(['auth', TeacherMiddleware::class])->group(function () {
+    Route::middleware(['auth', 'teacher'])->group(function () {
         // students
         Route::get('/students', [StudentController::class, 'index'])->name('student.index');
 

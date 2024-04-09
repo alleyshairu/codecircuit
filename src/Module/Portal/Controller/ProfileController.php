@@ -17,7 +17,7 @@ class ProfileController extends PortalController
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('portal.profile.edit', [
             'user' => $request->user(),
         ]);
     }

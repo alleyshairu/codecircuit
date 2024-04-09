@@ -12,6 +12,6 @@ class PortalLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.portal');
+        return view('portal.layout.main');
     }
 }
