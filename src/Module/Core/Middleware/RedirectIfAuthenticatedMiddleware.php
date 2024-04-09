@@ -58,7 +58,7 @@ class RedirectIfAuthenticatedMiddleware
          * */
         $user = Auth::user();
         if ($user->isStudent()) {
-            return '/welcome';
+            return '/start';
         }
 
         return '/dashboard';

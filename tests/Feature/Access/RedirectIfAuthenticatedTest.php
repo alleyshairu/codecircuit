@@ -16,7 +16,7 @@ class RedirectIfAuthenticatedTest extends TestCase
         $response = $this->actingAs($user)->get('/login');
 
         $this->assertAuthenticated();
-        $response->assertRedirect('welcome');
+        $response->assertRedirect('start');
     }
 
     public function test_teacher_gets_redirected_to_dashboard_page(): void

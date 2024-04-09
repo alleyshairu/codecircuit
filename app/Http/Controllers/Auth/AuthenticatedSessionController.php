@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
          */
         $user = Auth::user();
         if ($user->IsStudent()) {
-            return redirect()->intended(route('student.welcome', absolute: false));
+            return redirect()->intended(route('student.start', absolute: false));
         }
 
         return redirect()->intended(route('dashboard', absolute: false));

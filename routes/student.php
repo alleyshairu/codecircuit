@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Uc\Module\Site\Controller\WelcomeController;
+use Uc\Module\Site\Controller\StartController;
 
 Route::middleware(['auth', 'student'])->group(function () {
-    Route::get('/welcome', WelcomeController::class)->name('student.welcome');
+    Route::get('/start', StartController::class)->name('student.start');
 });
