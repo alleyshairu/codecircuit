@@ -10,14 +10,10 @@ use Uc\Module\Student\View\Student;
 use Uc\Module\Language\Model\Language;
 use Uc\Module\Student\Model\StudentLevel;
 use Uc\Module\Student\View\StudentPreference;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Uc\Module\Student\Model\StudentPreferenceKey;
 
 class StudentPreferenceQuery implements StudentPreferenceQueryInterface
 {
-    /**
-     * @return LengthAwarePaginator<Student>
-     */
     public function preferences(string $id): StudentPreference
     {
         $level = $this->level($id);
@@ -53,6 +49,9 @@ class StudentPreferenceQuery implements StudentPreferenceQueryInterface
 
     public function level(string $id): StudentLevel
     {
+        /**
+         * @var object{student_id: int, value_int: ?int}|null
+         */
         $result = DB::table('student_preferences')
         ->where('preference', StudentPreferenceKey::Level->value)
         ->where('student_id', $id)
@@ -62,7 +61,7 @@ class StudentPreferenceQuery implements StudentPreferenceQueryInterface
             return StudentLevel::Unknown;
         }
 
-        return StudentLevel::tryFrom($result->value_int);
+        return StudentLevel::tryFrom($result->value_int ?? 0) ?? StudentLevel::Unknown;
     }
 
     public function setLevel(string $id, StudentLevel $level): void

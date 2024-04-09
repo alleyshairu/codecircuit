@@ -91,8 +91,6 @@ class ChapterController extends WebController
             abort(404, 'Chapter not found');
         }
 
-        dd($chapter);
-
         $req = ChapterUpdateRequest::fromArray($data);
         $this->service->update($chapter, $req);
 
