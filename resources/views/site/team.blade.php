@@ -1,4 +1,10 @@
-<x-guest-layout>
+@extends('site.layout.main')
+
+@section('title')
+    Team
+@endsection
+
+@section('content')
     <section class="bg-brand-yellow">
         <div class="grid items-center max-w-screen-xl px-4 pt-12 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2">
             <div>
@@ -32,4 +38,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+@endsection

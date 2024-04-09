@@ -1,8 +1,10 @@
+@extends('auth.layout')
+
 @section('title')
     Register
 @endsection
 
-<x-guest-layout>
+@section('content')
     <div class="grid lg:grid-cols-2 gap-8 max-w-screen-xl px-4 pt-16 pb-8 mx-auto lg:py-16">
         <div>
             <div class="font-black text-2xl mb-5">Sign up for free</div>
@@ -65,15 +67,14 @@
                     <div class="mt-4">
                         <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation"
-                            required autocomplete="new-password" />
+                        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required
+                            autocomplete="new-password" />
 
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
-                            href="{{ route('login') }}">
+                        <a class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" href="{{ route('login') }}">
                             {{ __('Already registered?') }}
                         </a>
 
@@ -85,4 +86,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+@endsection

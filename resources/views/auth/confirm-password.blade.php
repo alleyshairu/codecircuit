@@ -1,4 +1,6 @@
-<x-guest-layout>
+@extends('auth.layout')
+
+@section('content')
     <div class="grid max-w-screen-sm px-4 pt-16 pb-8 mx-auto lg:py-16">
 
 
@@ -29,4 +31,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+@stop

@@ -16,6 +16,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - ./docker/ssl/uclearncode.pem:/etc/ssl/uclearncode.pem
+      - ./docker/ssl/uclearncode.key:/etc/ssl/uclearncode.key
       - ./storage/app/public:/var/www/html/storage/app/public
   db:
     image: postgres:14.4-alpine

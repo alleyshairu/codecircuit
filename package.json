@@ -2,8 +2,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
+        "portal:dev": "rm -rf public/portal/assets && vite --config resources/portal/vite.config.js dev",
+        "portal:build": "vite --config resources/portal/vite.config.js build",
+        "site:dev": "rm -rf public/site/assets && vite --config resources/site/vite.config.js dev",
+        "site:build": "vite --config resources/site/vite.config.js build",
         "format:assets": "prettier --write 'resources/{css,js,ts}/**/*.{css,js,ts,tsx}'",
         "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/**/*.blade.php'"
     },

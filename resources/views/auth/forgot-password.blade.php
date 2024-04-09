@@ -1,4 +1,6 @@
-<x-guest-layout>
+@extends('auth.layout')
+
+@section('content')
     <div class="grid max-w-screen-sm px-4 pt-16 pb-8 mx-auto lg:py-16">
 
 
@@ -18,8 +20,7 @@
                 <!-- Email Address -->
                 <div>
                     <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                        autofocus />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
@@ -31,4 +32,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+@stop

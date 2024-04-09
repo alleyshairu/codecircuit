@@ -1,8 +1,10 @@
+@extends('auth.layout')
+
 @section('title')
     Login
 @endsection
 
-<x-guest-layout>
+@section('content')
     <div class="grid max-w-screen-sm px-4 pt-16 pb-8 mx-auto lg:py-16">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -33,8 +35,8 @@
                 <!-- Remember Me -->
                 <div class="block mt-4">
                     <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox"
-                            class="rounded border-gray-300 text-brand-blue shadow-sm focus:ring-brand-blue" name="remember">
+                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-brand-blue shadow-sm focus:ring-brand-blue"
+                            name="remember">
                         <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                     </label>
                 </div>
@@ -54,4 +56,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+@stop

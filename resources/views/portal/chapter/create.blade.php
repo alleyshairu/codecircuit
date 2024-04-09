@@ -24,7 +24,7 @@
 
                 <div>
                     <x-input-label for="description" :value="__('Description')" />
-                    <div data-name="description" class="js-editor-component" data-html={{old('description')}}></div>
+                    <div data-name="description" class="js-editor-component" data-html={{ old('description') }}></div>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 

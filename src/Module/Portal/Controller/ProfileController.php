@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Uc\Module\Portal\Controller;
 
 use App\Models\User\User;
 use Illuminate\View\View;
@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
 
-class ProfileController extends Controller
+class ProfileController extends PortalController
 {
     /**
      * Display the user's profile form.

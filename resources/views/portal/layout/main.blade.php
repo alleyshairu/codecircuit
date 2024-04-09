@@ -9,18 +9,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;900&display=swap" rel="stylesheet">
-
-    @vite(['resources/css/app.css', 'resources/css/editor.css', 'resources/js/portal.js', 'resources/js/components.tsx'])
+    {{ Vite::useHotFile(public_path('portal/hot'))->useBuildDirectory('portal')->withEntryPoints(['resources/portal/css/portal.css', 'resources/portal/js/portal.js']) }}
 </head>
 
 <body class="portal font-code antialiased">
-    @include('layouts.partials.navbar-top')
+    @include('portal.layout.navbar-top')
     <div class="flex pt-16 overflow-hidden bg-gray-50">
-        @include('layouts.partials.sidebar')
+        @include('portal.layout.sidebar')
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64">
 
             <div>
-                @include('layouts.flash')
+                @include('portal.layout.flash')
 
                 @if ($errors->any())
                     <div class="m-4 flex rounded-lg bg-red-50 p-4 text-sm text-red-800" role="alert">
@@ -51,7 +50,7 @@
                     </div>
                 @endif
 
-                {{ $slot }}
+                @yield('content')
             </main>
         </div>
     </div>

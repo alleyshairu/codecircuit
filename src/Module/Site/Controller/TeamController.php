@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Uc\Module\Core\Controller;
+namespace Uc\Module\Site\Controller;
 
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 
-class TeamController extends WebController
+class TeamController extends SiteController
 {
     public function __invoke(): View
     {
@@ -19,7 +18,7 @@ class TeamController extends WebController
             ['name' => 'Raja Ehtesham Mazhar', 'role' => 'Quality Assurance Engineer'],
         ];
 
-        return $this->view('team', [
+        return $this->view('site.team', [
             'people' => $people,
         ]);
     }
