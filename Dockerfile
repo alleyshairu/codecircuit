@@ -1,10 +1,10 @@
 FROM node:21-alpine3.18 AS frontend-build
 WORKDIR /front-code
-COPY vite.config.js tailwind.config.js postcss.config.js package.json package-lock.json /front-code/
+COPY package.json package-lock.json /front-code/
 RUN npm install
 COPY ./resources /front-code/resources
-RUN npm run build
-RUN npm run build
+RUN npm run portal:build
+RUN npm run site:build
 
 FROM alpine:3.19
 WORKDIR /var/www/html
