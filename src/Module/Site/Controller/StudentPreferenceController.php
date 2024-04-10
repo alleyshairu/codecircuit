@@ -16,7 +16,8 @@ class StudentPreferenceController extends SiteController
     {
         /** @var array{language_id: int[]} */
         $data = $this->validate($request, [
-            'language_id' => ['required', 'array', 'integer'],
+            'language_id' => ['required', 'array', 'min:1'],
+            'language_id.*' => ['required', 'integer'],
         ]);
 
         /** @var User */
@@ -32,7 +33,7 @@ class StudentPreferenceController extends SiteController
 
     public function level(Request $request): RedirectResponse
     {
-        /** @var array{level_id: int} */
+        /** @var array{level_id: string} */
         $data = $this->validate($request, [
             'level_id' => ['required', 'integer'],
         ]);
@@ -41,7 +42,7 @@ class StudentPreferenceController extends SiteController
         $user = $request->user();
         $student = Student::fromUser($user);
 
-        $level = StudentLevel::tryFrom($data['level_id']) ?? StudentLevel::Unknown;
+        $level = StudentLevel::tryFrom((int) $data['level_id']) ?? StudentLevel::Unknown;
         $this->studentPreferenceQuery->setLevel($student->id, $level);
 
         return $this->redirectRoute('student.start');
