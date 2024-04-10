@@ -4,7 +4,6 @@
 
 <x-portal-layout>
     <x-slot name="header">
-        <x-course.breadcrumb :language="$language"></x-course.breadcrumb>
         <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">{{ $language->name() }} Course</h1>
     </x-slot>
 

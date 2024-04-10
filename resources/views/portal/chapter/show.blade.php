@@ -1,8 +1,5 @@
 <x-portal-layout>
     <x-slot name="header">
-        <x-course.breadcrumb :language="$chapter->language">
-            <x-course.breadcrumb-link link="#" title="Chaper - {{ $chapter->title() }}" />
-        </x-course.breadcrumb>
         <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">{{ $chapter->title() }}</h1>
     </x-slot>
 
