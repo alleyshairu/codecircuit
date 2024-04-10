@@ -67,7 +67,8 @@ COPY --chown=nobody ./ /var/www/html/
 # Remove development packages
 RUN composer install --no-dev --no-scripts
 RUN mkdir -p /var/www/html/storage/app/public
-COPY --from=frontend-build /front-code/public/build/ /var/www/html/public/build
+COPY --from=frontend-build /front-code/public/portal/ /var/www/html/public/portal
+COPY --from=frontend-build /front-code/public/site/ /var/www/html/public/site
 RUN composer dump-autoload
 
 # After deployment scripts
