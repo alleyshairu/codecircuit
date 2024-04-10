@@ -61,11 +61,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Add application
 COPY composer.json composer.lock /var/www/html/
-RUN composer install --no-scripts
+RUN composer install --no-dev --no-scripts
 COPY --chown=nobody ./ /var/www/html/
 
-# Remove development packages
-RUN composer install --no-dev --no-scripts
 RUN mkdir -p /var/www/html/storage/app/public
 COPY --from=frontend-build /front-code/public/portal/ /var/www/html/public/portal
 COPY --from=frontend-build /front-code/public/site/ /var/www/html/public/site
