@@ -15,7 +15,7 @@
                         </div>
 
                         <input id="level-{{ $level->value }}" type="radio" name="level_id" value="{{ $level->value }}"
-                            class="size-5 border-gray-300 text-blue-500"
+                            class="size-4 border-gray-300 text-blue-500"
                             {{ $preferences->level->value === $level->value ? 'checked' : '' }} />
                     </label>
                 </div>

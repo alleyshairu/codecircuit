@@ -13,10 +13,12 @@
     {{ Vite::useHotFile(public_path('site/hot'))->useBuildDirectory('site')->withEntryPoints(['resources/site/css/site.css']) }}
 </head>
 
-<body class="font-sans text-brand-blue antialiased">
-    <div class="flex flex-col justify-center items-center px-6 mx-auto h-screen xl:px-0 dark:bg-gray-900">
+
+<body class="font-sans antialiased">
+    <div class="py-16 flex flex-col justify-center items-center px-6 mx-auto h-screen xl:px-0 dark:bg-gray-900 gap-5">
         @yield('content')
     </div>
+    @include('site.layout.footer')
 </body>
 
 </html>

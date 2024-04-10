@@ -1,4 +1,4 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
+import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,41 +11,41 @@ export default {
     theme: {
         extend: {
             colors: {
-                "background": "hsl(var(--background))",
-                "foreground": "hsl(var(--foreground))",
+                background: "hsl(var(--background))",
+                foreground: "hsl(var(--foreground))",
 
-                "muted": "hsl(var(--muted))",
+                muted: "hsl(var(--muted))",
                 "muted-foreground": "hsl(var(--muted-foreground))",
 
-                "card": "hsl(var(--card))",
+                card: "hsl(var(--card))",
                 "card-foreground": "hsl(var(--card-foreground))",
 
-                "popover": "hsl(var(--popover))",
+                popover: "hsl(var(--popover))",
                 "popover-foreground": "hsl(var(--popover-foreground))",
 
-                "border": "hsl(var(--border))",
+                border: "hsl(var(--border))",
 
-                "input": "hsl(var(--input))",
-                "ring": "hsl(var(--ring))",
-                "radius": "hsl(var(--radius))",
+                input: "hsl(var(--input))",
+                ring: "hsl(var(--ring))",
+                radius: "hsl(var(--radius))",
 
-                "primary": "hsl(var(--primary))",
+                primary: "hsl(var(--primary))",
                 "primary-foreground": "hsl(var(--primary-foreground))",
 
-                "secondary": "hsl(var(--secondary))",
+                secondary: "hsl(var(--secondary))",
                 "secondary-foreground": "hsl(var(--secondary-foreground))",
 
-                "accent": "hsl(var(--accent))",
+                accent: "hsl(var(--accent))",
                 "accent-foreground": "hsl(var(--accent-foreground))",
 
-                "destructive": "hsl(var(--destructive))",
+                destructive: "hsl(var(--destructive))",
                 "destructive-foreground": "hsl(var(--destructive-foreground))",
 
-                "brand-yellow": '#fffaed',
+                "brand-yellow": "#fffaed",
             },
             fontFamily: {
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-                code: ['Fira sans', ...defaultTheme.fontFamily.sans],
+                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                code: ["Fira sans", ...defaultTheme.fontFamily.sans],
             },
         },
         container: {
@@ -54,4 +54,3 @@ export default {
     },
     plugins: [],
 };
-

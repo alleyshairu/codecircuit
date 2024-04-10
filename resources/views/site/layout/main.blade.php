@@ -13,26 +13,9 @@
     {{ Vite::useHotFile(public_path('site/hot'))->useBuildDirectory('site')->withEntryPoints(['resources/site/css/site.css']) }}
 </head>
 
-<body class="font-sans bg-background text-primary-foregrouund antialiased">
-    <header>
-        <nav class="bg-brand-yellow">
-            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4 border-b">
-                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <span class="text-3xl font-black">UCLearn Code</span>
-                </a>
-                <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                    <a href="/login" class="font-black uppercase">Login</a>
-                    <a href="/register"
-                        class="uppercase font-black border-2 border-black bg-brand-yellow px-3 py-1.5 text-center rounded-md">
-                        <span>Get Started</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
+<body class="font-sans antialiased">
+    @include('site.layout.nav')
     @yield('content')
-
     @include('site.layout.footer')
 </body>
 

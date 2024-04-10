@@ -10,9 +10,7 @@ export default defineConfig({
         laravel({
             hotFile: "public/site/hot",
             buildDirectory: "site",
-            input: [
-                "resources/site/css/site.css",
-            ],
+            input: ["resources/site/css/site.css"],
             refresh: ["resources/views/site/**", "resources/site/**"],
         }),
     ],

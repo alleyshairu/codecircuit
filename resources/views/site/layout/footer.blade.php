@@ -2,8 +2,8 @@
     <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
         <div class="grid grid-cols-3 gap-8 md:grid-cols-3">
             <div class="">
-                <a href="#" class="flex mb-5 text-2xl font-black">
-                    UCLearn Code
+                <a href="/" class="flex mb-5 text-xl font-black">
+                    uclearncode
                 </a>
                 <a href="https://github.com/alleyshairu/codecircuit" class="text-gray-500 hover:text-gray-900">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -6,7 +6,7 @@
         "portal:build": "vite --config resources/portal/vite.config.js build",
         "site:dev": "rm -rf public/site/assets && vite --config resources/site/vite.config.js dev",
         "site:build": "vite --config resources/site/vite.config.js build",
-        "format:assets": "prettier --write 'resources/{css,js,ts}/**/*.{css,js,ts,tsx}'",
+        "format:assets": "prettier --write 'resources/{site,portal}/**/*.{css,js,ts,tsx}'",
         "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/**/*.blade.php'"
     },
     "devDependencies": {
