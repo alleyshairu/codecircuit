@@ -10,10 +10,10 @@
 
         <div class="grid gap-4">
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                @include('site.profile._points', ['title' => 'Daily Streak', 'points' => 10])
-                @include('site.profile._points', ['title' => 'Total Points Earned', 'points' => 10])
-                @include('site.profile._points', ['title' => 'Problem Solved', 'points' => 20])
-                @include('site.profile._points', ['title' => 'Feedback Provided', 'points' => 30])
+                @include('site.profile._points', ['title' => 'Daily Streak', 'points' => 5])
+                @include('site.profile._points', ['title' => 'Total Points Earned', 'points' => 35])
+                @include('site.profile._points', ['title' => 'Problem Solved', 'points' => 6])
+                @include('site.profile._points', ['title' => 'Feedback Provided', 'points' => 5])
             </div>
 
             <div class="card">
