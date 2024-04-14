@@ -35,7 +35,7 @@ class CourseController extends WebController
 
         $chapters = $this->chQuery->all($lang);
 
-        return $this->view('course.show', [
+        return $this->view('portal.course.show', [
             'language' => $lang,
             'chapters' => $chapters,
         ]);

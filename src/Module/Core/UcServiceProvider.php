@@ -44,8 +44,11 @@ class UcServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $path = (__DIR__.'/../../../resources/views/site/components');
-        Blade::anonymousComponentPath($path, 'site');
+        $siteComponentsPath = (__DIR__.'/../../../resources/views/site/components');
+        Blade::anonymousComponentPath($siteComponentsPath, 'site');
+
+        $portalComponentsPath = (__DIR__.'/../../../resources/views/portal/components');
+        Blade::anonymousComponentPath($portalComponentsPath, 'portal');
     }
 
     protected function defineGates(): void

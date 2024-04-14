@@ -14,19 +14,35 @@
                     <td class="p-2 align-middle">
                         <div>PHP</div>
                     </td>
-                    <td><div>Learning</div></td>
-                    <td><div>10%</div></td>
-                    <td><div>30 April, 2024</div></td>
-                    <td><div>01 August, 2024</div></td>
+                    <td>
+                        <div>Learning</div>
+                    </td>
+                    <td>
+                        <div>10%</div>
+                    </td>
+                    <td>
+                        <div>30 April, 2024</div>
+                    </td>
+                    <td>
+                        <div>01 August, 2024</div>
+                    </td>
                 </tr>
                 <tr class="border-b transition-colors hover:bg-muted/50">
                     <td class="p-2 align-middle">
                         <div>Java</div>
                     </td>
-                    <td><div>Learning</div></td>
-                    <td><div>20%</div></td>
-                    <td><div>29 April, 2024</div></td>
-                    <td><div>01 August, 2024</div></td>
+                    <td>
+                        <div>Learning</div>
+                    </td>
+                    <td>
+                        <div>20%</div>
+                    </td>
+                    <td>
+                        <div>29 April, 2024</div>
+                    </td>
+                    <td>
+                        <div>01 August, 2024</div>
+                    </td>
                 </tr>
             </tbody>
         </table>

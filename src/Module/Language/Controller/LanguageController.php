@@ -12,7 +12,7 @@ class LanguageController extends WebController
     {
         $languages = $query->all();
 
-        return $this->view('language.index', [
+        return $this->view('portal.language.index', [
             'languages' => $languages,
         ]);
     }

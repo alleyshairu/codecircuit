@@ -12,8 +12,7 @@ export default defineConfig({
             input: [
                 "resources/portal/css/portal.css",
                 "resources/portal/css/editor.css",
-                "resources/portal/js/app.js",
-                "resources/portal/js/portal.js",
+                "resources/portal/js/portal.ts",
                 "resources/portal/js/components.tsx",
             ],
             refresh: ["resources/views/portal/**", "resources/portal/**"],

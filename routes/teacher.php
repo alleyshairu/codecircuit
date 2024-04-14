@@ -11,11 +11,11 @@ use Uc\Module\Language\Controller\LanguageController;
 Route::prefix('t')->group(function () {
     Route::middleware(['auth', 'teacher'])->group(function () {
         // students
-        Route::get('/students', [StudentController::class, 'index'])->name('student.index');
+        Route::get('/students', [StudentController::class, 'index'])->name('portal.student.index');
 
         // course
-        Route::get('/languages', [LanguageController::class, 'index'])->name('language.index');
-        Route::get('/courses/{id}', [CourseController::class, 'show'])->name('course.show');
+        Route::get('/languages', [LanguageController::class, 'index'])->name('portal.language.index');
+        Route::get('/courses/{id}', [CourseController::class, 'show'])->name('portal.course.show');
 
         // chapter
         Route::get('/courses/{id}/chapter-create', [ChapterController::class, 'create'])->name('chapter.create');

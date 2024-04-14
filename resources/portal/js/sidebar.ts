@@ -1,5 +1,5 @@
 const sidebar = document.getElementById("sidebar");
-console.log(sidebar);
+
 if (sidebar) {
     const toggleSidebarMobile = (
         sidebar,
