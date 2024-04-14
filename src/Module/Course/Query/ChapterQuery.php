@@ -15,7 +15,7 @@ class ChapterQuery implements ChapterQueryInterface
         /** @var ?Chapter */
         $ch = Chapter::query()
             ->where('chapter_id', $id)
-            ->find($id);
+            ->first();
 
         return $ch;
     }

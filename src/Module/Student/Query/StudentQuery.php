@@ -18,7 +18,7 @@ class StudentQuery implements StudentQueryInterface
         $user = User::query()
             ->where('user_kind_id', UserKind::Student->value)
             ->where('user_id', $id)
-            ->first($id);
+            ->first();
 
         if (null === $user) {
             return null;

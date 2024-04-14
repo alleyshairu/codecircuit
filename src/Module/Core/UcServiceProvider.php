@@ -6,6 +6,7 @@ use App\Models\User\User;
 use App\Models\User\UserKind;
 use Uc\Module\User\Query\UserQuery;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Uc\Module\User\Service\UserService;
 use Uc\Module\Course\Query\ChapterQuery;
@@ -43,6 +44,8 @@ class UcServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $path = (__DIR__.'/../../../resources/views/site/components');
+        Blade::anonymousComponentPath($path, 'site');
     }
 
     protected function defineGates(): void
