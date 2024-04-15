@@ -27,7 +27,7 @@ const EditorInput = (props: EditorInputProps) => {
     const editor = useEditor({
         editorProps: {
             attributes: {
-                class: "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto border border-gray-200 focus:outline-none min-h-16 overflow-y-auto p-4",
+                class: "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto border border-gray-200 focus:outline-none min-h-32 overflow-y-auto p-4",
             },
         },
         extensions: [

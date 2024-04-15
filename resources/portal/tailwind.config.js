@@ -8,6 +8,8 @@ export default {
         "./storage/framework/views/*.php",
         "./resources/views/portal/**/*.blade.php",
         "./resources/portal/js/**/*.js",
+        "./resources/portal/js/**/*.ts",
+        "./resources/portal/components/*.tsx",
         "./node_modules/flowbite/**/*.js",
     ],
     theme: {

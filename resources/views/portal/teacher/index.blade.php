@@ -4,20 +4,20 @@
 
 <x-portal-layout>
     <x-slot name="header">
-        <div>
-            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">Teachers</h1>
-            <p class="text-sm text-muted">Manage teachers accounts</p>
-        </div>
+        <h1 class="page-title">Students</h1>
+    </x-slot>
+
+    @can('admin')
         <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
             <a href="{{ route('teacher.create') }}"class="btn btn-primary">
                 <x-icons.plus class="w-5 h-5 mr-2" />
                 New Teacher Account
             </a>
         </div>
-    </x-slot>
+    @endcan
+
 
     <div class="m-4">
-
         <form method="get" action="" class="mb-4 flex items-center gap-4">
             <x-text-input name="name" type="text" class="block text-sm w-1/3" placeholder="Teacher name..."
                 value="{{ $filters->name }}" />
@@ -34,41 +34,40 @@
         </form>
     </div>
 
-
-    <div class="m-4 border rounded-md">
-        <div class="overflow-x-auto">
-            <div class="inline-block min-w-full align-middle">
-                <div class="overflow-hidden shadow">
-                    <table class="min-w-full divide-y divide-gray-200 table-fixed text-sm">
-                        <thead class="bg-gray-100 dark:bg-gray-700">
+    <div class="card">
+        <div class="card-header">
+            <div class="">
+                <div class="card-title">Teachers</div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="relative w-full">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($teachers as $teacher)
                             <tr>
-                                <th scope="col" class="w-full">Teacher</th>
-                                <th scope="col" class="whitespace-nowrap">Created At</th>
-                                <th scope="col" class="whitespace-nowrap">Actions</th>
+                                <td>
+                                    <div>{{ $teacher->name() }}</div>
+                                </td>
+                                <td>0</td>
+                                <td>
+                                    <x-action id="dropdown-chapter-action-{{ $chapter->id() }}">
+                                        <a href="" class="action-link">View Profile</a>
+                                    </x-action>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($teachers as $teacher)
-                                <tr>
-                                    <td class="">
-                                        <div>{{ $teacher->name }}</div>
-                                        <div class="text-sm text-gray-500">{{ $teacher->email }}</div>
-                                    </td>
-                                    <td>
-                                        {{ $teacher->createdAt->format('Y-m-d') }}
-                                    </td>
-                                    <td class="justify-end">
-                                        <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-white">View Profile</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-
     @if (count($teachers) === 0)
         <div class="flex flex-col items-center gap-1 text-center my-5">
             <h3 class="text-2xl font-bold tracking-tight">No teachers found</h3>

@@ -19,7 +19,7 @@ class NameInitial
                 'UTF-8');
         }
 
-        return static::makeInitialsFromSingleWord($name);
+        return self::makeInitialsFromSingleWord($name);
     }
 
     /**

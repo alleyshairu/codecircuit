@@ -9,6 +9,5 @@ Route::get('/team', TeamController::class)->name('team');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/profile.php';
-require __DIR__.'/admin.php';
-require __DIR__.'/teacher.php';
-require __DIR__.'/student.php';
+require __DIR__.'/site.php';
+require __DIR__.'/portal.php';

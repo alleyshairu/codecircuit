@@ -1,6 +1,6 @@
 <?php
 
-namespace Uc\Module\Core;
+namespace Uc\Module\Core\Middleware;
 
 use Closure;
 use App\Models\User\User;

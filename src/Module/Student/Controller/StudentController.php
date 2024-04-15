@@ -17,7 +17,7 @@ class StudentController extends WebController
         $req = StudentSearchRequest::fromArray($request->all());
         $students = $query->filter($req);
 
-        return $this->view('student.index', [
+        return $this->view('portal.student.index', [
             'students' => $students,
         ]);
     }

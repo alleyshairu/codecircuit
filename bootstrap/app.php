@@ -1,7 +1,7 @@
 <?php
 
-use Uc\Module\Core\AdminMiddleware;
 use Illuminate\Foundation\Application;
+use Uc\Module\Core\Middleware\AdminMiddleware;
 use Uc\Module\Core\Middleware\StudentMiddleware;
 use Uc\Module\Core\Middleware\TeacherMiddleware;
 use Illuminate\Foundation\Configuration\Exceptions;

@@ -38,7 +38,7 @@ class ChapterController extends WebController
             abort(404, 'Language not found');
         }
 
-        return $this->view('chapter.create', [
+        return $this->view('portal.chapter.create', [
             'language' => $lang,
         ]);
     }
@@ -61,10 +61,22 @@ class ChapterController extends WebController
         $chapter = $this->service->store($req);
         flash('Chapter added!')->success();
 
-        return $this->redirectRoute('chapter.show', ['id' => $chapter->id()]);
+        return $this->redirectRoute('portal.chapter.edit', ['id' => $chapter->id()]);
     }
 
-    public function show(string $id): View
+    public function edit(string $id): View
+    {
+        $ch = $this->chQuery->get($id);
+        if (null === $ch) {
+            abort(404, 'Chapter not found');
+        }
+
+        return $this->view('portal.chapter.show', [
+            'chapter' => $ch,
+        ]);
+    }
+
+    public function problems(string $id): View
     {
         $ch = $this->chQuery->get($id);
         if (null === $ch) {
@@ -73,7 +85,7 @@ class ChapterController extends WebController
 
         $problems = Problem::query()->get();
 
-        return $this->view('chapter.show', [
+        return $this->view('portal.chapter.problems', [
             'chapter' => $ch,
             'problems' => $problems,
         ]);
@@ -96,6 +108,6 @@ class ChapterController extends WebController
 
         flash('Chapter updated!')->success();
 
-        return $this->redirectRoute('chapter.show', ['id' => $chapter->id()]);
+        return $this->redirectRoute('portal.chapter.edit', ['id' => $chapter->id()]);
     }
 }

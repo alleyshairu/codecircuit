@@ -20,7 +20,7 @@
                 </button>
                 <div class="text-sm flex items-center space-x-1">
                     <a href="/" class="flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent font-bold">uclearncode</a>
-                    <a href=""
+                    <a href="/dashboard"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Dashboard</a>
                     <a href="{{ route('portal.language.index') }}"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Languages</a>
@@ -28,6 +28,14 @@
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Problems</a>
                     <a href=""
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Feedback</a>
+                    <a href="{{ route('portal.student.index') }}"
+                        class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Students</a>
+
+                    @can('admin')
+                        <a href="{{ route('portal.teacher.index') }}"
+                            class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Teachers</a>
+                    @endcan
+
                 </div>
             </div>
             <div class="flex items-center text-sm">
