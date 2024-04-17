@@ -39,6 +39,10 @@ class StudentQuery implements StudentQueryInterface
             $query->where('name', 'ilike', '%'.trim($request->name).'%');
         }
 
+        if (null !== $request->language) {
+            // $query->where('name', 'ilike', '%'.trim($request->name).'%');
+        }
+
         /**
          * @var LengthAwarePaginator<Student>
          */

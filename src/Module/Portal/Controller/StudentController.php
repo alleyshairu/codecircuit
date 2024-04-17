@@ -14,11 +14,14 @@ class StudentController extends WebController
 {
     public function index(StudentQueryInterface $query, Request $request): View
     {
-        $req = StudentSearchRequest::fromArray($request->all());
-        $students = $query->filter($req);
+        $languages = $this->languageQuery->all();
+        $filters = StudentSearchRequest::fromArray($request->all());
+        $students = $query->filter($filters);
 
         return $this->view('portal.student.index', [
             'students' => $students,
+            'languages' => $languages,
+            'filters' => $filters,
         ]);
     }
 }

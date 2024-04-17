@@ -23,7 +23,7 @@
             <div class="px-3 py-2">
                 <h2 class="mb-2 px-4 text-lg font-semibold tracking-tight">Students</h2>
                 <div class="space-y-1">
-                    <a href=""
+                    <a href="{{ route('portal.student.index') }}"
                         class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
                         <x-icons.user class="mr-2 w-4 h-4" />
                         Students

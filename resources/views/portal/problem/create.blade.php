@@ -33,7 +33,6 @@
                     <x-text-input id="chapter" disabled type="text" value="{{ $chapter->title() }}" />
                 </div>
 
-
                 <div class="grid gap-1.5">
                     <label>Problem Level</label>
                     <select name="problem_level_id">
