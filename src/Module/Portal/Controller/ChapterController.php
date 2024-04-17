@@ -1,6 +1,6 @@
 <?php
 
-namespace Uc\Module\Course\Controller;
+namespace Uc\Module\Portal\Controller;
 
 use Illuminate\Http\Request;
 use Uc\Module\Core\WebController;

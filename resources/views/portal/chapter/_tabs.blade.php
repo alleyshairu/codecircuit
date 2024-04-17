@@ -3,6 +3,6 @@
         <a href="{{ route('portal.chapter.edit', $chapter->id()) }}" class="tab-item"
             data-state="{{ request()->routeIs('portal.chapter.edit') ? 'active' : '' }}">Edit Chapter</a>
         <a href="{{ route('portal.chapter.problems', $chapter->id()) }}" class="tab-item"
-            data-state="{{ request()->routeIs('portal.chapter.problems') ? 'active' : '' }}">View Chapter Problems</a>
+            data-state="{{ request()->routeIs('portal.chapter.problems') ? 'active' : '' }}">View Problems</a>
     </div>
 </div>

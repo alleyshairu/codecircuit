@@ -10,20 +10,24 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Uc\Module\User\Service\UserService;
 use Uc\Module\Course\Query\ChapterQuery;
+use Uc\Module\Course\Query\ProblemQuery;
 use Uc\Module\Student\Query\StudentQuery;
 use Uc\Module\Teacher\Query\TeacherQuery;
 use Uc\Module\Language\Query\LanguageQuery;
 use Uc\Module\Course\Service\ChapterService;
+use Uc\Module\Course\Service\ProblemService;
 use Uc\Module\User\Query\UserQueryInterface;
 use Uc\Module\Teacher\Service\TeacherService;
 use Uc\Module\Language\Service\LanguageService;
 use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
+use Uc\Module\Course\Query\ProblemQueryInterface;
 use Uc\Module\Student\Query\StudentQueryInterface;
 use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Uc\Module\Student\Query\StudentPreferenceQuery;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
+use Uc\Module\Course\Service\ProblemServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Uc\Module\Language\Service\LanguageServiceInterface;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
@@ -107,6 +111,14 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             StudentPreferenceQueryInterface::class, StudentPreferenceQuery::class
+        );
+
+        $this->app->singleton(
+            ProblemQueryInterface::class, ProblemQuery::class
+        );
+
+        $this->app->singleton(
+            ProblemServiceInterface::class, ProblemService::class
         );
     }
 }

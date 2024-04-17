@@ -9,15 +9,62 @@ use Illuminate\Validation\Validator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Uc\Module\Course\Query\ChapterQueryInterface;
+use Uc\Module\Course\Query\ProblemQueryInterface;
+use Uc\Module\Student\Query\StudentQueryInterface;
+use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Illuminate\Routing\Controller as BaseController;
+use Uc\Module\Language\Query\LanguageQueryInterface;
+use Uc\Module\Course\Service\ChapterServiceInterface;
+use Uc\Module\Course\Service\ProblemServiceInterface;
+use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
 class WebController extends BaseController
 {
     use AuthorizesRequests;
     use DispatchesJobs;
     use ValidatesRequests;
+
+    protected LanguageQueryInterface $languageQuery;
+
+    protected TeacherServiceInterface $teacherService;
+    protected TeacherQueryInterface $teacherQuery;
+
+    protected StudentQueryInterface $studentQuery;
+    protected StudentPreferenceQueryInterface $studentPreferenceQuery;
+
+    protected ChapterServiceInterface $chapterService;
+    protected ChapterQueryInterface $chapterQuery;
+
+    protected ProblemQueryInterface $problemQuery;
+    protected ProblemServiceInterface $problemService;
+
+    public function __construct(
+        TeacherServiceInterface $teacherService,
+        TeacherQueryInterface $teacherQuery,
+
+        LanguageQueryInterface $languageQuery,
+
+        StudentQueryInterface $studentQuery,
+        StudentPreferenceQueryInterface $studentPreferenceQuery,
+
+        ProblemQueryInterface $problemQuery,
+        ProblemServiceInterface $problemService,
+    ) {
+        $this->teacherService = $teacherService;
+        $this->teacherQuery = $teacherQuery;
+
+        $this->languageQuery = $languageQuery;
+
+        $this->studentQuery = $studentQuery;
+        $this->studentPreferenceQuery = $studentPreferenceQuery;
+
+        $this->problemQuery = $problemQuery;
+        $this->problemService = $problemService;
+    }
 
     /**
      * @phpstan-ignore-next-line

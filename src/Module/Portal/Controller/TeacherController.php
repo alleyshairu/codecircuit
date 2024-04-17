@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Uc\Module\Teacher\Controller;
+namespace Uc\Module\Portal\Controller;
 
 use App\Models\User\User;
 use Illuminate\Http\Request;

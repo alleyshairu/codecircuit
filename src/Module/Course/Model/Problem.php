@@ -37,6 +37,11 @@ class Problem extends Model
         return $this->title;
     }
 
+    public function description(): string
+    {
+        return $this->description;
+    }
+
     /**
      * @return BelongsTo<Chapter, Problem>
      */

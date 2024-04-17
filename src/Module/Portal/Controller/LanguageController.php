@@ -1,6 +1,6 @@
 <?php
 
-namespace Uc\Module\Language\Controller;
+namespace Uc\Module\Portal\Controller;
 
 use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;

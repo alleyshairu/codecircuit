@@ -33,13 +33,13 @@
                         @foreach ($problems as $problem)
                             <tr>
                                 <td class="w-4/6">
-                                    <div>{{ $proble->title() }}</div>
+                                    <div>{{ $problem->title() }}</div>
                                 </td>
                                 <td>
                                 </td>
                                 <td class="whitespace-nowrap text-xs">
-                                    <x-action id="dropdown-problem-action-{{ $language->id() }}">
-                                        <a class="action-link" href="">Edit Problem</a>
+                                    <x-action id="dropdown-problem-action-{{ $problem->id() }}">
+                                        <a class="action-link" href="{{ route('portal.problem.edit', $problem->id()) }}">Edit Problem</a>
                                     </x-action>
                                 </td>
                             </tr>

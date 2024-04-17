@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Uc\Module\Student\Controller;
+namespace Uc\Module\Portal\Controller;
 
 use Illuminate\Http\Request;
 use Uc\Module\Core\WebController;

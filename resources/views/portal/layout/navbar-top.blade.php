@@ -19,12 +19,14 @@
                     </svg>
                 </button>
                 <div class="text-sm flex items-center space-x-1">
-                    <a href="/" class="flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent font-bold">uclearncode</a>
+                    <a href="/" class="flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent font-bold">
+                        <span>uclearncode</span>
+                    </a>
                     <a href="/dashboard"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Dashboard</a>
                     <a href="{{ route('portal.language.index') }}"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Languages</a>
-                    <a href=""
+                    <a href="{{ route('portal.problem.index') }}"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Problems</a>
                     <a href=""
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Feedback</a>
@@ -35,10 +37,9 @@
                         <a href="{{ route('portal.teacher.index') }}"
                             class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Teachers</a>
                     @endcan
-
                 </div>
             </div>
-            <div class="flex items-center text-sm">
+            <div class="flex items-center justify-end text-sm">
                 <div class="flex items-center ml-3">
                     <div>
                         <button type="button" class="text-sm flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent"
@@ -46,6 +47,7 @@
                             Account
                         </button>
                     </div>
+
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="user-actions">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-muted-foreground" role="none">

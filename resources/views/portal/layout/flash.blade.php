@@ -1,5 +1,5 @@
 @foreach (session('flash_notification', collect())->toArray() as $message)
-    <div class="m-4 p-4 rounded flex justify-between bg-green-200 text-green-800">
+    <div class="p-3 my-4 rounded flex justify-between bg-green-200 text-green-800">
         <div>{!! $message['message'] !!}</div>
 
         @if ($message['important'])
