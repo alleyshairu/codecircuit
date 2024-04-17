@@ -33,8 +33,24 @@
                 @csrf
 
                 <div class="grid w-full gap-1.5">
+                    <x-input-label for="language" value="Language" />
+                    <x-text-input id="language" disabled type="text" value="{{ $problem->chapter->language->name() }}" />
+                </div>
+
+                <div class="grid w-full gap-1.5">
                     <x-input-label for="chapter" value="Chapter" />
                     <x-text-input id="chapter" disabled type="text" value="{{ $problem->chapter->title() }}" />
+                </div>
+
+                <div class="grid gap-1.5">
+                    <label>Problem Level</label>
+                    <select name="problem_level_id">
+                        <option></option>
+                        @foreach ($levels as $level)
+                            <option value="{{ $level->value }}" {{ $problem->level()->value == $level->value ? 'selected' : '' }}>
+                                {{ $level->title() }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="grid w-full gap-1.5">

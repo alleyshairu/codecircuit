@@ -7,20 +7,31 @@ namespace Uc\Module\Course\Query;
 use Illuminate\Support\Collection;
 use Uc\Module\Course\Model\Chapter;
 use Uc\Module\Course\Model\Problem;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Uc\Module\Course\Request\ProblemSearchRequest;
 
 class ProblemQuery implements ProblemQueryInterface
 {
     /**
-     * @return LengthAwarePaginator<Student>
+     * @return LengthAwarePaginator<Problem>
      */
     public function filter(ProblemSearchRequest $request): LengthAwarePaginator
     {
-        $query = Problem::query();
+        $query = Problem::query()->with(['chapter', 'chapter.language']);
+
+        if (isset($request->language)) {
+            $query->whereHas('chapter', function (Builder $query) use ($request) {
+                $query->where('language_id', $request->language->id());
+            });
+        }
+
+        if (isset($request->level)) {
+            $query->where('problem_level_id', $request->level->value);
+        }
 
         /**
-         * @var LengthAwarePaginator<Student>
+         * @var LengthAwarePaginator<Problem>
          */
         $result = $query
             ->orderBy('created_at', 'desc')

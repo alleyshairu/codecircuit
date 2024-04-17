@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Uc\Module\Course\Model\ProblemLevel;
 use Uc\Module\Course\Request\ProblemStoreRequest;
 use Uc\Module\Course\Request\ProblemSearchRequest;
 use Uc\Module\Course\Request\ProblemUpdateRequest;
@@ -14,10 +15,16 @@ class ProblemController extends WebController
 {
     public function index(Request $request): View
     {
-        $problems = $this->problemQuery->filter(ProblemSearchRequest::fromArray($request->all()));
+        $languages = $this->languageQuery->all();
+        $levels = ProblemLevel::cases();
+        $filters = ProblemSearchRequest::fromArray($request->all());
+        $problems = $this->problemQuery->filter($filters);
 
         return $this->view('portal.problem.index', [
+            'levels' => $levels,
             'problems' => $problems,
+            'filters' => $filters,
+            'languages' => $languages,
         ]);
     }
 
@@ -29,7 +36,10 @@ class ProblemController extends WebController
             abort(404, 'Chapter not found');
         }
 
+        $levels = ProblemLevel::cases();
+
         return $this->view('portal.problem.create', [
+            'levels' => $levels,
             'chapter' => $chapter,
         ]);
     }
@@ -42,6 +52,7 @@ class ProblemController extends WebController
         $data = $this->validate($request, [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
+            'problem_level_id' => ['required', 'int'],
             'chapter_id' => ['required', 'string'],
         ]);
 
@@ -66,7 +77,10 @@ class ProblemController extends WebController
             abort(404, 'Problem not found');
         }
 
+        $levels = ProblemLevel::cases();
+
         return $this->view('portal.problem.edit', [
+            'levels' => $levels,
             'problem' => $problem,
         ]);
     }
@@ -79,6 +93,7 @@ class ProblemController extends WebController
         $data = $this->validate($request, [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
+            'problem_level_id' => ['required', 'int'],
         ]);
 
         $problem = $this->problemQuery->get($id);

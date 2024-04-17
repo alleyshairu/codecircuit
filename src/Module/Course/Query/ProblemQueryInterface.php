@@ -14,6 +14,9 @@ interface ProblemQueryInterface
 {
     public function get(string $id): ?Problem;
 
+    /**
+     * @return LengthAwarePaginator<Problem>
+     */
     public function filter(ProblemSearchRequest $req): LengthAwarePaginator;
 
     /**

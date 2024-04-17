@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string $problem_id
+ * @property int    $problem_level_id
  * @property string $title
  * @property string $description
  */
@@ -40,6 +41,21 @@ class Problem extends Model
     public function description(): string
     {
         return $this->description;
+    }
+
+    public function level(): ProblemLevel
+    {
+        if (null === $this->problem_level_id) {
+            return ProblemLevel::Unknown;
+        }
+
+        $level = ProblemLevel::tryFrom($this->problem_level_id);
+
+        if (null !== $level) {
+            return $level;
+        }
+
+        return ProblemLevel::Unknown;
     }
 
     /**

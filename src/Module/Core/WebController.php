@@ -43,24 +43,30 @@ class WebController extends BaseController
     protected ProblemServiceInterface $problemService;
 
     public function __construct(
+        LanguageQueryInterface $languageQuery,
+
         TeacherServiceInterface $teacherService,
         TeacherQueryInterface $teacherQuery,
-
-        LanguageQueryInterface $languageQuery,
 
         StudentQueryInterface $studentQuery,
         StudentPreferenceQueryInterface $studentPreferenceQuery,
 
+        ChapterQueryInterface $chapterQuery,
+        ChapterServiceInterface $chapterService,
+
         ProblemQueryInterface $problemQuery,
         ProblemServiceInterface $problemService,
     ) {
+        $this->languageQuery = $languageQuery;
+
         $this->teacherService = $teacherService;
         $this->teacherQuery = $teacherQuery;
 
-        $this->languageQuery = $languageQuery;
-
         $this->studentQuery = $studentQuery;
         $this->studentPreferenceQuery = $studentPreferenceQuery;
+
+        $this->chapterQuery = $chapterQuery;
+        $this->chapterService = $chapterService;
 
         $this->problemQuery = $problemQuery;
         $this->problemService = $problemService;

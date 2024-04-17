@@ -17,6 +17,7 @@ class ProblemService implements ProblemServiceInterface
         $problem->problem_id = Str::orderedUuid()->toString();
         $problem->chapter_id = $req->chapter->id();
         $problem->title = $req->title;
+        $problem->problem_level_id = $req->level->value;
         $problem->description = $req->description;
         $problem->save();
 
@@ -27,6 +28,7 @@ class ProblemService implements ProblemServiceInterface
     {
         $problem->title = $req->title;
         $problem->description = $req->description;
+        $problem->problem_level_id = $req->level->value;
         $problem->save();
     }
 }
