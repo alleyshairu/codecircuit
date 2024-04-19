@@ -1,11 +1,13 @@
-<div class="px-4">
-    <div class="p-4 mb-4 bg-white border border-gray-200 rounded-xl shadow">
-        <div class="mb-4">
-            <h3 class="font-semibold">Reset Password</h3>
-            <div class="text-sm text-muted">Reset account password to new password</div>
+<div class="card">
+    <div class="card-header">
+        <div class="grid gap-1">
+            <h3 class="card-title">Reset Password</h3>
+            <div class="text-sm text-muted-foreground mt-1">Reset account password to new password</div>
         </div>
+    </div>
 
-        <form method="post" action="{{ route('user.password-update', $id) }}" class="grid gap-4">
+    <div class="card-body">
+        <form method="post" action="{{ route('portal.user.password.update', $id) }}" class="grid gap-4">
             @csrf
             @method('put')
 
@@ -28,3 +30,5 @@
             </div>
         </form>
     </div>
+
+</div>

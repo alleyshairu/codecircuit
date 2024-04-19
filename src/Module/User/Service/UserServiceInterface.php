@@ -8,5 +8,7 @@ use App\Models\User\User;
 
 interface UserServiceInterface
 {
-    public function passwordUpdate(User $user, string $password): void;
+    public function changeName(User $user, string $name): void;
+
+    public function changePassword(User $user, string $password): void;
 }

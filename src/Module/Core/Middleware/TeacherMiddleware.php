@@ -23,7 +23,7 @@ class TeacherMiddleware
 
         /** @var ?User */
         $user = Auth::user();
-        if ($user && !$user->isTeacher()) {
+        if ($user && $user->isStudent()) {
             abort(403, 'Access denied! Only teachers have access to this page.');
         }
 

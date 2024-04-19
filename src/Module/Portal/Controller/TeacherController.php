@@ -32,7 +32,7 @@ class TeacherController extends WebController
         $req = TeacherSearchRequest::fromArray($request->all());
         $teachers = $this->query->filter($req);
 
-        return $this->view('teacher.index', [
+        return $this->view('portal.teacher.index', [
             'teachers' => $teachers,
             'filters' => $req,
         ]);
@@ -40,7 +40,7 @@ class TeacherController extends WebController
 
     public function create(): View
     {
-        return $this->view('teacher.create');
+        return $this->view('portal.teacher.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -55,16 +55,16 @@ class TeacherController extends WebController
         $req = TeacherCreateRequest::fromArray($data);
         $teacher = $this->service->create($req);
 
-        return $this->redirectRoute('teacher.show', [
+        return $this->redirectRoute('portal.teacher.show', [
             'id' => $teacher->id,
             'filters' => $req,
         ]);
     }
 
-    public function show(string $id): View
+    public function edit(string $id): View
     {
         $teacher = $this->query->get($id);
 
-        return $this->view('teacher.show', ['teacher' => $teacher]);
+        return $this->view('portal.teacher.edit', ['teacher' => $teacher]);
     }
 }

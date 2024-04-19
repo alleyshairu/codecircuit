@@ -11,7 +11,7 @@
         </div>
         <div class="card-body grid gap-3">
             <form method="GET" class="grid gap-3">
-                <div class="flex gap-3">
+                <div class="flex flex-row gap-3">
                     <div class="grid gap-1.5">
                         <label id="name">Name</label>
                         <x-text-input for="name" name="name" type="text" value="{{ $filters->name }}" />
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="ml-auto">
+                <div>
                     <a href="{{ route('portal.student.index') }}" class="btn-white">Clear</a>
                     <button class="btn-primary">Search</button>
                 </div>
@@ -54,6 +54,7 @@
                                 <td>
                                     <x-action id="dropdown-student-action-{{ $student->id }}">
                                         <a href="" class="action-link">View Profile</a>
+                                        <a href="{{ route('portal.user.edit', $student->id) }}" class="action-link">Manage Profile</a>
                                     </x-action>
                                 </td>
                             </tr>

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Uc\Module\Portal\Controller\UserController;
+use Uc\Module\Portal\Controller\AdminController;
 use Uc\Module\Portal\Controller\CourseController;
-use Uc\Module\User\Controller\PasswordController;
 use Uc\Module\Portal\Controller\ChapterController;
 use Uc\Module\Portal\Controller\ProblemController;
 use Uc\Module\Portal\Controller\StudentController;
@@ -14,13 +15,18 @@ Route::prefix('p')->group(function () {
     // admin routes
     Route::middleware(['auth', 'admin'])->group(function () {
         // users
-        Route::put('/users/{id}/password', PasswordController::class)->name('user.password-update');
+        Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('portal.user.edit');
+        Route::put('/users/{id}/name', [UserController::class, 'name'])->name('portal.user.name.update');
+        Route::put('/users/{id}/password', [UserController::class, 'password'])->name('portal.user.password.update');
 
         // teachers
         Route::get('/teachers', [TeacherController::class, 'index'])->name('portal.teacher.index');
         Route::get('/teachers/create', [TeacherController::class, 'create'])->name('portal.teacher.create');
         Route::post('/teachers/store', [TeacherController::class, 'store'])->name('portal.teacher.store');
-        Route::get('/teachers/{id}/show', [TeacherController::class, 'show'])->name('portal.teacher.show');
+        Route::get('/teachers/{id}/edit', [TeacherController::class, 'edit'])->name('portal.teacher.edit');
+
+        // admins
+        Route::get('/admins', [AdminController::class, 'index'])->name('portal.admin.index');
     });
 
     // teacher routes

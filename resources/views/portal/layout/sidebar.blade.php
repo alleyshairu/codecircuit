@@ -37,27 +37,30 @@
                 </div>
             </div>
 
-            <div class="px-3 py-2">
-                <h2 class="mb-2 px-4 text-lg font-semibold tracking-tight">Staff</h2>
-                <div class="space-y-1">
-                    <a href=""
-                        class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
-                        <x-icons.user class="mr-2 w-4 h-4" />
-                        Teachers
-                    </a>
 
-                    <a href=""
-                        class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
-                        <x-icons.feedback class="mr-2 w-4 h-4" />
-                        Administrators
-                    </a>
+            @can('admin')
+                <div class="px-3 py-2">
+                    <h2 class="mb-2 px-4 text-lg font-semibold tracking-tight">Staff</h2>
+                    <div class="space-y-1">
+                        <a href="{{ route('portal.teacher.index') }}"
+                            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
+                            <x-icons.user class="mr-2 w-4 h-4" />
+                            Teachers
+                        </a>
+
+                        <a href="{{ route('portal.admin.index') }}"
+                            class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
+                            <x-icons.feedback class="mr-2 w-4 h-4" />
+                            Administrators
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endcan
 
             <div class="px-3 py-2">
                 <h2 class="mb-2 px-4 text-lg font-semibold tracking-tight">Settings</h2>
                 <div class="space-y-1">
-                    <a href=""
+                    <a href="{{ route('profile.edit') }}"
                         class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
                         <x-icons.user class="mr-2 w-4 h-4" />
                         Account
