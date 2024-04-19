@@ -12,7 +12,7 @@ class CourseControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_student_cannot_view_course_show_page(): void
+    public function test_student_cannot_view_portal_course_edit_page(): void
     {
         $user = User::factory()->student()->create();
         /** @var Language */
@@ -20,12 +20,12 @@ class CourseControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-        ->get(sprintf('/courses/%d', $course->id()));
+        ->get(sprintf('/p/courses/%d', $course->id()));
 
         $response->assertStatus(403);
     }
 
-    public function test_teacher_can_view_units_index(): void
+    public function test_teacher_can_view_portal_course_edit_page(): void
     {
         $user = User::factory()->teacher()->create();
 
@@ -34,9 +34,9 @@ class CourseControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get(sprintf('/courses/%d', $course->id()));
+            ->get(sprintf('/p/courses/%d', $course->id()));
 
         $response->assertStatus(200);
-        $response->assertViewIs('course.show');
+        $response->assertViewIs('portal.course.show');
     }
 }

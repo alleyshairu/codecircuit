@@ -1,4 +1,10 @@
-<x-error-layout>
+@extends('errors.main')
+
+@section('title')
+    500 Error
+@endsection
+
+@section('content')
     <div class="block md:max-w-lg">
         <img src="/images/500.svg" />
     </div>
@@ -16,4 +22,4 @@
             Go back home
         </a>
     </div>
-</x-error-layout>
+@endsection

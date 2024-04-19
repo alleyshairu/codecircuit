@@ -4,6 +4,7 @@ namespace App\Models\User;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Illuminate\Support\Carbon;
 use Database\Factories\UserFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -16,6 +17,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $name
  * @property string $email
  * @property int    $user_kind_id
+ * @property Carbon $created_at
  */
 class User extends Authenticatable
 {
@@ -54,6 +56,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function kind(): UserKind
+    {
+        return UserKind::from($this->user_kind_id);
+    }
+
+    public function isStudent(): bool
+    {
+        return UserKind::Student->value === $this->user_kind_id;
+    }
+
+    public function isAdmin(): bool
+    {
+        return UserKind::Admin->value === $this->user_kind_id;
     }
 
     public function isTeacher(): bool

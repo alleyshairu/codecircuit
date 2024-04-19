@@ -11,19 +11,19 @@ class StudentControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_student_cannot_view_student_index(): void
+    public function test_student_cannot_view_portal_student_index(): void
     {
         /** @var User */
         $user = UserFactory::new()->student()->create();
 
         $response = $this
             ->actingAs($user)
-        ->get('/students');
+        ->get('/p/students');
 
         $response->assertStatus(403);
     }
 
-    public function test_teacher_can_view_student_index(): void
+    public function test_teacher_can_view_portal_student_index(): void
     {
         /** @var User */
         $user = UserFactory::new()->teacher()->create();
@@ -33,10 +33,10 @@ class StudentControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-        ->get('/students');
+        ->get('/p/students');
 
-        $response = $this->get('/students');
+        $response = $this->get('/p/students');
         $response->assertStatus(200);
-        $response->assertViewIs('student.index');
+        $response->assertViewIs('portal.student.index');
     }
 }

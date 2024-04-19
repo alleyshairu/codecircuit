@@ -1,10 +1,10 @@
 FROM node:21-alpine3.18 AS frontend-build
 WORKDIR /front-code
-COPY vite.config.js tailwind.config.js postcss.config.js package.json package-lock.json /front-code/
+COPY package.json package-lock.json /front-code/
 RUN npm install
 COPY ./resources /front-code/resources
-RUN npm run build
-RUN npm run build
+RUN npm run portal:build
+RUN npm run site:build
 
 FROM alpine:3.19
 WORKDIR /var/www/html
@@ -61,13 +61,12 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Add application
 COPY composer.json composer.lock /var/www/html/
-RUN composer install --no-scripts
+RUN composer install --no-dev --no-scripts
 COPY --chown=nobody ./ /var/www/html/
 
-# Remove development packages
-RUN composer install --no-dev --no-scripts
 RUN mkdir -p /var/www/html/storage/app/public
-COPY --from=frontend-build /front-code/public/build/ /var/www/html/public/build
+COPY --from=frontend-build /front-code/public/portal/ /var/www/html/public/portal
+COPY --from=frontend-build /front-code/public/site/ /var/www/html/public/site
 RUN composer dump-autoload
 
 # After deployment scripts

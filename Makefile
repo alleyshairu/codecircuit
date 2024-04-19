@@ -13,7 +13,10 @@ lint: lint-php
 format-views:
 	npm run format:blade
 
+format-assets:
+	npm run format:assets
+
 format-php:
 	php ./vendor/bin/php-cs-fixer fix
 
-format: format-php format-views
+format: format-php format-views format-assets

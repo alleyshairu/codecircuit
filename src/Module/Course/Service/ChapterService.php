@@ -7,6 +7,7 @@ namespace Uc\Module\Course\Service;
 use Illuminate\Support\Str;
 use Uc\Module\Course\Model\Chapter;
 use Uc\Module\Course\Request\ChapterStoreRequest;
+use Uc\Module\Course\Request\ChapterUpdateRequest;
 
 class ChapterService implements ChapterServiceInterface
 {
@@ -22,5 +23,12 @@ class ChapterService implements ChapterServiceInterface
         $chapter->save();
 
         return $chapter;
+    }
+
+    public function update(Chapter $chapter, ChapterUpdateRequest $req): void
+    {
+        $chapter->title = $req->title;
+        $chapter->description = $req->description;
+        $chapter->save();
     }
 }

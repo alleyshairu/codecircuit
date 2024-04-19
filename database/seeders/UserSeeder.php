@@ -17,6 +17,14 @@ class UserSeeder extends Seeder
     {
         UserFactory::new()->create([
             'user_id' => Str::orderedUuid()->toString(),
+            'name' => 'Admin',
+            'email' => 'admin@test.com',
+            'password' => Hash::make('secret'),
+            'user_kind_id' => UserKind::Admin->value,
+        ]);
+
+        UserFactory::new()->create([
+            'user_id' => Str::orderedUuid()->toString(),
             'name' => 'Student',
             'email' => 'student@test.com',
             'password' => Hash::make('secret'),

@@ -14,6 +14,7 @@ return new class() extends Migration {
             $table->uuid('problem_id')->unique();
             $table->string('title');
             $table->text('description');
+            $table->integer('problem_level_id')->nullable();
             $table->text('output')->nullable();
             $table->uuid('chapter_id');
             $table->timestamps();
