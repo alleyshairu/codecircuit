@@ -26,6 +26,8 @@
                         <tr>
                             <th scope="col w-4/6">Problem</th>
                             <th scope="col">Difficulty Level</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -35,6 +37,9 @@
                                 <td class="w-4/6">
                                     <div>{{ $problem->title() }}</div>
                                 </td>
+                                <td>{{ $problem->level()->title() }}</td>
+                                <td>{{ $problem->created_at->format('Y-m-d') }}</td>
+                                <td>{{ $problem->updated_at->format('Y-m-d') }}</td>
                                 <td>
                                 </td>
                                 <td class="whitespace-nowrap text-xs">
