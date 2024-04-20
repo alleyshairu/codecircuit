@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 
 class PlaygroundController extends SiteController
 {
-    public function index(): View
+    public function show(): View
     {
         return $this->view('site.playground.playground');
     }
