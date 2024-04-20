@@ -8,6 +8,7 @@ use Uc\Module\User\Query\UserQuery;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Uc\Module\Course\Query\CourseQuery;
 use Uc\Module\User\Service\UserService;
 use Uc\Module\Course\Query\ChapterQuery;
 use Uc\Module\Course\Query\ProblemQuery;
@@ -21,6 +22,7 @@ use Uc\Module\User\Query\UserQueryInterface;
 use Uc\Module\Teacher\Service\TeacherService;
 use Uc\Module\Feedback\Service\FeedbackService;
 use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\Course\Query\CourseQueryInterface;
 use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Course\Query\ProblemQueryInterface;
@@ -87,6 +89,10 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             StudentQueryInterface::class, StudentQuery::class
+        );
+
+        $this->app->singleton(
+            CourseQueryInterface::class, CourseQuery::class
         );
 
         $this->app->singleton(

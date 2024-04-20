@@ -11,6 +11,5 @@
 
         <a href="{{ route('portal.problem.feedbacks', $problem->id()) }}" class="tab-item"
             data-state="{{ request()->routeIs('portal.problem.feedbacks') ? 'active' : '' }}">Feedbacks</a>
-
     </div>
 </div>

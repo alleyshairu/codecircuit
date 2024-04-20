@@ -26,8 +26,9 @@ class ChapterQuery implements ChapterQueryInterface
     public function all(Language $language): Collection
     {
         $result = Chapter::query()
+            ->withCount('problems')
             ->where('language_id', $language->id())
-        ->get();
+            ->get();
 
         return $result;
     }

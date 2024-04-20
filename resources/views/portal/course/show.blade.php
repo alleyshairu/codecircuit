@@ -19,7 +19,7 @@
         <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex sm:p-6">
             <div class="w-full">
                 <h3 class="text-base font-normal">Students</h3>
-                <div class="my-3 text-2xl font-bold leading-none text-gray-900 sm:text-3xl ">0</div>
+                <div class="my-3 text-2xl font-bold leading-none text-gray-900 sm:text-3xl ">{{ $studentsEnrolled }}</div>
                 <div class="text-xs text-gray-500">Total numbers of students following this course</div>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex sm:p-6">
             <div class="w-full">
                 <h3 class="text-base font-normal">Problems</h3>
-                <div class="my-3 text-2xl font-bold leading-none text-gray-900 sm:text-3xl ">0</div>
+                <div class="my-3 text-2xl font-bold leading-none text-gray-900 sm:text-3xl ">{{ $problemsCount }}</div>
                 <div class="text-xs text-gray-500">Total numbers of problems in this course</div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                                 <td>
                                     <div>{{ $chapter->title() }}</div>
                                 </td>
-                                <td>0</td>
+                                <td>{{ $chapter->problems_count }}</td>
                                 <td>
                                     <x-action id="dropdown-chapter-action-{{ $chapter->id() }}">
                                         <a href="{{ route('portal.chapter.edit', $chapter->id()) }}" class="action-link">Edit Chapter</a>

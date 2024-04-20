@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\ResponseFactory;
 use Uc\Module\User\Query\UserQueryInterface;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Uc\Module\Course\Query\CourseQueryInterface;
 use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Course\Query\ProblemQueryInterface;
@@ -33,6 +34,7 @@ class WebController extends BaseController
     use ValidatesRequests;
 
     protected LanguageQueryInterface $languageQuery;
+    protected CourseQueryInterface $courseQuery;
 
     protected TeacherServiceInterface $teacherService;
     protected TeacherQueryInterface $teacherQuery;
@@ -54,6 +56,7 @@ class WebController extends BaseController
 
     public function __construct(
         LanguageQueryInterface $languageQuery,
+        CourseQueryInterface $courseQuery,
 
         UserServiceInterface $userService,
         UserQueryInterface $userQuery,
@@ -74,6 +77,7 @@ class WebController extends BaseController
         FeedbackServiceInterface $feedbackService
     ) {
         $this->languageQuery = $languageQuery;
+        $this->courseQuery = $courseQuery;
 
         $this->userService = $userService;
         $this->userQuery = $userQuery;

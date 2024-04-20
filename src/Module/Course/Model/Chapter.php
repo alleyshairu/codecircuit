@@ -4,6 +4,7 @@ namespace Uc\Module\Course\Model;
 
 use Uc\Module\Language\Model\Language;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -62,5 +63,13 @@ class Chapter extends Model
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class, 'language_id');
+    }
+
+    /**
+     * @return HasMany<Problem>
+     */
+    public function problems(): HasMany
+    {
+        return $this->hasMany(Problem::class, 'chapter_id');
     }
 }
