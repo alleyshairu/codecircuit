@@ -3,7 +3,6 @@
 namespace Uc\Module\Portal\Controller;
 
 use Illuminate\Http\Request;
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Uc\Module\Course\Model\ProblemLevel;
@@ -11,7 +10,7 @@ use Uc\Module\Course\Request\ProblemStoreRequest;
 use Uc\Module\Course\Request\ProblemSearchRequest;
 use Uc\Module\Course\Request\ProblemUpdateRequest;
 
-class ProblemController extends WebController
+class ProblemController extends PortalController
 {
     public function index(Request $request): View
     {

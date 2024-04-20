@@ -6,7 +6,6 @@ namespace Uc\Module\User\Query;
 
 use App\Models\User\User;
 use App\Models\User\UserKind;
-use Uc\Module\Teacher\View\Teacher;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserQuery implements UserQueryInterface
@@ -40,7 +39,7 @@ class UserQuery implements UserQueryInterface
             ->where('user_kind_id', UserKind::Admin->value);
 
         /**
-         * @var LengthAwarePaginator<Teacher>
+         * @var LengthAwarePaginator<User>
          */
         $result = $query
             ->orderBy('name', 'asc')

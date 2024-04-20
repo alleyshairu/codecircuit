@@ -2,13 +2,12 @@
 
 namespace Uc\Module\Portal\Controller;
 
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 
-class CourseController extends WebController
+class CourseController extends PortalController
 {
     protected ChapterServiceInterface $service;
 

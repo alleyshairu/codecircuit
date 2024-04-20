@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="ml-auto">
+                <div>
                     <a href="{{ route('portal.problem.index') }}" class="btn-white">Clear</a>
                     <button class="btn-primary">Search</button>
                 </div>

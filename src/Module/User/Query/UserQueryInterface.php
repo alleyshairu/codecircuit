@@ -13,5 +13,8 @@ interface UserQueryInterface
 
     public function getByPrimaryKey(int $id): ?User;
 
+    /**
+     * @return LengthAwarePaginator<User>
+     */
     public function getAdministrators(): LengthAwarePaginator;
 }

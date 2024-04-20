@@ -53,6 +53,7 @@ Route::prefix('p')->group(function () {
         Route::post('/problems/{id}/update', [ProblemController::class, 'update'])->name('portal.problem.update');
 
         // feedback
-        // Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('portal.feedback.index');
+        Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('portal.feedback.index');
+        Route::get('/feedbacks/{id}/show', [FeedbackController::class, 'show'])->name('portal.feedback.show');
     });
 });

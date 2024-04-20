@@ -28,7 +28,7 @@
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Languages</a>
                     <a href="{{ route('portal.problem.index') }}"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Problems</a>
-                    <a href=""
+                    <a href="{{ route('portal.feedback.index') }}"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Feedback</a>
                     <a href="{{ route('portal.student.index') }}"
                         class="hidden lg:block flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent">Students</a>

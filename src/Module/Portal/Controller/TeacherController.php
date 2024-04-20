@@ -7,7 +7,6 @@ namespace Uc\Module\Portal\Controller;
 use App\Models\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Uc\Module\Teacher\Query\TeacherQueryInterface;
@@ -15,7 +14,7 @@ use Uc\Module\Teacher\Request\TeacherCreateRequest;
 use Uc\Module\Teacher\Request\TeacherSearchRequest;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 
-class TeacherController extends WebController
+class TeacherController extends PortalController
 {
     private TeacherServiceInterface $service;
 
