@@ -2,7 +2,9 @@
 
 namespace Uc\Module\Language\Model;
 
+use Uc\Module\Course\Model\Chapter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int     $id
@@ -41,5 +43,13 @@ class Language extends Model
     public function logo(): string
     {
         return $this->logo;
+    }
+
+    /**
+     * @return HasMany<Chapter>
+     */
+    public function chapters(): HasMany
+    {
+        return $this->hasMany(Chapter::class, 'language_id');
     }
 }

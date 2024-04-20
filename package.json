@@ -7,7 +7,7 @@
         "site:dev": "rm -rf public/site/assets && vite --config resources/site/vite.config.js dev",
         "site:build": "vite --config resources/site/vite.config.js build",
         "format:assets": "prettier --write 'resources/{site,portal}/**/*.{css,js,ts,tsx}'",
-        "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/**/*.blade.php'"
+        "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/*.blade.php'"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

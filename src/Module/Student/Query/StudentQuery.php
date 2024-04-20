@@ -6,7 +6,10 @@ namespace Uc\Module\Student\Query;
 
 use App\Models\User\User;
 use App\Models\User\UserKind;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Uc\Module\Student\View\Student;
+use Uc\Module\Language\Model\Language;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Uc\Module\Student\Request\StudentSearchRequest;
 
@@ -25,6 +28,26 @@ class StudentQuery implements StudentQueryInterface
         }
 
         return Student::fromUser($user);
+    }
+
+    public function coursesEnrolled(string $studentId): Collection
+    {
+        /** @var array<int, int>
+         */
+        $languages = DB::table('student_languages')
+        ->where('student_id', $studentId)
+        ->pluck('language_id')
+        ->toArray();
+
+        /**
+         * @var Collection<int, Language>
+         */
+        $result = Language::query()
+            ->with(['chapters', 'chapters.problems'])
+            ->whereIn('id', $languages)
+            ->get();
+
+        return $result;
     }
 
     /**

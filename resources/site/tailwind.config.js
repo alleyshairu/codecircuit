@@ -44,8 +44,11 @@ export default {
                 "brand-yellow": "#fffaed",
             },
             fontFamily: {
-                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
-                code: ["Fira sans", ...defaultTheme.fontFamily.sans],
+                sans: [
+                    "IBM Plex Mono",
+                    "monospace",
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
         },
         container: {
