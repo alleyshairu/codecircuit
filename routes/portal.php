@@ -51,6 +51,7 @@ Route::prefix('p')->group(function () {
         Route::post('/problems/store', [ProblemController::class, 'store'])->name('portal.problem.store');
         Route::get('/problems/{id}', [ProblemController::class, 'edit'])->name('portal.problem.edit');
         Route::post('/problems/{id}/update', [ProblemController::class, 'update'])->name('portal.problem.update');
+        Route::get('/problems/{id}/feedback', [ProblemController::class, 'feedback'])->name('portal.problem.feedbacks');
 
         // feedback
         Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('portal.feedback.index');

@@ -13,6 +13,7 @@ return new class() extends Migration {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->uuid('feedback_id')->index();
             $table->uuid('problem_id');
+            $table->uuid('student_id');
             $table->text('feedback');
             $table->unsignedTinyInteger('score');
             $table->boolean('gained_new_knowledge');

@@ -15,5 +15,10 @@ interface FeedbackQueryInterface
     /**
      * @return LengthAwarePaginator<Feedback>
      */
+    public function byProblem(string $problemId): LengthAwarePaginator;
+
+    /**
+     * @return LengthAwarePaginator<Feedback>
+     */
     public function filter(FeedbackSearchRequest $request): LengthAwarePaginator;
 }

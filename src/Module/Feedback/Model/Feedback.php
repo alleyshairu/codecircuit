@@ -2,6 +2,7 @@
 
 namespace Uc\Module\Feedback\Model;
 
+use App\Models\User\User;
 use Uc\Module\Course\Model\Problem;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -58,5 +59,13 @@ class Feedback extends Model
     public function problem(): BelongsTo
     {
         return $this->belongsTo(Problem::class, 'problem_id');
+    }
+
+    /**
+     * @return BelongsTo<User, Feedback>
+     */
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'student_id');
     }
 }

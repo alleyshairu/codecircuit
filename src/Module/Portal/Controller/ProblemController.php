@@ -107,4 +107,19 @@ class ProblemController extends PortalController
 
         return $this->redirectRoute('portal.problem.edit', ['id' => $problem->id()]);
     }
+
+    public function feedback(string $id, Request $request): View
+    {
+        $problem = $this->problemQuery->get($id);
+        if (null === $problem) {
+            abort(404, 'Problem not found');
+        }
+
+        $feedbacks = $this->feedbackQuery->byProblem($problem->id());
+
+        return $this->view('portal.problem.feedback', [
+            'problem' => $problem,
+            'feedbacks' => $feedbacks,
+        ]);
+    }
 }

@@ -23,6 +23,24 @@ class FeedbackQuery implements FeedbackQueryInterface
     /**
      * @return LengthAwarePaginator<Feedback>
      */
+    public function byProblem(string $problemId): LengthAwarePaginator
+    {
+        $query = Feedback::query()
+            ->where('problem_id', $problemId);
+
+        /**
+         * @var LengthAwarePaginator<Feedback>
+         */
+        $result = $query
+            ->orderBy('created_at', 'desc')
+            ->paginate(30);
+
+        return $result;
+    }
+
+    /**
+     * @return LengthAwarePaginator<Feedback>
+     */
     public function filter(FeedbackSearchRequest $request): LengthAwarePaginator
     {
         $query = Feedback::query();
