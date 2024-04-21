@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="p-6 pt-0">
-        <div class="relative w-full overflow-auto">
+        <div class="relative w-full">
             <table>
                 <thead>
                     <tr>
@@ -20,6 +20,12 @@
                             <td>{{ $problem->title() }}</td>
                             <td></td>
                             <td></td>
+                            <td>
+                                <x-action id="dropdown-problem-action-{{ $problem->id() }}">
+                                    <a class="action-link" href="{{ route('playground', $problem->id()) }}">Open</a>
+                                    <a class="action-link" href="{{ route('playground', $problem->id()) }}">Show Feedback</a>
+                                </x-action>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

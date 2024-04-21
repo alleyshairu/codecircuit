@@ -103,3 +103,11 @@ td {
 th {
     @apply h-10 px-2 text-left font-medium text-muted-foreground;
 }
+
+.action {
+    @apply items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground flex h-8 w-8 p-0 data-[state=open]:bg-muted;
+}
+
+.action-link {
+    @apply relative flex items-center rounded-sm px-2 py-1.5 text-xs outline-none transition-colors hover:bg-accent focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+}
