@@ -20,6 +20,7 @@ if (sidebar) {
     const toggleSidebarMobileHamburger = document.getElementById(
         "toggleSidebarMobileHamburger",
     );
+
     const toggleSidebarMobileClose = document.getElementById(
         "toggleSidebarMobileClose",
     );

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Uc\Module\Site\Controller\HomeController;
 use Uc\Module\Site\Controller\TeamController;
 use Uc\Module\Site\Controller\StartController;
+use Uc\Module\Site\Controller\ProblemController;
 use Uc\Module\Site\Controller\RoadmapController;
 use Uc\Module\Site\Controller\PlaygroundController;
 use Uc\Module\Site\Controller\LeaderboardController;
@@ -15,6 +16,8 @@ Route::get('/team', TeamController::class)->name('team');
 
 Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/start', StartController::class)->name('student.start');
+
+    Route::get('/problems/{id}', [ProblemController::class, 'problem'])->name('problem.json');
 
     Route::get('/@/{id}/profile', [StudentProfileController::class, 'profile'])->name('student.profile');
     Route::get('/roadmap', RoadmapController::class)->name('roadmap');

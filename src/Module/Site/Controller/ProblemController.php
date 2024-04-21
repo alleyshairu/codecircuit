@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Uc\Module\Site\Controller;
 
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 
-class PlaygroundController extends SiteController
+class ProblemController extends SiteController
 {
-    public function show(Request $request, string $id): View
+    public function problem(string $id): JsonResponse
     {
         $problem = $this->problemQuery->get($id);
         if (null === $problem) {
@@ -19,7 +18,7 @@ class PlaygroundController extends SiteController
         $chapter = $problem->chapter;
         $language = $chapter->language;
 
-        return $this->view('site.playground.playground', [
+        return $this->json([
             'problem' => $problem,
             'chapter' => $chapter,
             'language' => $language,
