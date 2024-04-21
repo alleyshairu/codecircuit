@@ -39,7 +39,8 @@ function EditorInput(props: EditorInputProps) {
                 initialValue={props.content ?? ""}
                 init={{
                     menubar: false,
-                    height: 1200,
+                    min_height: 300,
+                    max_height: 500,
                     branding: false,
                     promotion: false,
                     statusbar: false,

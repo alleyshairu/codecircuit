@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CodeEditor from "@uiw/react-textarea-code-editor";
 import { Interweave } from "interweave";
 
 import { get } from "../api";
+import { CodeEditor } from "./code-editor";
+import OutputWindow from "./output-window";
 
 interface PlaygroundProps {
     id: string;
@@ -17,6 +18,7 @@ interface Problem {
 
 const Playground = (props: PlaygroundProps) => {
     const [loading, setLoading] = useState<boolean>(false);
+    const [processing, setProcessing] = useState<boolean>(false);
     const [problem, setProblem] = useState<Problem | null>(null);
 
     useEffect(() => {
@@ -30,23 +32,44 @@ const Playground = (props: PlaygroundProps) => {
             });
     }, []);
 
-    console.log(problem);
+    const handleProcessing = () => {
+        console.log("called");
+    };
 
     return (
         <>
             {problem ? (
-                <div className="grid grid-cols-3">
-                    <div className="col-span-2">
-                        <Interweave content={problem.description} />;
-                    </div>
-                    <div className="col-span-1">
-                        <CodeEditor
-                            className="rounded-md"
-                            value={problem.description}
-                            language="java"
-                            placeholder="Please enter java code."
-                            padding={15}
-                        />
+                <div className="grid gap-3">
+                    <div className="grid gap-3 grid-cols-5">
+                        <div className="col-span-3">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h3 className="font-semibold leading-none tracking-tight">
+                                        Code Editor
+                                    </h3>
+                                </div>
+                                <div className="card-body">
+                                    <CodeEditor
+                                        language="java"
+                                        code=""
+                                        onChange={(code: string) => {}}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="grid gap-2 col-span-2">
+                            <OutputWindow outputDetails={null} />
+                            <div className="flex justify-end">
+                                <button
+                                    onClick={handleProcessing}
+                                    className="btn-primary"
+                                >
+                                    {processing
+                                        ? "Processing..."
+                                        : "Compile and Execute"}
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             ) : null}

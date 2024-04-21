@@ -90,7 +90,7 @@ select {
 }
 
 .tabs {
-    @apply h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground grid w-full;
+    @apply h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground grid w-full
 }
 
 .tab-item {
@@ -100,3 +100,4 @@ select {
 .badge {
     @apply inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80;
 }
+

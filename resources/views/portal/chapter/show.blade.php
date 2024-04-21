@@ -5,9 +5,8 @@
     </x-slot>
 
     @include('portal.chapter._tabs')
-
-    <div class="grid items-center justify-center place-items-center grid-cols-4">
-        <div class="card col-span-3">
+    <div class="">
+        <div class="card">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Edit Chapter</h3>

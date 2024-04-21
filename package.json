@@ -27,8 +27,8 @@
     },
     "dependencies": {
         "@github/details-menu-element": "^1.0.13",
+        "@monaco-editor/react": "^4.6.0",
         "@tinymce/tinymce-react": "^5.0.1",
-        "@uiw/react-textarea-code-editor": "^3.0.2",
         "flowbite": "^2.3.0",
         "interweave": "^13.1.0",
         "react": "^18.2.0",

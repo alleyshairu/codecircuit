@@ -5,6 +5,12 @@
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">New Chapter</h1>
+
+        <div class="flex justify-end items-end ml-auto space-x-2 sm:space-x-3">
+            <a href="{{ route('portal.course.show', $language->id()) }}"class="btn btn-primary">
+                View {{$language->name() }} Course
+            </a>
+        </div>
     </x-slot>
 
     <div class="grid">
@@ -16,6 +22,12 @@
             <div class="card-body">
                 <form class="grid gap-5" method="post" action="{{ route('portal.chapter.store') }}">
                     @csrf
+
+                    <div class="grid w-full gap-1.5">
+                        <x-input-label for="language" value="Language" />
+                        <x-text-input id="language" disabled type="text" value="{{ $language->name() }}" />
+                    </div>
+
                     <div>
                         <x-input-label for="title" :value="__('Title')" />
                         <x-text-input id="title" class="w-full block mt-1" type="text" name="title" :value="old('title')" required />
