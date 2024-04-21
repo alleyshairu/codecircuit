@@ -14,8 +14,11 @@ return new class() extends Migration {
             $table->uuid('problem_id')->unique();
             $table->string('title');
             $table->text('description');
+            $table->text('starting_code');
+            $table->text('hint');
+            $table->text('stdin')->nullable();
+            $table->text('stdoutu')->nullable();
             $table->integer('problem_level_id')->nullable();
-            $table->text('output')->nullable();
             $table->uuid('chapter_id');
             $table->timestamps();
 

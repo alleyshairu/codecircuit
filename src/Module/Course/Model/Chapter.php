@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property string  $chapter_id
- * @property int     $number
- * @property string  $title
- * @property ?string $description
- * @property ?string $description
- * @property ?string $learning_outcome
+ * @property string   $chapter_id
+ * @property int      $number
+ * @property string   $title
+ * @property ?string  $description
+ * @property ?string  $description
+ * @property ?string  $learning_outcome
+ * @property Language $language
  */
 class Chapter extends Model
 {
