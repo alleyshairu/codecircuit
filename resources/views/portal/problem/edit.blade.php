@@ -21,12 +21,11 @@
         </div>
     </div>
 
-
     @include('portal.problem._tabs')
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">New Problem</h3>
+            <h3 class="card-title">Problem</h3>
         </div>
         <div class="card-body">
             <form class="grid gap-5" method="post" action="{{ route('portal.problem.update', $problem->id()) }}">
@@ -63,6 +62,26 @@
                     <x-input-label for="description" value="Description" />
                     <div data-name="description" class="js-editor-component" data-html="{{ $problem->description() }}"></div>
                     <x-input-error :messages="$errors->get('description')" />
+                </div>
+                <div>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h3 class="card-title">Add Hint</h3>
+        </div>
+        <div class="card-body">
+            <form class="grid gap-5" method="post" action="{{ route('portal.problem.update', $problem->id()) }}">
+                @csrf
+
+                <div class="grid w-full gap-1.5">
+                    <x-input-label for="hint" value="Hint" />
+                    <div data-name="hint" class="js-editor-component" data-html="{{ $problem->hint() }}"></div>
+                    <x-input-error :messages="$errors->get('hint')" />
                 </div>
 
                 <div>

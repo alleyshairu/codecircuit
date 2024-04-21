@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { EditorInput } from "./components/editor";
+import { EditorInput } from "./components/editor-input";
 
 let elements = document.getElementsByClassName("js-editor-component");
 for (var i = 0; i < elements.length; i++) {
@@ -14,7 +14,7 @@ for (var i = 0; i < elements.length; i++) {
     root.render(
         <EditorInput
             name={element.dataset.name}
-            html={element.dataset.html ?? ""}
+            content={element.dataset.html ?? ""}
         />,
     );
 }

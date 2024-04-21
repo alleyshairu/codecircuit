@@ -7,8 +7,8 @@
         <h1 class="page-title">New Chapter</h1>
     </x-slot>
 
-    <div class="grid items-center justify-center place-items-center grid-cols-4">
-        <div class="card col-span-3">
+    <div class="grid">
+        <div class="card">
             <div class="card-header">
                 <h3 class="card-title">New Chapter</h3>
                 <div class="text-muted-foreground text-sm">Add a new chapter for the {{ $language->name() }} language.</div>
