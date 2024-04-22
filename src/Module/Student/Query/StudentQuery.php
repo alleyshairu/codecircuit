@@ -63,7 +63,8 @@ class StudentQuery implements StudentQueryInterface
         }
 
         if (null !== $request->language) {
-            // $query->where('name', 'ilike', '%'.trim($request->name).'%');
+            $query->join('student_languages', 'student_languages.student_id', 'users.user_id')
+                ->where('student_languages.language_id', $request->language->id());
         }
 
         /**

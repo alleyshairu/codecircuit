@@ -34,10 +34,6 @@
     </div>
 
     <div class="p-4">
-        <div class="">
-            <h3 class="text-lg font-bold mt-5 mb-3">Chapters</h3>
-        </div>
-
         <div class="flex justify-end items-end ml-auto space-x-2 sm:space-x-3">
             <a href="{{ route('portal.chapter.create', $language->id()) }}"class="btn btn-primary">
                 <x-icons.plus class="w-5 h-5 mr-2" />
@@ -57,9 +53,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">No of problems</th>
-                            <th scope="col"></th>
+                            <th class="w-full" scope="col">Title</th>
+                            <th class="whitespace-nowrap" scope="col">No of problems</th>
+                            <th class="whitespace-nowrap" scope="col">Date Created</th>
+                            <th class="whitespace-nowrap" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +65,8 @@
                                 <td>
                                     <div>{{ $chapter->title() }}</div>
                                 </td>
-                                <td>{{ $chapter->problems_count }}</td>
+                                <td class="no-wrap">{{ $chapter->problems_count }}</td>
+                                <td>{{ $chapter->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <x-action id="dropdown-chapter-action-{{ $chapter->id() }}">
                                         <a href="{{ route('portal.chapter.edit', $chapter->id()) }}" class="action-link">Edit Chapter</a>

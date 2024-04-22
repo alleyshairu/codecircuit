@@ -1,14 +1,15 @@
-<x-portal-layout>
-    <x-slot name="header">
-        <h1 class="page-title">{{ $problem->title() }} Feedbacks</h1>
-    </x-slot>
+@extends('portal.problem._layout')
 
-    @include('portal.problem._tabs')
+@section('title')
+    {{ $problem->title() }} Problem Feedback
+@endsection
 
+@section('problem_content')
     <div class="card">
         <div class="card-header">
             <div class="">
                 <div class="card-title">Feedbacks</div>
+                <small class="text-sm text-muted-foreground">Feedback provided by students for this problem</small>
             </div>
         </div>
         <div class="card-body grid gap-3">
@@ -40,4 +41,4 @@
             </div>
         </div>
     </div>
-</x-portal-layout>
+@endsection

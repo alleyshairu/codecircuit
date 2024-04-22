@@ -1,7 +1,43 @@
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Problems</h1>
+        <small class="text-muted-foreground text-sm">Showing the list of all the problems.</small>
     </x-slot>
+
+    <form method="GET" class="bg-background text-sm mb-3">
+        <fieldset class="grid md:grid-cols-5 gap-6 rounded-lg border p-4">
+            <legend class="-ml-1 px-1 text-sm font-medium">Filters</legend>
+
+            <div class="md:col-span-1 grid gap-3">
+                <label>Language</label>
+                <select class="w-full" name="language_id">
+                    <option></option>
+                    @foreach ($languages as $language)
+                        <option value="{{ $language->id() }}" {{ $filters->language?->id() == $language->id() ? 'selected' : '' }}>
+                            {{ $language->name() }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="md:col-span-1 grid gap-3">
+                <label>Problem Level</label>
+                <select class="w-full" name="problem_level_id">
+                    <option></option>
+                    @foreach ($levels as $level)
+                        <option value="{{ $level->value }}" {{ $filters->level?->value == $level->value ? 'selected' : '' }}>
+                            {{ $level->title() }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
+            <div class="md:col-span-3 flex items-end justify-end gap-3">
+                <a href="{{ route('portal.problem.index') }}" class="btn-white">Clear</a>
+                <button class="btn-primary">Search</button>
+            </div>
+        </fieldset>
+    </form>
+
 
     <div class="card">
         <div class="card-header">
@@ -10,46 +46,16 @@
             </div>
         </div>
         <div class="card-body grid gap-5">
-            <form method="GET" class="grid gap-3">
-                <div class="flex gap-3">
-                    <div class="grid gap-1.5">
-                        <label>Language</label>
-                        <select name="language_id">
-                            <option></option>
-                            @foreach ($languages as $language)
-                                <option value="{{ $language->id() }}" {{ $filters->language?->id() == $language->id() ? 'selected' : '' }}>
-                                    {{ $language->name() }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="grid gap-1.5">
-                        <label>Problem Level</label>
-                        <select name="problem_level_id">
-                            <option></option>
-                            @foreach ($levels as $level)
-                                <option value="{{ $level->value }}" {{ $filters->level?->value == $level->value ? 'selected' : '' }}>
-                                    {{ $level->title() }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="{{ route('portal.problem.index') }}" class="btn-white">Clear</a>
-                    <button class="btn-primary">Search</button>
-                </div>
-            </form>
             <div class="relative w-full">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Problem</th>
-                            <th scope="col">Language</th>
-                            <th scope="col">Difficult Level</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col">Updated At</th>
-                            <th scope="col"></th>
+                            <th class="whitespace-nowrap" scope="col">Language</th>
+                            <th class="whitespace-nowrap" scope="col">Difficult Level</th>
+                            <th class="whitespace-nowrap" scope="col">Created At</th>
+                            <th class="whitespace-nowrap" scope="col">Updated At</th>
+                            <th class="whitespace-nowrap" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,8 +64,12 @@
                                 <td>
                                     <div>{{ $problem->title }}</div>
                                 </td>
-                                <td>{{ $problem->chapter->language->name() }}</td>
-                                <td>{{ $problem->level()->title() }}</td>
+                                <td>
+                                    <div class="badge">{{ $problem->chapter->language->name() }}</div>
+                                </td>
+                                <td>
+                                    <div class="badge">{{ $problem->level()->title() }}</div>
+                                </td>
                                 <td>{{ $problem->created_at->format('Y-m-d') }}</td>
                                 <td>{{ $problem->updated_at->format('Y-m-d') }}</td>
                                 <td>

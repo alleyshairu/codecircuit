@@ -63,7 +63,9 @@ class ChapterController extends PortalController
             abort(404, 'Chapter not found');
         }
 
-        $problems = Problem::query()->get();
+        $problems = Problem::query()
+            ->where('chapter_id', $ch->id())
+            ->get();
 
         return $this->view('portal.chapter.problems', [
             'chapter' => $ch,

@@ -3,6 +3,18 @@
         <h1 class="page-title">Feedback</h1>
     </x-slot>
 
+    <form method="GET" class="bg-background text-sm mb-3">
+        <fieldset class="grid gap-6 rounded-lg border p-4">
+            <legend class="-ml-1 px-1 text-sm font-medium">Filters</legend>
+
+
+            <div class="flex items-end justify-end gap-3">
+                <a href="{{ route('portal.feedback.index') }}" class="btn-white">Clear</a>
+                <button class="btn-primary">Search</button>
+            </div>
+        </fieldset>
+    </form>
+
     <div class="card">
         <div class="card-header">
             <div class="">
@@ -10,26 +22,6 @@
             </div>
         </div>
         <div class="card-body grid gap-3">
-            <form method="GET" class="grid gap-3">
-                <div class="flex flex-row gap-3">
-                    <div class="grid gap-1.5">
-                        <label>Language</label>
-                        <select name="language_id">
-                            <option></option>
-                            @foreach ($languages as $language)
-                                <option value="{{ $language->id() }}" {{ $filters->language?->id() == $language->id() ? 'selected' : '' }}>
-                                    {{ $language->name() }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="{{ route('portal.feedback.index') }}" class="btn-white">Clear</a>
-                    <button class="btn-primary">Search</button>
-                </div>
-            </form>
-
             <div class="relative w-full">
                 <table class="table">
                     <thead>

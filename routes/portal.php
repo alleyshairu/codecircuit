@@ -49,9 +49,17 @@ Route::prefix('p')->group(function () {
         // problem
         Route::get('/problems', [ProblemController::class, 'index'])->name('portal.problem.index');
         Route::post('/problems/store', [ProblemController::class, 'store'])->name('portal.problem.store');
-        Route::get('/problems/{id}', [ProblemController::class, 'edit'])->name('portal.problem.edit');
+        Route::get('/problems/{id}/overview', [ProblemController::class, 'overview'])->name('portal.problem.overview');
+        Route::get('/problems/{id}/edit', [ProblemController::class, 'edit'])->name('portal.problem.edit');
         Route::post('/problems/{id}/update', [ProblemController::class, 'update'])->name('portal.problem.update');
-        Route::get('/problems/{id}/feedback', [ProblemController::class, 'feedback'])->name('portal.problem.feedbacks');
+
+        Route::get('/problems/{id}/code', [ProblemController::class, 'codeForm'])->name('portal.problem.code');
+        Route::post('/problems/{id}/code', [ProblemController::class, 'code'])->name('portal.problem.code.update');
+
+        Route::get('/problems/{id}/hint', [ProblemController::class, 'hintForm'])->name('portal.problem.hint');
+        Route::post('/problems/{id}/hint', [ProblemController::class, 'hintUpdate'])->name('portal.problem.hint.update');
+        Route::get('/problems/{id}/feedback', [ProblemController::class, 'feedback'])->name('portal.problem.feedback');
+        Route::get('/problems/{id}/stats', [ProblemController::class, 'stats'])->name('portal.problem.stats');
 
         // feedback
         Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('portal.feedback.index');
