@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Interweave } from "interweave";
 
-import { get } from "../api";
+import { get, post } from "../api";
 import { CodeEditor } from "./code-editor";
 import OutputWindow from "./output-window";
 
 interface PlaygroundProps {
     id: string;
+}
+
+interface ProblemResponse {
+    problem: Problem;
 }
 
 interface Problem {
@@ -16,24 +20,53 @@ interface Problem {
     instructions: string;
 }
 
+interface Token {
+    token: string;
+}
+
 const Playground = (props: PlaygroundProps) => {
+    const [code, setCode] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [processing, setProcessing] = useState<boolean>(false);
     const [problem, setProblem] = useState<Problem | null>(null);
+    const [outputDetails, setOutputDetails] = useState(null);
 
     useEffect(() => {
-        get<Problem>(`/problems/${props.id}`)
+        get<ProblemResponse>(`/problems/${props.id}`)
             .then((res) => {
                 setProblem(res.problem);
             })
             .catch((res) => {
                 console.log(res);
-                setLoading(false);
             });
     }, []);
 
-    const handleProcessing = () => {
-        console.log("called");
+    const handleProcessing = async () => {
+        setProcessing(true);
+        const res = post<Token>(`/problems/${props.id}/process`, {
+            code: code,
+        })
+            .then(async (res: Token) => {
+                await checkStatus(res.token);
+            })
+            .catch((res) => {
+                setProcessing(false);
+                alert("Something went wrong");
+            });
+    };
+
+    const checkStatus = async (token: string) => {
+        const response = await get<any>(`/process/${token}/status`, {});
+        const statusId = response.status?.id;
+        if (statusId === 1 || statusId === 2) {
+            setTimeout(async () => {
+                console.log("called again");
+                await checkStatus(token);
+            }, 2000);
+            return;
+        }
+        setOutputDetails(response);
+        setProcessing(false);
     };
 
     return (
@@ -51,14 +84,16 @@ const Playground = (props: PlaygroundProps) => {
                                 <div className="card-body">
                                     <CodeEditor
                                         language="java"
-                                        code=""
-                                        onChange={(code: string) => {}}
+                                        code={code}
+                                        onChange={(code: string) => {
+                                            setCode(code);
+                                        }}
                                     />
                                 </div>
                             </div>
                         </div>
                         <div className="grid gap-2 col-span-2">
-                            <OutputWindow outputDetails={null} />
+                            <OutputWindow outputDetails={outputDetails} />
                             <div className="flex justify-end">
                                 <button
                                     onClick={handleProcessing}

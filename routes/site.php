@@ -8,6 +8,7 @@ use Uc\Module\Site\Controller\ProblemController;
 use Uc\Module\Site\Controller\RoadmapController;
 use Uc\Module\Site\Controller\PlaygroundController;
 use Uc\Module\Site\Controller\LeaderboardController;
+use Uc\Module\Site\Controller\ProcessCodeController;
 use Uc\Module\Site\Controller\StudentProfileController;
 use Uc\Module\Site\Controller\StudentPreferenceController;
 
@@ -18,6 +19,8 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/start', StartController::class)->name('student.start');
 
     Route::get('/problems/{id}', [ProblemController::class, 'problem'])->name('problem.json');
+    Route::post('/problems/{id}/process', [ProcessCodeController::class, 'process'])->name('problem.process');
+    Route::get('/process/{id}/status', [ProcessCodeController::class, 'status'])->name('process.status');
 
     Route::get('/@/{id}/profile', [StudentProfileController::class, 'profile'])->name('student.profile');
     Route::get('/roadmap', RoadmapController::class)->name('roadmap');

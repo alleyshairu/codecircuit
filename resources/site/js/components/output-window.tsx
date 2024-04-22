@@ -28,7 +28,7 @@ const OutputWindow = ({ outputDetails }) => {
         } else {
             return (
                 <pre className="px-2 py-1 font-normal text-xs text-red-500">
-                    {atob(outputDetails?.stderr)}
+                    {outputDetails?.stderr}
                 </pre>
             );
         }
@@ -41,10 +41,15 @@ const OutputWindow = ({ outputDetails }) => {
                         Output
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                        Output Of your Program
+                        Output Of your Program:
                     </p>
                 </div>
                 <div className="card-body">
+                    {outputDetails ? (
+                        <pre className="px-2 py-1 font-normal text-xs text-red-500">
+                            {outputDetails.message}
+                        </pre>
+                    ) : null}
                     {outputDetails ? <>{getOutput()}</> : null}
                 </div>
             </div>
