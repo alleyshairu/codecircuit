@@ -4,8 +4,8 @@
 
 <x-portal-layout>
     <x-slot name="header">
-        <h1 class="page-title">Students</h1>
-    </x-slot>
+        <div class="flex items-center justify-between">
+        <h1 class="page-title">Teachers</h1>
 
     @can('admin')
         <div class="flex items-end justify-end space-x-2">
@@ -14,7 +14,27 @@
                 New Teacher Account
             </a>
         </div>
-    @endcan
+            @endcan
+            </div>
+
+    </x-slot>
+
+    <form method="GET" class="bg-background text-sm mb-3">
+        <fieldset class="grid md:grid-cols-2 gap-6 rounded-lg border p-4">
+            <legend class="-ml-1 px-1 text-sm font-medium">Filters</legend>
+
+            <div class="grid gap-3">
+                <label id="name">Name</label>
+                <x-text-input for="name" name="name" type="text" value="{{ $filters->name }}" />
+            </div>
+
+            <div class="flex items-end justify-end gap-3">
+                <a href="{{ route('portal.teacher.index') }}" class="btn-white">Clear</a>
+                <button class="btn-primary">Search</button>
+            </div>
+        </fieldset>
+    </form>
+
 
     <div class="card">
         <div class="card-header">
@@ -23,27 +43,12 @@
             </div>
         </div>
         <div class="card-body">
-
-            <form method="get" action="" class="mb-4 flex items-center gap-4">
-                <x-text-input name="name" type="text" class="block text-sm w-1/3" placeholder="Teacher name..."
-                    value="{{ $filters->name }}" />
-                <div class="flex items-center justify-end gap-4">
-                    <button class="btn-primary" type="submit">
-                        <x-icons.search class="w-5 h-5" />
-                        Search
-                    </button>
-
-                    <a href="{{ route('portal.teacher.index') }} "class="btn-white" type="submit">
-                        Clear
-                    </a>
-                </div>
-            </form>
-
             <div class="relative w-full">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
+                            <th scope="col">Account Created</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -53,10 +58,10 @@
                                 <td>
                                     <div>{{ $teacher->name }}</div>
                                 </td>
-                                <td>0</td>
+                                <td> {{ $teacher->createdAt->format('Y-m-d') }}</td>
                                 <td>
                                     <x-action id="dropdown-teacher-action-{{ $teacher->id }}">
-                                        @can('administrator')
+                                        @can('admin')
                                             <a href="{{ route('portal.user.edit', $teacher->id) }}" class="action-link">Manage Profile</a>
                                         @endcan
                                     </x-action>
@@ -68,11 +73,4 @@
             </div>
         </div>
     </div>
-    @if (count($teachers) === 0)
-        <div class="flex flex-col items-center gap-1 text-center my-5">
-            <h3 class="text-2xl font-bold tracking-tight">No teachers found</h3>
-            <p class="text-sm text-muted">Trying changing the filters</p>
-        </div>
-    @endif
-
 </x-portal-layout>
