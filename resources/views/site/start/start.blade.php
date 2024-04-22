@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex items-center justify-center my-8">
-            <button class="btn-primary">Next</button>
+            <a href="{{ route('roadmap') }}"type="submit" class="btn-primary">Open Study Plan</a>
         </div>
     </div>
 @endsection

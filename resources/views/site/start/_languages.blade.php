@@ -13,7 +13,7 @@
                         class="flex cursor-pointer justify-between gap-4 rounded-lg border border bg-white p-4 text-sm font-medium shadow-sm hover:border-blue-500 has-[:checked]:border-blue-500 has-[:checked]:ring-1 has-[:checked]:ring-blue-500">
                         <div>
                             <p class="text-primary-forground">{{ $language->name() }}</p>
-                            <p class="mt-1 text-muted-foreground">5 Chapters</p>
+                            <p class="mt-1 text-muted-foreground">{{ $language->chapters->count() }} Chapters</p>
                         </div>
 
                         <input id="language-{{ $language->id() }}" type="checkbox" name="language_id[]" value="{{ $language->id() }}"
