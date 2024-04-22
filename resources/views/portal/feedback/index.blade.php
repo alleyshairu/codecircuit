@@ -35,10 +35,9 @@
                     <tbody>
                         @foreach ($feedbacks as $feedback)
                             <tr>
-                                <td>
-                                    <div></div>
-                                </td>
-                                <td></td>
+                                <td>{{ $feedback->problem->title() }}</td>
+                                <td>{{ $feedback->student?->name }}</td>
+                                <td>{{ $feedback->score }}</td>
                                 <td>
                                     <x-action id="dropdown-feedback-action-{{ $feedback->id() }}">
                                         <a href="{{ route('portal.feedback.show', $feedback->id()) }}" class="action-link">View Feedback</a>

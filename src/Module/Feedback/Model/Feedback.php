@@ -43,7 +43,12 @@ class Feedback extends Model
         return $this->feedback;
     }
 
-    public function intersting(): bool
+    public function clearInstructions(): bool
+    {
+        return $this->have_clear_instructions ?? false;
+    }
+
+    public function interesting(): bool
     {
         return $this->is_interesting;
     }
@@ -66,6 +71,6 @@ class Feedback extends Model
      */
     public function student(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'student_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
