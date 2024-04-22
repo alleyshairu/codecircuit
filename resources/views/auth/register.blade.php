@@ -57,7 +57,7 @@
                         <!-- Email Address -->
                         <div class="mt-4">
                             <label for="email" class="form-label">Email</label>
-                            <input id="email" type="email" class="form-input" name="name" value="{{ old('email') }}" required />
+                            <input id="email" type="email" class="form-input" name="email" value="{{ old('email') }}" required />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
@@ -71,11 +71,9 @@
 
                         <!-- Confirm Password -->
                         <div class="mt-4">
-
                             <label for="password_confirmation" class="form-label">Confirm Password</label>
-                            <input id="password_confirmation" type="password_confirmation" class="form-input" name="password" required />
+                            <input id="password_confirmation" type="password_confirmation" class="form-input" name="password_confirmation" required />
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

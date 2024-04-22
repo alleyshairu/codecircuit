@@ -50,6 +50,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if ($user->IsStudent()) {
+            return redirect()->intended(route('student.start', absolute: false));
+        }
+
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 }
