@@ -1,7 +1,37 @@
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Students</h1>
+        <small class="text-muted-foreground text-sm">Showing the list of all the students.</small>
     </x-slot>
+
+    <form method="GET" class="bg-background text-sm mb-3">
+        <fieldset class="grid md:grid-cols-3 gap-6 rounded-lg border p-4">
+            <legend class="-ml-1 px-1 text-sm font-medium">Filters</legend>
+
+            <div class="grid gap-3">
+                <label id="name">Name</label>
+                <x-text-input for="name" name="name" type="text" value="{{ $filters->name }}" />
+            </div>
+
+            <div class="grid gap-3">
+                <label>Language</label>
+                <select class="" name="language_id">
+                    <option></option>
+                    @foreach ($languages as $language)
+                        <option value="{{ $language->id() }}" {{ $filters->language?->id() == $language->id() ? 'selected' : '' }}>
+                            {{ $language->name() }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
+            <div class="flex items-end justify-end gap-3">
+                <a href="{{ route('portal.student.index') }}" class="btn-white">Clear</a>
+                <button class="btn-primary">Search</button>
+            </div>
+        </fieldset>
+    </form>
+
 
     <div class="card">
         <div class="card-header">
@@ -9,39 +39,13 @@
                 <div class="card-title">Students</div>
             </div>
         </div>
+
         <div class="card-body grid gap-3">
-            <form method="GET" class="grid gap-3">
-                <div class="flex flex-row gap-3">
-                    <div class="grid gap-1.5">
-                        <label id="name">Name</label>
-                        <x-text-input for="name" name="name" type="text" value="{{ $filters->name }}" />
-                    </div>
-
-
-                    <div class="grid gap-1.5">
-                        <label>Language</label>
-                        <select name="language_id">
-                            <option></option>
-                            @foreach ($languages as $language)
-                                <option value="{{ $language->id() }}" {{ $filters->language?->id() == $language->id() ? 'selected' : '' }}>
-                                    {{ $language->name() }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="{{ route('portal.student.index') }}" class="btn-white">Clear</a>
-                    <button class="btn-primary">Search</button>
-                </div>
-            </form>
-
             <div class="relative w-full">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,11 +54,12 @@
                                 <td>
                                     <div>{{ $student->name }}</div>
                                 </td>
-                                <td>0</td>
                                 <td>
                                     <x-action id="dropdown-student-action-{{ $student->id }}">
                                         <a href="" class="action-link">View Profile</a>
-                                        <a href="{{ route('portal.user.edit', $student->id) }}" class="action-link">Manage Profile</a>
+                                        @can('admin')
+                                            <a href="{{ route('portal.user.edit', $student->id) }}" class="action-link">Manage Profile</a>
+                                        @endcan
                                     </x-action>
                                 </td>
                             </tr>

@@ -6,12 +6,11 @@ namespace Uc\Module\Portal\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
-class UserController extends WebController
+class UserController extends PortalController
 {
     public function edit(string $id): View
     {

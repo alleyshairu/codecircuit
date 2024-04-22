@@ -8,27 +8,33 @@ use Uc\Module\User\Query\UserQuery;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Uc\Module\Course\Query\CourseQuery;
 use Uc\Module\User\Service\UserService;
 use Uc\Module\Course\Query\ChapterQuery;
 use Uc\Module\Course\Query\ProblemQuery;
 use Uc\Module\Student\Query\StudentQuery;
 use Uc\Module\Teacher\Query\TeacherQuery;
+use Uc\Module\Feedback\Query\FeedbackQuery;
 use Uc\Module\Language\Query\LanguageQuery;
 use Uc\Module\Course\Service\ChapterService;
 use Uc\Module\Course\Service\ProblemService;
 use Uc\Module\User\Query\UserQueryInterface;
 use Uc\Module\Teacher\Service\TeacherService;
+use Uc\Module\Feedback\Service\FeedbackService;
 use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\Course\Query\CourseQueryInterface;
 use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Course\Query\ProblemQueryInterface;
 use Uc\Module\Student\Query\StudentQueryInterface;
 use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Uc\Module\Student\Query\StudentPreferenceQuery;
+use Uc\Module\Feedback\Query\FeedbackQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
+use Uc\Module\Feedback\Service\FeedbackServiceInterface;
 use Uc\Module\Language\Service\LanguageServiceInterface;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
@@ -86,6 +92,10 @@ class UcServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(
+            CourseQueryInterface::class, CourseQuery::class
+        );
+
+        $this->app->singleton(
             ChapterServiceInterface::class, ChapterService::class
         );
 
@@ -119,6 +129,14 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             ProblemServiceInterface::class, ProblemService::class
+        );
+
+        $this->app->singleton(
+            FeedbackQueryInterface::class, FeedbackQuery::class
+        );
+
+        $this->app->singleton(
+            FeedbackServiceInterface::class, FeedbackService::class
         );
     }
 }

@@ -1,18 +1,10 @@
-<x-portal-layout>
-    <x-slot name="header">
-        <h1 class="page-title">{{ $chapter->title() }} Problems</h1>
-        <div class="text-sm text-muted-foreground">Editing {{ $chapter->title() }} of {{ $chapter->language->name() }}</div>
-    </x-slot>
+@extends('portal.chapter._layout')
 
-    @include('portal.chapter._tabs')
+@section('title')
+    {{ $chapter->title() }} Problems
+@endsection
 
-    <div class="flex justify-end items-end ml-auto space-x-2 sm:space-x-3 mb-4">
-        <a href="{{ route('portal.problem.create', $chapter->id()) }}"class="btn btn-primary">
-            <x-icons.plus class="w-5 h-5 mr-2" />
-            Add new problem
-        </a>
-    </div>
-
+@section('chapter_content')
     <div class="card">
         <div class="card-header">
             <div>
@@ -26,6 +18,8 @@
                         <tr>
                             <th scope="col w-4/6">Problem</th>
                             <th scope="col">Difficulty Level</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Updated At</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -35,6 +29,9 @@
                                 <td class="w-4/6">
                                     <div>{{ $problem->title() }}</div>
                                 </td>
+                                <td>{{ $problem->level()->title() }}</td>
+                                <td>{{ $problem->created_at->format('Y-m-d') }}</td>
+                                <td>{{ $problem->updated_at->format('Y-m-d') }}</td>
                                 <td>
                                 </td>
                                 <td class="whitespace-nowrap text-xs">
@@ -49,4 +46,4 @@
             </div>
         </div>
     </div>
-</x-portal-layout>
+@endsection

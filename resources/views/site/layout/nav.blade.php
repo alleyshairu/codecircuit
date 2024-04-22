@@ -13,7 +13,8 @@
                 @endif
 
                 @if (auth()->user()?->isStudent())
-                    <a href="/roadmap" class="btn-primary">Roadmap</a>
+                    <a href="{{ route('roadmap') }}" class="btn-primary">Study Plan</a>
+                    <a href="{{ route('leaderboard') }}" class="btn-white">Leaderboard</a>
 
                     <details class="relative">
                         <summary>

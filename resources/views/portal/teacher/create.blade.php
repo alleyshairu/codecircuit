@@ -6,7 +6,7 @@
         <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">New Teacher</h1>
 
         <div class="flex items-end ml-auto space-x-2 sm:space-x-3">
-            <a href="{{ route('teacher.index') }}"class="btn btn-primary">
+            <a href="{{ route('portal.teacher.index') }}"class="btn btn-primary">
                 <x-icons.search class="w-5 h-5 mr-2" />
                 Search Teacher
             </a>
@@ -20,7 +20,7 @@
                 <div class="text-sm text-muted">Enter details for new teacher account</div>
             </div>
 
-            <form class="grid gap-4" method="post" action="{{ route('teacher.store') }}">
+            <form class="grid gap-4" method="post" action="{{ route('portal.teacher.store') }}">
                 @csrf
                 <div class="grid gap-2">
                     <x-input-label for="name" value="Name" />

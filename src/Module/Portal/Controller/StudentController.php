@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Uc\Module\Portal\Controller;
 
 use Illuminate\Http\Request;
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 use Uc\Module\Student\Query\StudentQueryInterface;
 use Uc\Module\Student\Request\StudentSearchRequest;
 
-class StudentController extends WebController
+class StudentController extends PortalController
 {
     public function index(StudentQueryInterface $query, Request $request): View
     {

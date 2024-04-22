@@ -7,7 +7,7 @@
         "site:dev": "rm -rf public/site/assets && vite --config resources/site/vite.config.js dev",
         "site:build": "vite --config resources/site/vite.config.js build",
         "format:assets": "prettier --write 'resources/{site,portal}/**/*.{css,js,ts,tsx}'",
-        "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/**/*.blade.php'"
+        "format:blade": "blade-formatter --wrap-line-length=140 --write 'resources/views/**/*.blade.php'"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
@@ -27,20 +27,10 @@
     },
     "dependencies": {
         "@github/details-menu-element": "^1.0.13",
-        "@tiptap/core": "^2.2.5",
-        "@tiptap/extension-code-block-lowlight": "^2.2.6",
-        "@tiptap/extension-heading": "^2.2.5",
-        "@tiptap/extension-highlight": "^2.2.5",
-        "@tiptap/extension-link": "^2.2.5",
-        "@tiptap/extension-table": "^2.2.5",
-        "@tiptap/extension-text-align": "^2.2.5",
-        "@tiptap/extension-underline": "^2.2.5",
-        "@tiptap/pm": "^2.2.5",
-        "@tiptap/react": "^2.2.5",
-        "@tiptap/starter-kit": "^2.2.5",
-        "chart.js": "^4.4.2",
+        "@monaco-editor/react": "^4.6.0",
+        "@tinymce/tinymce-react": "^5.0.1",
         "flowbite": "^2.3.0",
-        "lowlight": "^3.1.0",
+        "interweave": "^13.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }

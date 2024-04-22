@@ -56,7 +56,9 @@
                                 <td>0</td>
                                 <td>
                                     <x-action id="dropdown-teacher-action-{{ $teacher->id }}">
-                                        <a href="{{ route('portal.user.edit', $teacher->id) }}" class="action-link">Manage Profile</a>
+                                        @can('administrator')
+                                            <a href="{{ route('portal.user.edit', $teacher->id) }}" class="action-link">Manage Profile</a>
+                                        @endcan
                                     </x-action>
                                 </td>
                             </tr>

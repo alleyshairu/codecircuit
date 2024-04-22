@@ -10,17 +10,20 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\ResponseFactory;
 use Uc\Module\User\Query\UserQueryInterface;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Uc\Module\Course\Query\CourseQueryInterface;
 use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
 use Uc\Module\Course\Query\ProblemQueryInterface;
 use Uc\Module\Student\Query\StudentQueryInterface;
 use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Illuminate\Routing\Controller as BaseController;
+use Uc\Module\Feedback\Query\FeedbackQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Uc\Module\Feedback\Service\FeedbackServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
@@ -31,6 +34,7 @@ class WebController extends BaseController
     use ValidatesRequests;
 
     protected LanguageQueryInterface $languageQuery;
+    protected CourseQueryInterface $courseQuery;
 
     protected TeacherServiceInterface $teacherService;
     protected TeacherQueryInterface $teacherQuery;
@@ -47,8 +51,12 @@ class WebController extends BaseController
     protected UserServiceInterface $userService;
     protected UserQueryInterface $userQuery;
 
+    protected FeedbackQueryInterface $feedbackQuery;
+    protected FeedbackServiceInterface $feedbackService;
+
     public function __construct(
         LanguageQueryInterface $languageQuery,
+        CourseQueryInterface $courseQuery,
 
         UserServiceInterface $userService,
         UserQueryInterface $userQuery,
@@ -64,8 +72,12 @@ class WebController extends BaseController
 
         ProblemQueryInterface $problemQuery,
         ProblemServiceInterface $problemService,
+
+        FeedbackQueryInterface $feedbackQuery,
+        FeedbackServiceInterface $feedbackService
     ) {
         $this->languageQuery = $languageQuery;
+        $this->courseQuery = $courseQuery;
 
         $this->userService = $userService;
         $this->userQuery = $userQuery;
@@ -81,6 +93,9 @@ class WebController extends BaseController
 
         $this->problemQuery = $problemQuery;
         $this->problemService = $problemService;
+
+        $this->feedbackQuery = $feedbackQuery;
+        $this->feedbackService = $feedbackService;
     }
 
     /**

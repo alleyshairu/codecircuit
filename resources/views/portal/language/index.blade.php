@@ -31,7 +31,9 @@
                                 </td>
                                 <td class="whitespace-nowrap text-xs">
                                     <x-action id="dropdown-language-action-{{ $language->id() }}">
-                                        <a class="action-link" href="{{ route('portal.course.show', $language->id()) }}">View Course</a>
+                                        <a class="action-link" href="{{ route('portal.course.chapter', $language->id()) }}">Chapters</a>
+                                        <a class="action-link" href="{{ route('portal.chapter.create', $language->id()) }}">New Chapter</a>
+                                        <a class="action-link" href="{{ route('portal.course.student', $language->id()) }}">Students</a>
                                     </x-action>
                                 </td>
                             </tr>

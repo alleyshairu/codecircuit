@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property string $problem_id
- * @property int    $problem_level_id
- * @property string $title
- * @property string $description
+ * @property string  $problem_id
+ * @property int     $problem_level_id
+ * @property string  $title
+ * @property string  $description
+ * @property ?string $stdin
+ * @property ?string $stdout
+ * @property ?string $hint
+ * @property ?string $starting_code
+ * @property Chapter $chapter
  */
 class Problem extends Model
 {
@@ -41,6 +46,16 @@ class Problem extends Model
     public function description(): string
     {
         return $this->description;
+    }
+
+    public function code(): ?string
+    {
+        return $this->starting_code;
+    }
+
+    public function hint(): ?string
+    {
+        return $this->hint;
     }
 
     public function level(): ProblemLevel

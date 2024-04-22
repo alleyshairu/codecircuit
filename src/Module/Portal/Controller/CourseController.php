@@ -2,42 +2,79 @@
 
 namespace Uc\Module\Portal\Controller;
 
-use Uc\Module\Core\WebController;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
-use Uc\Module\Course\Query\ChapterQueryInterface;
-use Uc\Module\Language\Query\LanguageQueryInterface;
-use Uc\Module\Course\Service\ChapterServiceInterface;
+use Uc\Module\Student\Request\StudentSearchRequest;
 
-class CourseController extends WebController
+class CourseController extends PortalController
 {
-    protected ChapterServiceInterface $service;
-
-    protected ChapterQueryInterface $chQuery;
-
-    protected LanguageQueryInterface $langQuery;
-
-    public function __construct(
-        ChapterServiceInterface $service,
-        ChapterQueryInterface $chQuery,
-        LanguageQueryInterface $langQuery
-    ) {
-        $this->service = $service;
-        $this->chQuery = $chQuery;
-        $this->langQuery = $langQuery;
-    }
-
-    public function show(int $id): View
+    public function overview(int $id): View
     {
-        $lang = $this->langQuery->get($id);
+        $lang = $this->languageQuery->get($id);
         if (null === $lang) {
             abort(404, 'Language not found');
         }
 
-        $chapters = $this->chQuery->all($lang);
+        $studentsEnrolled = $this->courseQuery->studentsEnrolledCount($lang->id());
+        $problemsCount = $this->courseQuery->problemsCount($lang->id());
+        $chapters = $this->chapterQuery->all($lang);
 
-        return $this->view('portal.course.show', [
+        return $this->view('portal.course.overview', [
             'language' => $lang,
             'chapters' => $chapters,
+            'studentsEnrolled' => $studentsEnrolled,
+            'problemsCount' => $problemsCount,
+        ]);
+    }
+
+    public function chapters(int $id): View
+    {
+        $lang = $this->languageQuery->get($id);
+        if (null === $lang) {
+            abort(404, 'Language not found');
+        }
+
+        $chapters = $this->chapterQuery->all($lang);
+
+        return $this->view('portal.course.chapters', [
+            'language' => $lang,
+            'chapters' => $chapters,
+        ]);
+    }
+
+    public function stats(int $id): View
+    {
+        $lang = $this->languageQuery->get($id);
+        if (null === $lang) {
+            abort(404, 'Language not found');
+        }
+
+        $chapters = $this->chapterQuery->all($lang);
+        $studentsEnrolled = $this->courseQuery->studentsEnrolledCount($lang->id());
+        $problemsCount = $this->courseQuery->problemsCount($lang->id());
+
+        return $this->view('portal.course.stats', [
+            'language' => $lang,
+            'chaptersCount' => $chapters->count(),
+            'studentsEnrolled' => $studentsEnrolled,
+            'problemsCount' => $problemsCount,
+        ]);
+    }
+
+    public function students(Request $request, int $id): View
+    {
+        $lang = $this->languageQuery->get($id);
+        if (null === $lang) {
+            abort(404, 'Language not found');
+        }
+
+        $filters = StudentSearchRequest::fromArray(['language_id' => $lang->id()] + $request->all());
+        $students = $this->studentQuery->filter($filters);
+
+        return $this->view('portal.course.students', [
+            'language' => $lang,
+            'filters' => $filters,
+            'students' => $students,
         ]);
     }
 }

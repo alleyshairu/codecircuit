@@ -1,7 +1,7 @@
 <section class="p-4 mb-4 bg-white border border-gray-200 rounded-xl shadow">
     <header>
         <h3 class="text-lg font-semibold text-gray-900">Profile Information</h3>
-        <p class="text-sm text-muted">
+        <p class="text-sm text-muted-foreground">
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
@@ -10,14 +10,14 @@
         @csrf
         @method('patch')
 
-        <div>
+        <div class="grid gap-3">
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus
                 autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
-        <div>
+        <div class="grid gap-3">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required
                 autocomplete="username" />

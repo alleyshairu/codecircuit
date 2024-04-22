@@ -1,7 +1,7 @@
 <section class="p-4 mb-4 bg-white border border-gray-200 rounded-xl shadow">
     <header>
         <h3 class="text-lg font-semibold text-gray-900">Update Passwsord</h3>
-        <p class="text-sm text-muted">
+        <p class="text-sm text-muted-foreground">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
@@ -10,21 +10,21 @@
         @csrf
         @method('put')
 
-        <div>
+        <div class="grid gap-3">
             <x-input-label for="update_password_current_password" :value="__('Current Password')" />
             <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full"
                 autocomplete="current-password" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
-        <div>
+        <div class="grid gap-3">
             <x-input-label for="update_password_password" :value="__('New Password')" />
             <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full"
                 autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
-        <div>
+        <div class="grid gap-3">
             <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
             <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full"
                 autocomplete="new-password" />

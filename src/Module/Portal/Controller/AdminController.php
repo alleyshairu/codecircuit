@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Uc\Module\Portal\Controller;
 
-use Uc\Module\Core\WebController;
 use Illuminate\Contracts\View\View;
 
-class AdminController extends WebController
+class AdminController extends PortalController
 {
     public function index(): View
     {

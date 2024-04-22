@@ -4,6 +4,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 export default {
     darkMode: "class",
     content: [
+        "./resources/site/js/**/*.{js,tsx,ts}",
         "./resources/views/site/**/**/*.blade.php",
         "./resources/views/auth/**/**/*.blade.php",
         "./resources/views/components/**/**/*.blade.php",
@@ -44,8 +45,11 @@ export default {
                 "brand-yellow": "#fffaed",
             },
             fontFamily: {
-                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
-                code: ["Fira sans", ...defaultTheme.fontFamily.sans],
+                sans: [
+                    "IBM Plex Mono",
+                    "monospace",
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
         },
         container: {
