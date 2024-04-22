@@ -44,6 +44,18 @@ class ChapterController extends PortalController
         return $this->redirectRoute('portal.chapter.edit', ['id' => $chapter->id()]);
     }
 
+    public function overview(string $id): View
+    {
+        $chapter = $this->chapterQuery->get($id);
+        if (null === $chapter) {
+            abort(404, 'Chapter not found');
+        }
+
+        return $this->view('portal.chapter.overview', [
+            'chapter' => $chapter,
+        ]);
+    }
+
     public function edit(string $id): View
     {
         $ch = $this->chapterQuery->get($id);
@@ -51,7 +63,7 @@ class ChapterController extends PortalController
             abort(404, 'Chapter not found');
         }
 
-        return $this->view('portal.chapter.show', [
+        return $this->view('portal.chapter.edit', [
             'chapter' => $ch,
         ]);
     }

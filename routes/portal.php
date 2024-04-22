@@ -36,13 +36,17 @@ Route::prefix('p')->group(function () {
 
         // course
         Route::get('/languages', [LanguageController::class, 'index'])->name('portal.language.index');
-        Route::get('/courses/{id}', [CourseController::class, 'show'])->name('portal.course.show');
+        Route::get('/courses/{id}/overview', [CourseController::class, 'overview'])->name('portal.course.overview');
+        Route::get('/courses/{id}/chapters', [CourseController::class, 'chapters'])->name('portal.course.chapter');
+        Route::get('/courses/{id}/stats', [CourseController::class, 'stats'])->name('portal.course.stats');
+        Route::get('/courses/{id}/students', [CourseController::class, 'students'])->name('portal.course.student');
 
         // chapter
         Route::get('/courses/{id}/chapter-create', [ChapterController::class, 'create'])->name('portal.chapter.create');
         Route::post('/chapter/store', [ChapterController::class, 'store'])->name('portal.chapter.store');
-        Route::get('/chapter/{id}', [ChapterController::class, 'edit'])->name('portal.chapter.edit');
-        Route::get('/chapter/{id}/problems', [ChapterController::class, 'problems'])->name('portal.chapter.problems');
+        Route::get('/chapter/{id}/overview', [ChapterController::class, 'overview'])->name('portal.chapter.overview');
+        Route::get('/chapter/{id}/edit', [ChapterController::class, 'edit'])->name('portal.chapter.edit');
+        Route::get('/chapter/{id}/problems', [ChapterController::class, 'problems'])->name('portal.chapter.problem');
         Route::post('/chapter/{id}/update', [ChapterController::class, 'update'])->name('portal.chapter.update');
         Route::get('/chapters/{id}/problem-create', [ProblemController::class, 'create'])->name('portal.problem.create');
 

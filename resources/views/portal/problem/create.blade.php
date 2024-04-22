@@ -1,20 +1,10 @@
-<x-portal-layout>
-    <x-slot name="header">
-        <h1 class="page-title">New Problem</h1>
+@extends('portal.chapter._layout')
 
-        <div class="flex justify-end items-end ml-auto space-x-2 sm:space-x-3 mb-4">
-            <a href="{{ route('portal.course.show', $chapter->language_id) }}"class="btn btn-primary">
-                <x-icons.plus class="w-5 h-5 mr-2" />
-                View Course
-            </a>
+@section('title')
+    New Problem For {{ $chapter->title() }}
+@endsection
 
-            <a href="{{ route('portal.chapter.problems', $chapter->id()) }}"class="btn btn-primary">
-                <x-icons.plus class="w-5 h-5 mr-2" />
-                View Chapter Problems
-            </a>
-        </div>
-    </x-slot>
-
+@section('chapter_content')
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">New Problem</h3>
@@ -22,16 +12,6 @@
         <div class="card-body">
             <form class="grid gap-5" method="post" action="{{ route('portal.problem.store') }}">
                 @csrf
-
-                <div class="grid w-full gap-1.5">
-                    <x-input-label for="language" value="Language" />
-                    <x-text-input id="language" disabled type="text" value="{{ $chapter->language->name() }}" />
-                </div>
-
-                <div class="grid w-full gap-1.5">
-                    <x-input-label for="chapter" value="Chapter" />
-                    <x-text-input id="chapter" disabled type="text" value="{{ $chapter->title() }}" />
-                </div>
 
                 <div class="grid gap-1.5">
                     <label>Problem Level</label>
@@ -64,4 +44,4 @@
             </form>
         </div>
     </div>
-</x-portal-layout>
+@endsection
