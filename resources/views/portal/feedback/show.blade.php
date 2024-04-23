@@ -1,3 +1,7 @@
+@section('title')
+    Feedback
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Feedback</h1>
@@ -52,8 +56,5 @@
             <div class="font-medium">Problem</div>
             <div class="text-sm text-muted-foreground">{{ $feedback->problem->title() }}</div>
         </div>
-
-
     </div>
-
 </x-portal-layout>

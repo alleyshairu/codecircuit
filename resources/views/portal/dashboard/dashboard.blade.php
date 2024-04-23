@@ -8,6 +8,6 @@
     </x-slot>
 
     <div class="p-4">
-        {{ __("You're logged in! WIP") }}
+        You're logged in as {{ auth()->user()->kind()->title() }}.
     </div>
 </x-portal-layout>

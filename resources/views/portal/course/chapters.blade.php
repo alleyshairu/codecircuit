@@ -1,7 +1,7 @@
 @extends('portal.course._layout')
 
 @section('title')
-    {{ $language->name }} Course
+    {{ $language->name }} Chapters
 @endsection
 
 @section('course_content')

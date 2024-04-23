@@ -56,9 +56,5 @@ export default {
             center: true,
         },
     },
-    plugins: [
-        require("flowbite/plugin"),
-        require("@tailwindcss/typography"),
-    ],
+    plugins: [require("flowbite/plugin"), require("@tailwindcss/typography")],
 };
-

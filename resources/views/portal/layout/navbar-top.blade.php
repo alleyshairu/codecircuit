@@ -1,6 +1,6 @@
 <nav
     class="fixed z-30 w-full flex h-9 items-center space-x-1 border bg-background p-1 shadow-sm rounded-none border-b border-none px-2 lg:px-4">
-    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="w-full px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start">
                 <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar"
@@ -39,7 +39,7 @@
                     @endcan
                 </div>
             </div>
-            <div class="flex items-center justify-end text-sm">
+            <div class="ml-auto flex items-center justify-end text-sm">
                 <div class="flex items-center ml-3">
                     <div>
                         <button type="button" class="text-sm flex items-center rounded-sm px-3 py-1 outline-none hover:bg-accent"
@@ -67,7 +67,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm hover:bg-accent"
                                         onclick="event.preventDefault();
                                         this.closest('form').submit();"
                                         role="menuitem">Log Out</a>

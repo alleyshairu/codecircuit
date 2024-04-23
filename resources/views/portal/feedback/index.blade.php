@@ -1,3 +1,7 @@
+@section('title')
+    Feedbacks
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Feedback</h1>
@@ -40,7 +44,7 @@
                                 <td>{{ $feedback->score }}</td>
                                 <td>
                                     <x-action id="dropdown-feedback-action-{{ $feedback->id() }}">
-                                        <a href="{{ route('portal.feedback.show', $feedback->id()) }}" class="action-link">View Feedback</a>
+                                        <a href="{{ route('portal.feedback.show', $feedback->id()) }}" class="action-link">Read</a>
                                     </x-action>
                                 </td>
                             </tr>

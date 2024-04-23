@@ -1,3 +1,7 @@
+@section('title')
+    Students
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Students</h1>
