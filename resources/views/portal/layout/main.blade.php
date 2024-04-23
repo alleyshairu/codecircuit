@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="/tinymce/tinymce.min.js"></script>
     {{ Vite::useHotFile(public_path('portal/hot'))->useBuildDirectory('portal')->withEntryPoints(['resources/portal/css/portal.css', 'resources/portal/js/portal.ts', 'resources/portal/js/components.tsx']) }}
+    {{ Vite::useBuildDirectory('site')->withEntryPoints(['resources/site/css/highlight.css', 'resources/site/js/highlight.js']) }}
 </head>
 
 <body class="min-h-screen bg-background font-code antialiased">

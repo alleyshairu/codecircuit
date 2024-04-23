@@ -172,6 +172,8 @@ class ProblemController extends PortalController
         }
 
         $problem->starting_code = $request->get('code');
+
+        dd($problem->starting_code);
         $problem->save();
 
         flash('Problem code updated!')->success();

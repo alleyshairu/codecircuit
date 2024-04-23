@@ -13,6 +13,8 @@ export default defineConfig({
             input: [
                 "resources/site/css/site.css",
                 "resources/site/js/site.js",
+                "resources/site/css/highlight.css",
+                "resources/site/js/highlight.js",
                 "resources/site/js/components.tsx",
             ],
             refresh: ["resources/views/site/**", "resources/site/**"],
