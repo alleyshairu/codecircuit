@@ -27,6 +27,7 @@ class CodeExecuteService implements CodeExecuteServiceInterface
         ]);
 
         if ($response->successful()) {
+            /* @phpstan-ignore-next-line * */
             return (string) $response['token'];
         }
 

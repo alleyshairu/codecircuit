@@ -19,12 +19,14 @@ use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Illuminate\Routing\Controller as BaseController;
 use Uc\Module\Feedback\Query\FeedbackQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
+use Uc\Module\Solution\Query\SolutionQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Uc\Module\Code\Service\CodeExecuteServiceInterface;
 use Uc\Module\Feedback\Service\FeedbackServiceInterface;
+use Uc\Module\Solution\Service\SolutionServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
@@ -55,6 +57,9 @@ class WebController extends BaseController
     protected FeedbackQueryInterface $feedbackQuery;
     protected FeedbackServiceInterface $feedbackService;
 
+    protected SolutionQueryInterface $solutionQuery;
+    protected SolutionServiceInterface $solutionService;
+
     protected CodeExecuteServiceInterface $codeService;
 
     public function __construct(
@@ -79,6 +84,9 @@ class WebController extends BaseController
         FeedbackQueryInterface $feedbackQuery,
         FeedbackServiceInterface $feedbackService,
 
+        SolutionQueryInterface $solutionQuery,
+        SolutionServiceInterface $solutionService,
+
         CodeExecuteServiceInterface $codeService,
     ) {
         $this->languageQuery = $languageQuery;
@@ -101,6 +109,9 @@ class WebController extends BaseController
 
         $this->feedbackQuery = $feedbackQuery;
         $this->feedbackService = $feedbackService;
+
+        $this->solutionQuery = $solutionQuery;
+        $this->solutionService = $solutionService;
 
         $this->codeService = $codeService;
     }

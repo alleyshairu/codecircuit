@@ -11,6 +11,7 @@ interface PlaygroundProps {
 
 interface ProblemResponse {
     problem: Problem;
+    solution: Solution | null;
 }
 
 interface Problem {
@@ -18,6 +19,12 @@ interface Problem {
     description: string;
     starting_code: string;
     instructions: string;
+    hint: string;
+}
+
+interface Solution {
+    solution_id: string;
+    code: string;
 }
 
 interface Token {
@@ -35,12 +42,27 @@ const Playground = (props: PlaygroundProps) => {
         get<ProblemResponse>(`/problems/${props.id}`)
             .then((res) => {
                 setProblem(res.problem);
-                setCode(res.problem.starting_code);
+                if (res.solution?.code) {
+                    setCode(res.solution.code);
+                } else {
+                    setCode(res.problem.starting_code);
+                }
             })
             .catch((res) => {
                 console.log(res);
             });
     }, []);
+
+    const handleSaveSolution = async () => {
+        const res = post<Token>(`/solutions`, {
+            code: code,
+            problem_id: problem?.problem_id,
+        })
+            .then((res) => {
+                console.log("yeay");
+            })
+            .catch((res) => {});
+    };
 
     const handleProcessing = async () => {
         setProcessing(true);
@@ -68,7 +90,6 @@ const Playground = (props: PlaygroundProps) => {
             return;
         }
 
-        console.log(response);
         setOutputDetails(response);
         setProcessing(false);
     };
@@ -77,38 +98,54 @@ const Playground = (props: PlaygroundProps) => {
         <>
             {problem ? (
                 <div className="grid gap-3">
-                    <div className="grid gap-3 grid-cols-5">
-                        <div className="col-span-3">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h3 className="font-semibold leading-none tracking-tight">
-                                        Code Editor
-                                    </h3>
-                                </div>
-                                <div className="card-body">
-                                    <CodeEditor
-                                        language="java"
-                                        code={code}
-                                        onChange={(code: string) => {
-                                            setCode(code);
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="grid gap-2 col-span-2">
-                            <OutputWindow outputDetails={outputDetails} />
-                            <div className="flex justify-end">
-                                <button
-                                    onClick={handleProcessing}
-                                    className="btn-primary"
-                                >
-                                    {processing
-                                        ? "Processing..."
-                                        : "Compile and Execute"}
-                                </button>
-                            </div>
-                        </div>
+                    <div className="grid gap-3">
+                        <fieldset className="rounded-lg border p-4">
+                            <legend className="-ml-1 px-1 text-sm font-medium">
+                                Code Editor
+                            </legend>
+
+                            <CodeEditor
+                                language="java"
+                                code={code}
+                                onChange={(code: string) => {
+                                    setCode(code);
+                                }}
+                            />
+                        </fieldset>
+                    </div>
+                    <OutputWindow outputDetails={outputDetails} />
+
+                    {problem.hint !== null ? (
+                        <fieldset className="grid md:grid-cols-2 gap-6 rounded-lg border p-4">
+                            <legend className="-ml-1 px-1 text-sm font-medium">
+                                Hint
+                            </legend>
+                            <details>
+                                <summary>Read</summary>
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: problem.hint,
+                                    }}
+                                />
+                            </details>
+                        </fieldset>
+                    ) : null}
+
+                    <div className="flex items-center gap-3">
+                        <button
+                            onClick={handleProcessing}
+                            className="btn-primary"
+                        >
+                            {processing
+                                ? "Processing..."
+                                : "Compile and Execute"}
+                        </button>
+                        <button
+                            onClick={handleSaveSolution}
+                            className="btn-primary"
+                        >
+                            Save Solution
+                        </button>
                     </div>
                 </div>
             ) : null}

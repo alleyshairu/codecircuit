@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Uc\Module\Site\Controller;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class ProblemController extends SiteController
 {
-    public function problem(string $id): JsonResponse
+    public function problem(Request $request, string $id): JsonResponse
     {
         $problem = $this->problemQuery->get($id);
         if (null === $problem) {

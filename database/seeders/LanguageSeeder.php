@@ -3,7 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Uc\Module\Language\Model\Language;
+use Uc\Module\Course\Model\ProblemLevel;
 use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\Course\Request\ChapterStoreRequest;
+use Uc\Module\Course\Request\ProblemStoreRequest;
+use Uc\Module\Course\Service\ChapterServiceInterface;
+use Uc\Module\Course\Service\ProblemServiceInterface;
 use Uc\Module\Language\Request\LanguageCreateRequest;
 
 class LanguageSeeder extends Seeder
@@ -24,7 +30,8 @@ class LanguageSeeder extends Seeder
             description: 'Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.'
         );
 
-        $service->create($java);
+        $course = $service->create($java);
+        $this->prepareJavaCourse($course);
 
         $php = new LanguageCreateRequest(
             name: 'PHP',
@@ -56,5 +63,26 @@ class LanguageSeeder extends Seeder
         );
 
         $service->create($rlang);
+    }
+
+    private function prepareJavaCourse(Language $language): void
+    {
+        /** @var ChapterServiceInterface */
+        $chapterService = app(ChapterServiceInterface::class);
+
+        /** @var ProblemServiceInterface */
+        $problemService = app(ProblemServiceInterface::class);
+
+        $chreq = new ChapterStoreRequest('Basics', 'The goal of this lesson is to get you started with the java programming language.', $language);
+        $ch = $chapterService->store($chreq);
+
+        $probreq = new ProblemStoreRequest('Hello world', 'Write a basic program that prints hello world on the stdout using Java programming language.', ProblemLevel::Easy, $ch);
+        $prob = $problemService->store($probreq);
+
+        $chreq = new ChapterStoreRequest('Strings', 'In this chapter you will learn about strings manipulation via Java programming langauge.', $language);
+        $chapterService->store($chreq);
+
+        $chreq = new ChapterStoreRequest('Algorithms', 'Goal of this chapter is to get your familiarize with the sorting algorithms.', $language);
+        $chapterService->store($chreq);
     }
 }

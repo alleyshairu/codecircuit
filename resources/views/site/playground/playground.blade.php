@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-xl py-8">
-
         <div class="text-xs text-muted-foreground">{{ $problem->id() }}</div>
         <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
         <div class="mb-3 grid gap-2">
@@ -26,14 +25,6 @@
                     </div>
                 </div>
         </div>
-
-        <fieldset class="grid md:grid-cols-2 gap-6 rounded-lg border p-4">
-            <legend class="-ml-1 px-1 text-sm font-medium">Hint</legend>
-                <details>
-                    <summary>Read</summary>
-                    {!! $problem->hint!!}
-                </details>
-        </fieldset>
 
             <div id="js-playground-component" data-id="{{ $problem->id() }}"></div>
         </div>

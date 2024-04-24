@@ -37,6 +37,7 @@ class ProcessCodeController extends WebController
     {
         $response = $this->codeService->status($token);
 
+        /* @phpstan-ignore-next-line * */
         return $this->json($response->json());
     }
 }

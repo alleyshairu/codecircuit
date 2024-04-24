@@ -14,9 +14,9 @@ return new class() extends Migration {
             $table->uuid('solution_id')->index();
             $table->uuid('problem_id');
             $table->uuid('student_id');
-            $table->text('code');
-            $table->text('compiler_output');
-            $table->boolean('correct');
+            $table->text('code')->default('');
+            $table->text('output')->default('');
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }
