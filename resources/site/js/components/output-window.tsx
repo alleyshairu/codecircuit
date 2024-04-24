@@ -35,24 +35,18 @@ const OutputWindow = ({ outputDetails }) => {
     };
     return (
         <>
-            <div className="card">
-                <div className="card-header">
-                    <h3 className="font-semibold leading-none tracking-tight">
-                        Output
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                        Output Of your Program:
-                    </p>
-                </div>
-                <div className="card-body no-overflow">
-                    {outputDetails ? (
-                        <pre className="px-2 py-1 font-normal text-xs text-red-500">
-                            {outputDetails.message}
-                        </pre>
-                    ) : null}
-                    {outputDetails ? <>{getOutput()}</> : null}
-                </div>
-            </div>
+            <fieldset className="rounded-lg border p-4">
+                <legend className="-ml-1 px-1 text-sm font-medium">
+                    Output
+                </legend>
+
+                {outputDetails ? (
+                    <pre className="px-2 py-1 font-normal text-xs text-red-500">
+                        {outputDetails.message}
+                    </pre>
+                ) : null}
+                {outputDetails ? <>{getOutput()}</> : null}
+            </fieldset>
         </>
     );
 };

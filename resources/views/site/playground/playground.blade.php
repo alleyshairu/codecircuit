@@ -25,7 +25,15 @@
                         {!! $problem->description !!}
                     </div>
                 </div>
-            </div>
+        </div>
+
+        <fieldset class="grid md:grid-cols-2 gap-6 rounded-lg border p-4">
+            <legend class="-ml-1 px-1 text-sm font-medium">Hint</legend>
+                <details>
+                    <summary>Read</summary>
+                    {!! $problem->hint!!}
+                </details>
+        </fieldset>
 
             <div id="js-playground-component" data-id="{{ $problem->id() }}"></div>
         </div>

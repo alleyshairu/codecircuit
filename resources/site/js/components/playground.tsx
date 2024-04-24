@@ -63,7 +63,6 @@ const Playground = (props: PlaygroundProps) => {
         const statusId = response.status?.id;
         if (statusId === 1 || statusId === 2) {
             setTimeout(async () => {
-                console.log("called again");
                 await checkStatus(token);
             }, 2000);
             return;
