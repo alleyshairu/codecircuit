@@ -20,6 +20,7 @@ class LanguageSeeder extends Seeder
             color: '#b07219',
             logo: 'images/java.png',
             website: 'https://www.java.com/en/',
+            compilerId: 62,
             description: 'Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.'
         );
 
@@ -30,6 +31,7 @@ class LanguageSeeder extends Seeder
             color: '#4F5D95',
             logo: 'images/php.png',
             website: 'https://www.php.net/',
+            compilerId: 68,
             description: 'A popular general-purpose scripting language that is especially suited to web development.'
         );
         $service->create($php);
@@ -39,6 +41,7 @@ class LanguageSeeder extends Seeder
             color: '#3572A5',
             logo: 'images/python.png',
             website: 'https://www.python.org/',
+            compilerId: 71,
             description: 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
         );
         $service->create($python);
@@ -47,6 +50,7 @@ class LanguageSeeder extends Seeder
             name: 'R',
             color: '#198CE7',
             logo: 'images/r.png',
+            compilerId: 80,
             website: 'https://www.r-project.org/',
             description: 'R is a free software environment for statistical computing and graphics.'
         );

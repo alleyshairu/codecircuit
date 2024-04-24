@@ -14,7 +14,7 @@ interface ProblemResponse {
 }
 
 interface Problem {
-    id: string;
+    problem_id: string;
     description: string;
     starting_code: string;
     instructions: string;
@@ -35,6 +35,7 @@ const Playground = (props: PlaygroundProps) => {
         get<ProblemResponse>(`/problems/${props.id}`)
             .then((res) => {
                 setProblem(res.problem);
+                setCode(res.problem.starting_code);
             })
             .catch((res) => {
                 console.log(res);
@@ -43,8 +44,10 @@ const Playground = (props: PlaygroundProps) => {
 
     const handleProcessing = async () => {
         setProcessing(true);
+
         const res = post<Token>(`/problems/${props.id}/process`, {
             code: code,
+            problem_id: problem?.problem_id,
         })
             .then(async (res: Token) => {
                 await checkStatus(res.token);
@@ -65,6 +68,8 @@ const Playground = (props: PlaygroundProps) => {
             }, 2000);
             return;
         }
+
+        console.log(response);
         setOutputDetails(response);
         setProcessing(false);
     };

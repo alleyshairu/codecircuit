@@ -17,6 +17,7 @@ class LanguageService implements LanguageServiceInterface
         $lang->logo = $req->logo;
         $lang->website = $req->website;
         $lang->description = $req->description;
+        $lang->compiler_id = $req->compilerId;
         $lang->save();
 
         return $lang;

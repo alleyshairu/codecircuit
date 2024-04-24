@@ -23,6 +23,7 @@ use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Uc\Module\Code\Service\CodeExecuteServiceInterface;
 use Uc\Module\Feedback\Service\FeedbackServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
@@ -54,6 +55,8 @@ class WebController extends BaseController
     protected FeedbackQueryInterface $feedbackQuery;
     protected FeedbackServiceInterface $feedbackService;
 
+    protected CodeExecuteServiceInterface $codeService;
+
     public function __construct(
         LanguageQueryInterface $languageQuery,
         CourseQueryInterface $courseQuery,
@@ -74,7 +77,9 @@ class WebController extends BaseController
         ProblemServiceInterface $problemService,
 
         FeedbackQueryInterface $feedbackQuery,
-        FeedbackServiceInterface $feedbackService
+        FeedbackServiceInterface $feedbackService,
+
+        CodeExecuteServiceInterface $codeService,
     ) {
         $this->languageQuery = $languageQuery;
         $this->courseQuery = $courseQuery;
@@ -96,6 +101,8 @@ class WebController extends BaseController
 
         $this->feedbackQuery = $feedbackQuery;
         $this->feedbackService = $feedbackService;
+
+        $this->codeService = $codeService;
     }
 
     /**
@@ -128,6 +135,33 @@ class WebController extends BaseController
         $res = response();
 
         return $res->noContent();
+    }
+
+    protected function error(string $message, int $status): JsonResponse
+    {
+        return $this->json([
+            'message' => $message,
+        ], $status);
+    }
+
+    protected function bad(string $message = 'bad request'): JsonResponse
+    {
+        return $this->error($message, 400);
+    }
+
+    protected function forbidden(string $message = 'forbidden'): JsonResponse
+    {
+        return $this->error($message, 403);
+    }
+
+    protected function notFound(string $message = 'not found'): JsonResponse
+    {
+        return $this->error($message, 404);
+    }
+
+    protected function internalError(string $message = 'internal error'): JsonResponse
+    {
+        return $this->error($message, 500);
     }
 
     /**

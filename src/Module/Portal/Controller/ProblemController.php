@@ -144,7 +144,9 @@ class ProblemController extends PortalController
             abort(404, 'Problem not found');
         }
 
-        $problem->hint = $request->get('hint');
+        /** @var string|null */
+        $hint = $request->get('hint');
+        $problem->hint = $hint;
         $problem->save();
 
         flash('Problem hint updated!')->success();
@@ -171,9 +173,9 @@ class ProblemController extends PortalController
             abort(404, 'Problem not found');
         }
 
-        $problem->starting_code = $request->get('code');
-
-        dd($problem->starting_code);
+        /** @var string|null */
+        $code = $request->get('code');
+        $problem->starting_code = $code;
         $problem->save();
 
         flash('Problem code updated!')->success();

@@ -5,28 +5,37 @@ namespace Uc\Module\Site\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Uc\Module\Core\WebController;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\Factory as Validation;
 
 class ProcessCodeController extends WebController
 {
-    public function process(Request $request): JsonResponse
+    public function process(Validation $validation, Request $request): JsonResponse
     {
-        $code = base64_encode($request->get('code'));
-
-        $api = 'http://127.0.0.1:2358/submissions';
-        $response = Http::post($api, [
-            'base64_encoded' => true,
-            'source_code' => $code,
-            'language_id' => 62,
+        $validator = $validation->make($request->all(), [
+            'code' => ['required'],
+            'problem_id' => ['required'],
         ]);
 
-        return $this->json($response->json());
+        if ($validator->fails()) {
+            return $this->jsonValidationErr($validator);
+        }
+
+        $data = $validator->validated();
+        $problem = $this->problemQuery->get($data['problem_id']);
+        if (null === $problem) {
+            return $this->notFound('problem nto found');
+        }
+
+        $token = $this->codeService->process($problem->chapter->language, $data['code']);
+
+        return $this->json([
+            'token' => $token,
+        ]);
     }
 
     public function status(string $token): JsonResponse
     {
-        $api = sprintf('http://127.0.0.1:2358/submissions/%s', $token);
-        $response = Http::get($api);
+        $response = $this->codeService->status($token);
 
         return $this->json($response->json());
     }

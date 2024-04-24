@@ -11,6 +11,7 @@ readonly class LanguageCreateRequest
         public string $logo,
         public string $website,
         public string $color,
+        public int $compilerId,
         public ?string $description,
     ) {
     }
