@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Events\StudentLoggedIn;
+use Uc\Module\Student\View\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -34,6 +36,9 @@ class AuthenticatedSessionController extends Controller
          */
         $user = Auth::user();
         if ($user->IsStudent()) {
+            $student = Student::fromUser($user);
+            event(new StudentLoggedIn($student));
+
             return redirect()->intended(route('student.start', absolute: false));
         }
 

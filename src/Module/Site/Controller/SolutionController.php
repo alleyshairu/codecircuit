@@ -29,7 +29,6 @@ class SolutionController extends WebController
             'student' => $student,
             'language' => $language,
             'chapter' => $chapter,
-            'problem' => $problem,
             'solution' => $solution,
             'problem' => $problem,
         ]);

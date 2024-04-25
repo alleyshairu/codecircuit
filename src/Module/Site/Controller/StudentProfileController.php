@@ -15,8 +15,17 @@ class StudentProfileController extends SiteController
             return abort(404, 'Student not found');
         }
 
+        $courses = $this->studentQuery->coursesEnrolled($student->id);
+        $stats = $this->studentQuery->stats($student->id);
+        $events = $this->studentQuery->recentEvents($student->id);
+        $progress = $this->studentQuery->coursesprogress($student->id);
+
         return $this->view('site.profile.profile', [
             'student' => $student,
+            'courses' => $courses,
+            'progress' => $progress,
+            'stats' => $stats,
+            'events' => $events,
         ]);
     }
 }

@@ -12,8 +12,10 @@ return new class() extends Migration {
     {
         Schema::create('student_points', function (Blueprint $table) {
             $table->uuid('id')->index();
-            $table->text('event');
+            $table->string('event_type');
+            $table->text('event')->default('');
             $table->smallInteger('points_earned')->index();
+            $table->uuid('student_id');
             $table->timestamps();
         });
     }

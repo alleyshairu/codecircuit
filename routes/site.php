@@ -17,6 +17,7 @@ use Uc\Module\Site\Controller\StudentPreferenceController;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/team', TeamController::class)->name('team');
 
+Route::get('/@/{id}/profile', [StudentProfileController::class, 'profile'])->name('student.profile');
 Route::get('/solutions/{id}', [SolutionController::class, 'show'])->name('solution.show');
 Route::get('/leaderboard', [LeaderboardController::class, 'overall'])->name('leaderboard');
 
@@ -31,7 +32,6 @@ Route::middleware(['auth', 'student'])->group(function () {
 
     Route::post('/solutions', [SolutionController::class, 'store'])->name('solution.store');
 
-    Route::get('/@/{id}/profile', [StudentProfileController::class, 'profile'])->name('student.profile');
     Route::get('/roadmap', RoadmapController::class)->name('roadmap');
     Route::get('/playground/{id}', [PlaygroundController::class, 'show'])->name('playground');
 

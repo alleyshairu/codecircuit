@@ -20,6 +20,7 @@ use Uc\Module\Solution\Query\SolutionQuery;
 use Uc\Module\Course\Service\ChapterService;
 use Uc\Module\Course\Service\ProblemService;
 use Uc\Module\User\Query\UserQueryInterface;
+use Uc\Module\Student\Service\StudentService;
 use Uc\Module\Teacher\Service\TeacherService;
 use Uc\Module\Code\Service\CodeExecuteService;
 use Uc\Module\Feedback\Service\FeedbackService;
@@ -37,6 +38,7 @@ use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Solution\Query\SolutionQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
+use Uc\Module\Student\Service\StudentServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Uc\Module\Code\Service\CodeExecuteServiceInterface;
 use Uc\Module\Feedback\Service\FeedbackServiceInterface;
@@ -127,6 +129,10 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             StudentPreferenceQueryInterface::class, StudentPreferenceQuery::class
+        );
+
+        $this->app->singleton(
+            StudentServiceInterface::class, StudentService::class
         );
 
         $this->app->singleton(

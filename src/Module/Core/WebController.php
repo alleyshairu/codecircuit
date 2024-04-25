@@ -22,6 +22,7 @@ use Uc\Module\Language\Query\LanguageQueryInterface;
 use Uc\Module\Solution\Query\SolutionQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
+use Uc\Module\Student\Service\StudentServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Uc\Module\Code\Service\CodeExecuteServiceInterface;
@@ -43,6 +44,7 @@ class WebController extends BaseController
     protected TeacherQueryInterface $teacherQuery;
 
     protected StudentQueryInterface $studentQuery;
+    protected StudentServiceInterface $studentService;
     protected StudentPreferenceQueryInterface $studentPreferenceQuery;
 
     protected ChapterServiceInterface $chapterService;
@@ -73,6 +75,7 @@ class WebController extends BaseController
         TeacherQueryInterface $teacherQuery,
 
         StudentQueryInterface $studentQuery,
+        StudentServiceInterface $studentService,
         StudentPreferenceQueryInterface $studentPreferenceQuery,
 
         ChapterQueryInterface $chapterQuery,
@@ -99,6 +102,7 @@ class WebController extends BaseController
         $this->teacherQuery = $teacherQuery;
 
         $this->studentQuery = $studentQuery;
+        $this->studentService = $studentService;
         $this->studentPreferenceQuery = $studentPreferenceQuery;
 
         $this->chapterQuery = $chapterQuery;

@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property bool    $approved
  * @property ?string $output
  * @property Problem $problem
+ * @property User    $student
  */
 class Solution extends Model
 {
