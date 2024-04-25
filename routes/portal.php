@@ -10,6 +10,7 @@ use Uc\Module\Portal\Controller\StudentController;
 use Uc\Module\Portal\Controller\TeacherController;
 use Uc\Module\Portal\Controller\FeedbackController;
 use Uc\Module\Portal\Controller\LanguageController;
+use Uc\Module\Portal\Controller\SolutionController;
 
 Route::prefix('p')->group(function () {
     // admin routes
@@ -64,6 +65,9 @@ Route::prefix('p')->group(function () {
         Route::post('/problems/{id}/hint', [ProblemController::class, 'hintUpdate'])->name('portal.problem.hint.update');
         Route::get('/problems/{id}/feedback', [ProblemController::class, 'feedback'])->name('portal.problem.feedback');
         Route::get('/problems/{id}/stats', [ProblemController::class, 'stats'])->name('portal.problem.stats');
+
+        // solutions
+        Route::get('/solutions', [SolutionController::class, 'index'])->name('portal.solution.index');
 
         // feedback
         Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('portal.feedback.index');

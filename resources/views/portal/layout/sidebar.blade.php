@@ -17,6 +17,12 @@
                         <x-icons.problem class="mr-2 w-4 h-4" />
                         Problems
                     </a>
+
+                    <a href="{{ route('portal.solution.index') }}"
+                        class="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">
+                        <x-icons.problem class="mr-2 w-4 h-4" />
+                        Solutions
+                    </a>
                 </div>
             </div>
 

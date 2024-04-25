@@ -13,9 +13,26 @@ use Uc\Module\Solution\Request\NewSolutionRequest;
 
 class SolutionController extends WebController
 {
-    public function get(string $id): View
+    public function show(string $id): View
     {
-        return view('playground.solution');
+        $solution = $this->solutionQuery->get($id);
+        if (null === $solution) {
+            abort(404, 'solution not found');
+        }
+
+        $problem = $solution->problem;
+        $chapter = $problem->chapter;
+        $language = $chapter->language;
+        $student = Student::fromUser($solution->student);
+
+        return view('site.solution.show', [
+            'student' => $student,
+            'language' => $language,
+            'chapter' => $chapter,
+            'problem' => $problem,
+            'solution' => $solution,
+            'problem' => $problem,
+        ]);
     }
 
     public function store(Validation $validation, Request $request): JsonResponse

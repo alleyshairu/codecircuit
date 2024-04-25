@@ -12,7 +12,7 @@
                 <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
             </div>
 
-            @if(null === $feedback)
+            @if (null === $feedback)
                 <div>
                     @include('site.feedback.form')
                 </div>

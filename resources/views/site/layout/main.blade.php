@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    {{ Vite::useHotFile(public_path('site/hot'))->useBuildDirectory('site')->withEntryPoints(['resources/site/css/site.css', 'resources/site/js/site.js', 'resources/site/js/components.tsx']) }}
+    {{ Vite::useHotFile(public_path('site/hot'))->useBuildDirectory('site')->withEntryPoints(['resources/site/css/site.css', 'resources/site/js/site.js', 'resources/site/js/components.tsx', 'resources/site/css/highlight.css', 'resources/site/js/highlight.js']) }}
 </head>
 
 <body class="font-sans antialiased flex flex-col min-h-screen">

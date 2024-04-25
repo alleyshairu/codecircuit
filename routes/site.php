@@ -17,20 +17,23 @@ use Uc\Module\Site\Controller\StudentPreferenceController;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/team', TeamController::class)->name('team');
 
+Route::get('/solutions/{id}', [SolutionController::class, 'show'])->name('solution.show');
+Route::get('/leaderboard', [LeaderboardController::class, 'overall'])->name('leaderboard');
+
 Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/start', StartController::class)->name('student.start');
 
-    Route::get('/problems/{id}', [ProblemController::class, 'problem'])->name('problem.json');
-    Route::post('/problems/{id}/process', [ProcessCodeController::class, 'process'])->name('problem.process');
     Route::get('/process/{id}/status', [ProcessCodeController::class, 'status'])->name('process.status');
 
-    Route::post('/solutions', [SolutionController::class, 'store'])->name('solution.store');
+    Route::get('/problems/{id}', [ProblemController::class, 'problem'])->name('problem.json');
+    Route::get('/problems/{id}/read', [ProblemController::class, 'read'])->name('problem');
+    Route::post('/problems/{id}/process', [ProcessCodeController::class, 'process'])->name('problem.process');
+
     Route::post('/solutions', [SolutionController::class, 'store'])->name('solution.store');
 
     Route::get('/@/{id}/profile', [StudentProfileController::class, 'profile'])->name('student.profile');
     Route::get('/roadmap', RoadmapController::class)->name('roadmap');
     Route::get('/playground/{id}', [PlaygroundController::class, 'show'])->name('playground');
-    Route::get('/leaderboard/overall', [LeaderboardController::class, 'overall'])->name('leaderboard');
 
     Route::post('/preferences/level', [StudentPreferenceController::class, 'level'])->name('student.preference.level');
     Route::post('/preferences/languages', [StudentPreferenceController::class, 'languages'])->name('student.preference.languages');
