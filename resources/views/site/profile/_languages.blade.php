@@ -19,7 +19,7 @@
                             <div>Learning</div>
                         </td>
                         <td>
-                            <div>{{ $progress[$course->id()] ?? 0}}%</div>
+                            <div>{{ $progress[$course->id()] ?? 0 }}%</div>
                         </td>
                         <td>
                             <div>30 April, 2024</div>

@@ -8,7 +8,8 @@
     <div class="card mt-3">
         <div class="card-header">
             <h3 class="card-title">Problem Expected Output</h3>
-            <small class="text-sm text-muted-foreground">The output that is acceptable for the the solution. This will be matched against user submissions.</small>
+            <small class="text-sm text-muted-foreground">The output that is acceptable for the the solution. This will be matched against user
+                submissions.</small>
         </div>
         <div class="card-body">
             <form class="grid gap-5" method="post" action="{{ route('portal.problem.output.update', $problem->id()) }}">

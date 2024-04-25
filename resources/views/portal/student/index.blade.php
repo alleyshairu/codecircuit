@@ -58,10 +58,10 @@
                             <tr>
                                 <td>
                                     <div>{{ $student->name }}</div>
-                            </td>
-                            <td>
-                                <div>{{ $student->email }}</div>
-                            </td>
+                                </td>
+                                <td>
+                                    <div>{{ $student->email }}</div>
+                                </td>
                                 <td>
                                     <x-action id="dropdown-student-action-{{ $student->id }}">
                                         <a href="{{ route('student.profile', $student->id) }}" class="action-link">View Profile</a>

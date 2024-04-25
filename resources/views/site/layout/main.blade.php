@@ -16,6 +16,19 @@
 <body class="font-sans antialiased flex flex-col min-h-screen">
     @include('site.layout.nav')
     <div class="flex-1">
+
+        <div class="mx-auto max-w-screen-xl">
+            @foreach (session('flash_notification', collect())->toArray() as $message)
+                <div class="p-3 my-4 rounded flex justify-between bg-green-200 text-green-800">
+                    <div>{!! $message['message'] !!}</div>
+
+                    @if ($message['important'])
+                        <button class="ml-2 px-2" onclick="this.parentElement.remove();">&times;</button>
+                    @endif
+                </div>
+            @endforeach
+        </div>
+
         @if ($errors->any())
             <div class="mx-auto max-w-screen-xl">
                 <div class="m-4 flex rounded-lg bg-red-50 p-4 text-sm text-red-800" role="alert">

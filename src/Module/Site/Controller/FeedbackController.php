@@ -32,6 +32,8 @@ class FeedbackController extends SiteController
         $req = FeedbackCreateRequest::fromArray($student, $data);
         $this->feedbackService->new($req);
 
+        flash('Your feedback has been successfully submitted.')->success();
+
         return $this->redirectRoute('playground', ['id' => $data['problem_id']]);
     }
 }

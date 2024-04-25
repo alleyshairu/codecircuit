@@ -26,6 +26,13 @@
                 <div class="badge">{{ $chapter->title() }}</div>
             </div>
 
+            @if ($feedback)
+                <div class="p-3 my-4 rounded flex justify-between bg-green-100 text-green-600">
+                    <div>You have feedback has already been submitted for this problem.</div>
+                </div>
+            @endif
+
+
             <div class="card">
                 <div class="card-header">
                     <div>
