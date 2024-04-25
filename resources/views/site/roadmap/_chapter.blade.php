@@ -19,7 +19,11 @@
                         <tr>
                             <td>{{ $problem->title() }}</td>
                             <td></td>
-                            <td></td>
+                        <td>
+                            @if($feedbacks->get($problem->id()))
+                                @include('portal.feedback.yes-no', ['check' => true])
+                            @endif
+                        </td>
                             <td>
                                 <x-action id="dropdown-problem-action-{{ $problem->id() }}">
                                     <a class="action-link" href="{{ route('playground', $problem->id()) }}">Open</a>

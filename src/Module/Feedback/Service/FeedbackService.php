@@ -14,6 +14,8 @@ class FeedbackService implements FeedbackServiceInterface
     {
         $feedback = new Feedback();
         $feedback->feedback_id = Str::orderedUuid()->toString();
+        $feedback->problem_id = $req->problem->id();
+        $feedback->student_id = $req->student->id;
         $feedback->gained_new_knowledge = $req->knowledge;
         $feedback->is_interesting = $req->interesting;
         $feedback->feedback = $req->feedback;

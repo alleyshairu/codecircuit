@@ -72,8 +72,7 @@
                         <!-- Confirm Password -->
                         <div class="mt-4">
                             <label for="password_confirmation" class="form-label">Confirm Password</label>
-                            <input id="password_confirmation" type="password" class="form-input" name="password_confirmation"
-                                required />
+                            <input id="password_confirmation" type="password" class="form-input" name="password_confirmation" required />
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
 

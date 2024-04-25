@@ -6,6 +6,7 @@ use Uc\Module\Site\Controller\TeamController;
 use Uc\Module\Site\Controller\StartController;
 use Uc\Module\Site\Controller\ProblemController;
 use Uc\Module\Site\Controller\RoadmapController;
+use Uc\Module\Site\Controller\FeedbackController;
 use Uc\Module\Site\Controller\SolutionController;
 use Uc\Module\Site\Controller\PlaygroundController;
 use Uc\Module\Site\Controller\LeaderboardController;
@@ -24,6 +25,7 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/process/{id}/status', [ProcessCodeController::class, 'status'])->name('process.status');
 
     Route::post('/solutions', [SolutionController::class, 'store'])->name('solution.store');
+    Route::post('/solutions', [SolutionController::class, 'store'])->name('solution.store');
 
     Route::get('/@/{id}/profile', [StudentProfileController::class, 'profile'])->name('student.profile');
     Route::get('/roadmap', RoadmapController::class)->name('roadmap');
@@ -32,4 +34,6 @@ Route::middleware(['auth', 'student'])->group(function () {
 
     Route::post('/preferences/level', [StudentPreferenceController::class, 'level'])->name('student.preference.level');
     Route::post('/preferences/languages', [StudentPreferenceController::class, 'languages'])->name('student.preference.languages');
+
+    Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 });

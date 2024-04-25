@@ -6,8 +6,19 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-xl py-8">
-        <div class="text-xs text-muted-foreground">{{ $problem->id() }}</div>
-        <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
+        <div class="flex items-center justify-between">
+            <div>
+                <div class="text-xs text-muted-foreground">{{ $problem->id() }}</div>
+                <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
+            </div>
+
+            @if(null === $feedback)
+                <div>
+                    @include('site.feedback.form')
+                </div>
+            @endif
+        </div>
+
         <div class="mb-3 grid gap-2">
             <div class="flex gap-3">
                 <div class="badge">{{ $problem->level()->title() }}</div>
@@ -24,7 +35,7 @@
                         {!! $problem->description !!}
                     </div>
                 </div>
-        </div>
+            </div>
 
             <div id="js-playground-component" data-id="{{ $problem->id() }}"></div>
         </div>

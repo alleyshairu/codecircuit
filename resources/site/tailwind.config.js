@@ -1,4 +1,5 @@
 import defaultTheme from "tailwindcss/defaultTheme";
+import forms from "@tailwindcss/forms";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,6 +10,7 @@ export default {
         "./resources/views/auth/**/**/*.blade.php",
         "./resources/views/components/**/**/*.blade.php",
     ],
+    safelist: ["bg-gray-900/50"],
     theme: {
         extend: {
             colors: {
@@ -56,5 +58,9 @@ export default {
             center: true,
         },
     },
-    plugins: [require("flowbite/plugin"), require("@tailwindcss/typography")],
+    plugins: [
+        forms,
+        require("flowbite/plugin"),
+        require("@tailwindcss/typography"),
+    ],
 };
