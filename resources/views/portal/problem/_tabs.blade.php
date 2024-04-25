@@ -17,6 +17,10 @@
                 class="tab-item {{ request()->routeIs('portal.problem.code') ? 'active' : '' }}">Code</a>
         </li>
         <li class="me-2">
+            <a href="{{ route('portal.problem.output', $problem->id()) }}"
+                class="tab-item {{ request()->routeIs('portal.problem.output') ? 'active' : '' }}">Expected Output</a>
+        </li>
+        <li class="me-2">
             <a href="{{ route('portal.problem.feedback', $problem->id()) }}"
                 class="tab-item {{ request()->routeIs('portal.problem.feedback') ? 'active' : '' }}">Feedback</a>
         </li>

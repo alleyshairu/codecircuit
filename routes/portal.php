@@ -61,6 +61,9 @@ Route::prefix('p')->group(function () {
         Route::get('/problems/{id}/code', [ProblemController::class, 'codeForm'])->name('portal.problem.code');
         Route::post('/problems/{id}/code', [ProblemController::class, 'codeUpdate'])->name('portal.problem.code.update');
 
+        Route::get('/problems/{id}/output', [ProblemController::class, 'outputForm'])->name('portal.problem.output');
+        Route::post('/problems/{id}/output', [ProblemController::class, 'outputUpdate'])->name('portal.problem.output.update');
+
         Route::get('/problems/{id}/hint', [ProblemController::class, 'hintForm'])->name('portal.problem.hint');
         Route::post('/problems/{id}/hint', [ProblemController::class, 'hintUpdate'])->name('portal.problem.hint.update');
         Route::get('/problems/{id}/feedback', [ProblemController::class, 'feedback'])->name('portal.problem.feedback');

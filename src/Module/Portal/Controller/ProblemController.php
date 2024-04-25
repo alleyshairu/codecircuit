@@ -183,6 +183,35 @@ class ProblemController extends PortalController
         return $this->redirectRoute('portal.problem.code', ['id' => $problem->id()]);
     }
 
+    public function outputForm(string $id): View
+    {
+        $problem = $this->problemQuery->get($id);
+        if (null === $problem) {
+            abort(404, 'Problem not found');
+        }
+
+        return $this->view('portal.problem.output', [
+            'problem' => $problem,
+        ]);
+    }
+
+    public function outputUpdate(string $id, Request $request): RedirectResponse
+    {
+        $problem = $this->problemQuery->get($id);
+        if (null === $problem) {
+            abort(404, 'Problem not found');
+        }
+
+        /** @var string|null */
+        $output = $request->get('output');
+        $problem->expected_output = $output;
+        $problem->save();
+
+        flash('Problem expected output updated!')->success();
+
+        return $this->redirectRoute('portal.problem.output', ['id' => $problem->id()]);
+    }
+
     public function feedback(string $id): View
     {
         $problem = $this->problemQuery->get($id);

@@ -27,7 +27,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="font-semibold leading-none tracking-tight">Recent Points BreakDown</h3>
+                    <h3 class="font-semibold leading-none tracking-tight">Recent Points Breakdown</h3>
                 </div>
                 <div class="p-6 pt-0">
                     @include('site.profile._points_table')

@@ -17,21 +17,29 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Problem</th>
                             <th scope="col">Student</th>
                             <th scope="col">Rating</th>
+                            <th scope="col">Gained Knowledge?</th>
+                            <th scope="col">Was Interesting?</th>
+                            <th scope="col">Clear Instructins?</th>
+                            <th scope="col">Feedback Date</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($feedbacks as $feedback)
                             <tr>
-                                <td>
-                                    {{ $problem->student->name() }}
-                                </td>
-                                <td></td>
+                                <td>{{ $feedback->problem->title() }}</td>
+                                <td>{{ $feedback->student->name }}</td>
+                                <td>{{ $feedback->score }}</td>
+                                <td>@include('portal.feedback.yes-no', ['check' => $feedback->knowledge()])</td>
+                                <td>@include('portal.feedback.yes-no', ['check' => $feedback->interesting()])</td>
+                                <td>@include('portal.feedback.yes-no', ['check' => $feedback->clearInstructions()])</td>
+                                <td>{{ $feedback->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <x-action id="dropdown-feedback-action-{{ $feedback->id() }}">
-                                        <a href="{{ route('portal.feedback.show', $feedback->id()) }}" class="action-link">View Feedback</a>
+                                        <a href="{{ route('portal.feedback.show', $feedback->id()) }}" class="action-link">Read</a>
                                     </x-action>
                                 </td>
                             </tr>
