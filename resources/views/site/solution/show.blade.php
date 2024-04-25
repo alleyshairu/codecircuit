@@ -44,13 +44,13 @@
             <fieldset class="rounded-lg border p-4">
                 <legend class="-ml-1 px-1 text-sm font-medium">Code Submitted </legend>
                 <pre>
-            <code class="language-java">{{ $solution->code() }}</code>
-        </pre>
+                    <code class="language-java">{{ $solution->code() }}</code>
+                </pre>
             </fieldset>
 
             <fieldset class="rounded-lg border p-4">
-                <legend class="-ml-1 px-1 text-sm font-medium">Code Output</legend>
-                <div>{{ $solution->output }}
+            <legend class="-ml-1 px-1 text-sm font-medium">Code Output</legend>
+                <pre><code class="language-json">{{ json_encode(json_decode($solution->output()), JSON_PRETTY_PRINT) }}</code>
             </fieldset>
         </div>
     @endsection

@@ -41,16 +41,15 @@
                                 <div class="flex items-center justify-center">
 
                                     @if ($feedbacks->get($problem->id()))
-                                        @include('portal.feedback.yes-no', ['check' => true])
+                                @include('portal.feedback.yes-no', ['check' => true])
+                                @else
+                                    @include('portal.feedback.yes-no', ['check' => false])
                                     @endif
                                 </div>
                             </td>
 
                             <td>
-                                <x-action id="dropdown-problem-action-{{ $problem->id() }}">
-                                    <a class="action-link" href="{{ route('playground', $problem->id()) }}">Open</a>
-                                    <a class="action-link" href="{{ route('playground', $problem->id()) }}">Show Feedback</a>
-                                </x-action>
+                                <a class="btn-primary" href="{{ route('playground', $problem->id()) }}">Read</a>
                             </td>
                         </tr>
                     @endforeach

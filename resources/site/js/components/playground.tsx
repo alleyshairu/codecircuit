@@ -55,10 +55,12 @@ const Playground = (props: PlaygroundProps) => {
             });
     }, []);
 
+    console.log(outputDetails);
     const handleSaveSolution = async () => {
         setSaving(true);
         const res = post<Token>(`/solutions`, {
             code: code,
+            compile_output: outputDetails,
             problem_id: problem?.problem_id,
         })
             .then((res) => {

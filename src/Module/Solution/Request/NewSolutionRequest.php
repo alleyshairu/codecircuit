@@ -13,9 +13,9 @@ readonly class NewSolutionRequest
 
     public string $code;
 
-    public string $output;
+    public array $output;
 
-    public function __construct(Problem $problem, Student $student, string $code, string $output)
+    public function __construct(Problem $problem, Student $student, string $code, array $output)
     {
         $this->problem = $problem;
         $this->student = $student;

@@ -25,7 +25,7 @@ class PlaygroundController extends SiteController
         $student = Student::fromUser($user);
 
         $feedback = $this->feedbackQuery->byProblemAndStudent($problem->id(), $student->id);
-        $solution = $this->solutionQuery->byStudentAndProblem($problem->id(), $student->id);
+        $solution = $this->solutionQuery->byStudentAndProblem($student->id, $problem->id());
         $chapter = $problem->chapter;
         $language = $chapter->language;
 

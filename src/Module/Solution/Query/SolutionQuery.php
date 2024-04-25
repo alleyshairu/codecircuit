@@ -24,8 +24,8 @@ class SolutionQuery implements SolutionQueryInterface
         /** @var ?Solution */
         $lang = Solution::query()
             ->where('student_id', $student)
-        ->where('problem_id', $problem)
-        ->first();
+            ->where('problem_id', $problem)
+            ->first();
 
         return $lang;
     }
