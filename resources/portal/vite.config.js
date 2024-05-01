@@ -11,7 +11,6 @@ export default defineConfig({
             buildDirectory: "portal",
             input: [
                 "resources/portal/css/portal.css",
-                "resources/portal/css/editor.css",
                 "resources/portal/js/portal.ts",
                 "resources/portal/js/components.tsx",
             ],

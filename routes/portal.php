@@ -10,6 +10,7 @@ use Uc\Module\Portal\Controller\StudentController;
 use Uc\Module\Portal\Controller\TeacherController;
 use Uc\Module\Portal\Controller\FeedbackController;
 use Uc\Module\Portal\Controller\LanguageController;
+use Uc\Module\Portal\Controller\SolutionController;
 
 Route::prefix('p')->group(function () {
     // admin routes
@@ -58,12 +59,18 @@ Route::prefix('p')->group(function () {
         Route::post('/problems/{id}/update', [ProblemController::class, 'update'])->name('portal.problem.update');
 
         Route::get('/problems/{id}/code', [ProblemController::class, 'codeForm'])->name('portal.problem.code');
-        Route::post('/problems/{id}/code', [ProblemController::class, 'code'])->name('portal.problem.code.update');
+        Route::post('/problems/{id}/code', [ProblemController::class, 'codeUpdate'])->name('portal.problem.code.update');
+
+        Route::get('/problems/{id}/output', [ProblemController::class, 'outputForm'])->name('portal.problem.output');
+        Route::post('/problems/{id}/output', [ProblemController::class, 'outputUpdate'])->name('portal.problem.output.update');
 
         Route::get('/problems/{id}/hint', [ProblemController::class, 'hintForm'])->name('portal.problem.hint');
         Route::post('/problems/{id}/hint', [ProblemController::class, 'hintUpdate'])->name('portal.problem.hint.update');
         Route::get('/problems/{id}/feedback', [ProblemController::class, 'feedback'])->name('portal.problem.feedback');
         Route::get('/problems/{id}/stats', [ProblemController::class, 'stats'])->name('portal.problem.stats');
+
+        // solutions
+        Route::get('/solutions', [SolutionController::class, 'index'])->name('portal.solution.index');
 
         // feedback
         Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('portal.feedback.index');

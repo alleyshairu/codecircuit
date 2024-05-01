@@ -1,3 +1,7 @@
+@section('title')
+    Problems
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Problems</h1>
@@ -74,9 +78,10 @@
                                 <td>{{ $problem->updated_at->format('Y-m-d') }}</td>
                                 <td>
                                     <x-action id="dropdown-problem-action-{{ $problem->id() }}">
-                                        <a href="" class="action-link">View Problem</a>
-                                        <a href="{{ route('portal.problem.edit', $problem->id()) }}" class="action-link">Edit Problem</a>
-                                        <a href="" class="action-link">View Feedback</a>
+                                        <a href="{{ route('portal.problem.overview', $problem->id()) }}" class="action-link">Overview</a>
+                                        <a href="{{ route('portal.problem.edit', $problem->id()) }}" class="action-link">Details</a>
+                                        <a href="{{ route('portal.problem.feedback', $problem->id()) }}" class="action-link">View
+                                            Feedback</a>
                                     </x-action>
                                 </td>
                             </tr>

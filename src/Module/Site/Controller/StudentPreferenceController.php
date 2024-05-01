@@ -18,6 +18,8 @@ class StudentPreferenceController extends SiteController
         $data = $this->validate($request, [
             'language_id' => ['required', 'array', 'min:1'],
             'language_id.*' => ['required', 'integer'],
+        ], [
+            'language_id' => 'You need to choose at least one language for your study plan',
         ]);
 
         /** @var User */

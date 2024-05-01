@@ -16,6 +16,7 @@ return new class() extends Migration {
             $table->string('logo');
             $table->string('color');
             $table->string('website');
+            $table->unsignedInteger('compiler_id');
             $table->text('description')->nullable();
             $table->timestamps();
         });

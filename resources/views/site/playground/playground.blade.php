@@ -6,15 +6,38 @@
 
 @section('content')
     <div class="mx-auto max-w-screen-xl py-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <div class="text-xs text-muted-foreground">{{ $problem->id() }}</div>
+                <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
+            </div>
 
-        <div class="text-xs text-muted-foreground">{{ $problem->id() }}</div>
-        <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
+            <div class="flex items-center gap-3">
+                @if (null !== $solution)
+                    <a class="btn btn-primary" href="{{ route('solution.show', $solution->id()) }}">Your Solution</a>
+                @endif
+
+                @if (null === $feedback)
+                    <div>
+                        @include('site.feedback.form')
+                    </div>
+                @endif
+            </div>
+        </div>
+
         <div class="mb-3 grid gap-2">
             <div class="flex gap-3">
                 <div class="badge">{{ $problem->level()->title() }}</div>
                 <div class="badge" style="background: {{ $language->color() }} ;">{{ $language->name() }}</div>
                 <div class="badge">{{ $chapter->title() }}</div>
             </div>
+
+            @if ($feedback)
+                <div class="p-3 my-4 rounded flex justify-between bg-green-100 text-green-600">
+                    <div>You have feedback has already been submitted for this problem.</div>
+                </div>
+            @endif
+
 
             <div class="card">
                 <div class="card-header">

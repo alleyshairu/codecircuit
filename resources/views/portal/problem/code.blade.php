@@ -16,7 +16,7 @@
 
                 <div class="grid gap-3">
                     <x-input-label for="code" value="Code" />
-                    <textarea rows="10" cols="10">{{ $problem->code() }}</textarea>
+                    <textarea name="code" rows="10" cols="10">{{ $problem->code() }}</textarea>
                 </div>
 
                 <div>

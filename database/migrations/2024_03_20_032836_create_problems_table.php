@@ -15,6 +15,7 @@ return new class() extends Migration {
             $table->string('title');
             $table->text('description');
             $table->text('starting_code')->nullable();
+            $table->text('expected_output')->nullable();
             $table->text('hint')->nullable();
             $table->text('stdin')->nullable();
             $table->text('stdout')->nullable();

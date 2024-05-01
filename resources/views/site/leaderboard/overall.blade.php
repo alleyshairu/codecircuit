@@ -11,31 +11,33 @@
             <div class="text-xm text-muted-foreground">Showing the list of top performing students.</div>
         </div>
 
-
-        <div class="p-6 pt-0">
-            <div class="relative w-full overflow-auto">
+        <div class="p-6 pt-0 mt-5 flex items-center justify-center">
+            <div class="relative md:w-2/4 overflow-auto">
                 <table>
                     <thead>
                         <tr>
                             <th class="no-wrap">Rank</th>
-                            <th class="w-full no-wrap">Student</th>
+                            <th class="no-wrap">Student</th>
                             <th class="no-wrap">Score</th>
-                            <th class="no-wrap"></th>
+                            <th class="no-wrap text-end">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for ($i = 1; $i < 10; $i++)
+                        @foreach ($students as $key => $student)
                             <tr>
-                                <td>{{ $i }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $student->name }}</td>
+                                <td>{{ $student->points }}</td>
+                                <td>
+                                    <div class="flex items-end justify-end">
+                                        <a href="{{ route('student.profile', $student->user_id) }}" class="btn-primary">View Profile</a>
+                                    </div>
+                                </td>
                             </tr>
-                        @endfor
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-
     </div>
 @endsection

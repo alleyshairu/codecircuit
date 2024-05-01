@@ -26,7 +26,7 @@
                             <div class="text-sm text-muted-foreground">Showing your progress for the {{ $language->name() }} course</div>
                         </div>
                         <div class="w-[200px]">
-                            @include('site.roadmap._progress', ['percentage' => 0])
+                            @include('site.roadmap._progress', ['percentage' => $progress[$language->id()] ?? 0])
                         </div>
                     </div>
 

@@ -24,6 +24,7 @@ class CourseFactory extends Factory
             'logo' => 'logo.php',
             'color' => '#eee',
             'website' => 'https://php.net',
+            'compiler_id' => 1,
         ];
     }
 }

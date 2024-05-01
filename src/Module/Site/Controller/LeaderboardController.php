@@ -10,6 +10,10 @@ class LeaderboardController extends SiteController
 {
     public function overall(): View
     {
-        return $this->view('site.leaderboard.overall');
+        $students = $this->studentQuery->top10StudentsWithPoints();
+
+        return $this->view('site.leaderboard.overall', [
+            'students' => $students,
+        ]);
     }
 }

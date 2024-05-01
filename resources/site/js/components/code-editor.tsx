@@ -17,16 +17,14 @@ const CodeEditor = ({ onChange, language, code }) => {
     };
 
     return (
-        <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
-            <Editor
-                height="65vh"
-                width={`100%`}
-                language={language || "javascript"}
-                value={value}
-                defaultValue="// Enter your code here"
-                onChange={handleEditorChange}
-            />
-        </div>
+        <Editor
+            height="65vh"
+            width={`100%`}
+            language={language || "javascript"}
+            value={value}
+            defaultValue="// Enter your code here"
+            onChange={handleEditorChange}
+        />
     );
 };
 export { CodeEditor };

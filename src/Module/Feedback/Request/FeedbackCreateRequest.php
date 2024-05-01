@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Uc\Module\Feedback\Request;
 
 use Uc\Module\Course\Model\Problem;
+use Uc\Module\Student\View\Student;
 use Illuminate\Validation\ValidationException;
 use Uc\Module\Course\Query\ProblemQueryInterface;
 
@@ -20,9 +21,12 @@ class FeedbackCreateRequest
 
     public Problem $problem;
 
-    public function __construct(Problem $problem, string $feedback, int $score)
+    public Student $student;
+
+    public function __construct(Problem $problem, Student $student, string $feedback, int $score)
     {
         $this->problem = $problem;
+        $this->student = $student;
         $this->feedback = $feedback;
         $this->score = $score;
     }
@@ -30,9 +34,9 @@ class FeedbackCreateRequest
     /**
      * @param array<string, string> $data
      */
-    public static function fromArray(array $data): self
+    public static function fromArray(Student $student, array $data): self
     {
-        if (!isset($data['problem_id']) || !isset($data['student_id']) || !isset($data['feedback']) || !isset($data['score'])) {
+        if (!isset($data['problem_id']) || !isset($data['feedback']) || !isset($data['score'])) {
             throw ValidationException::withMessages(['missing_data' => ['required data missing']]);
         }
 
@@ -42,13 +46,17 @@ class FeedbackCreateRequest
             throw ValidationException::withMessages(['problem_id' => ['invalid problem id provided']]);
         }
 
-        $req = new self($problem, $data['feedback'], (int) $data['score']);
-        if (isset($data['is_interesting'])) {
-            $req->interesting = (bool) $data['interesting'];
+        $req = new self($problem, $student, $data['feedback'], (int) $data['score']);
+        if (isset($data['interesting'])) {
+            $req->interesting = true;
         }
 
-        if (isset($data['gained_new_knowledge'])) {
-            $req->knowledge = (bool) $data['gained_new_knowledge'];
+        if (isset($data['knowledge'])) {
+            $req->knowledge = true;
+        }
+
+        if (isset($data['instructions'])) {
+            $req->knowledge = true;
         }
 
         return $req;

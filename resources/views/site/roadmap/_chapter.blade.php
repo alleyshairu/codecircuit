@@ -9,22 +9,47 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="w-full">Problem</th>
-                        <th class="no-wrap">Status</th>
-                        <th class="no-wrap">Feedback</th>
+                        <th class="no-wrap">Level</th>
+                        <th class="w-1/2">Problem</th>
+                        <th class="no-wrap">Hint Available</th>
+                        <th class="no-wrap">Expected Output</th>
+                        <th class="no-wrap">Your Feedback</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($chapter->problems as $problem)
                         <tr>
-                            <td>{{ $problem->title() }}</td>
-                            <td></td>
-                            <td></td>
                             <td>
-                                <x-action id="dropdown-problem-action-{{ $problem->id() }}">
-                                    <a class="action-link" href="{{ route('playground', $problem->id()) }}">Open</a>
-                                    <a class="action-link" href="{{ route('playground', $problem->id()) }}">Show Feedback</a>
-                                </x-action>
+                                <div class="badge">{{ $problem->level()->title() }}</div>
+                            </td>
+                            <td>{{ $problem->title() }}</td>
+                            <td>
+                                <div class="flex items-center justify-center">
+                                    @include('portal.feedback.yes-no', ['check' => null !== $problem->hint()])
+                                </div>
+
+                            </td>
+
+                            <td>
+                                <div class="flex items-center justify-center">
+                                    @include('portal.feedback.yes-no', ['check' => null !== $problem->output()])
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="flex items-center justify-center">
+
+                                    @if ($feedbacks->get($problem->id()))
+                                        @include('portal.feedback.yes-no', ['check' => true])
+                                    @else
+                                        @include('portal.feedback.yes-no', ['check' => false])
+                                    @endif
+                                </div>
+                            </td>
+
+                            <td>
+                                <a class="btn-primary" href="{{ route('playground', $problem->id()) }}">Read</a>
                             </td>
                         </tr>
                     @endforeach

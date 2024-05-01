@@ -1,3 +1,7 @@
+@section('title')
+    Students
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Students</h1>
@@ -46,6 +50,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
+                            <th scope="col">Email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,8 +60,11 @@
                                     <div>{{ $student->name }}</div>
                                 </td>
                                 <td>
+                                    <div>{{ $student->email }}</div>
+                                </td>
+                                <td>
                                     <x-action id="dropdown-student-action-{{ $student->id }}">
-                                        <a href="" class="action-link">View Profile</a>
+                                        <a href="{{ route('student.profile', $student->id) }}" class="action-link">View Profile</a>
                                         @can('admin')
                                             <a href="{{ route('portal.user.edit', $student->id) }}" class="action-link">Manage Profile</a>
                                         @endcan

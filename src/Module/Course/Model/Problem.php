@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property ?string $stdout
  * @property ?string $hint
  * @property ?string $starting_code
+ * @property ?string $expected_output
  * @property Chapter $chapter
  */
 class Problem extends Model
@@ -51,6 +52,11 @@ class Problem extends Model
     public function code(): ?string
     {
         return $this->starting_code;
+    }
+
+    public function output(): ?string
+    {
+        return $this->expected_output;
     }
 
     public function hint(): ?string

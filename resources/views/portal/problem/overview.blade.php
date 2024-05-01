@@ -39,19 +39,29 @@
         <div role="none" class="shrink-0 border-b border-border w-full"></div>
         <div>
             <div class="font-medium">Problem Description</div>
-            <div class="text-sm text-muted-foreground">{!! $problem->description() !!}</div>
+            <div class="text-sm text-muted-foreground">
+                <div class="prose">
+                    {!! $problem->description() !!}
+                </div>
+            </div>
         </div>
 
         <div role="none" class="shrink-0 border-b border-border w-full"></div>
         <div>
             <div class="font-medium">Problem Hint</div>
-            <div class="text-sm text-muted-foreground">{!! $problem->hint() !!}</div>
+            <div class="text-sm text-muted-foreground">
+                <div class="prose">
+                    {!! $problem->hint() !!}
+                </div>
+            </div>
         </div>
 
         <div role="none" class="shrink-0 border-b border-border w-full"></div>
         <div>
             <div class="font-medium">Problem Starting Code</div>
-            <div class="text-sm text-muted-foreground">{!! $problem->code() !!}</div>
+            <pre>
+                <code class="language-java">{{ $problem->code() }}</code>
+            </pre>
         </div>
     </div>
 @endsection

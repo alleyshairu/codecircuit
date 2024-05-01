@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string  $logo
  * @property string  $color
  * @property string  $website
+ * @property int     $compiler_id
  * @property ?string $description
  */
 class Language extends Model

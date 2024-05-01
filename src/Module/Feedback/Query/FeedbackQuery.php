@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Uc\Module\Feedback\Query;
 
+use Illuminate\Support\Collection;
 use Uc\Module\Feedback\Model\Feedback;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Uc\Module\Feedback\Request\FeedbackSearchRequest;
@@ -16,6 +17,36 @@ class FeedbackQuery implements FeedbackQueryInterface
         $result = Feedback::query()
             ->where('feedback_id', $id)
             ->first();
+
+        return $result;
+    }
+
+    public function byProblemAndStudent(string $problemId, string $studentId): ?Feedback
+    {
+        /** @var ?Feedback */
+        $result = Feedback::query()
+            ->where('problem_id', $problemId)
+            ->where('student_id', $studentId)
+            ->first();
+
+        return $result;
+    }
+
+    /**
+     * @return Collection<string, Feedback>
+     */
+    public function studentFeedbacks(string $studentId): Collection
+    {
+        $query = Feedback::query()
+            ->where('student_id', $studentId);
+
+        /**
+         * @var Collection<string, Feedback>
+         */
+        $result = $query
+        ->orderBy('created_at', 'desc')
+        ->get()
+        ->keyBy('problem_id');
 
         return $result;
     }

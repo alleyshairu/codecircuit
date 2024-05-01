@@ -19,10 +19,14 @@ class RoadmapController extends SiteController
         $user = $request->user();
         $student = Student::fromUser($user);
         $languages = $this->studentQuery->coursesEnrolled($student->id);
+        $feedbacks = $this->feedbackQuery->studentFeedbacks($student->id);
+        $progress = $this->studentQuery->coursesprogress($student->id);
 
         return $this->view('site.roadmap.roadmap', [
             'student' => $student,
+            'progress' => $progress,
             'languages' => $languages,
+            'feedbacks' => $feedbacks,
         ]);
     }
 }

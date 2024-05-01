@@ -19,11 +19,15 @@ use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Illuminate\Routing\Controller as BaseController;
 use Uc\Module\Feedback\Query\FeedbackQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
+use Uc\Module\Solution\Query\SolutionQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
+use Uc\Module\Student\Service\StudentServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Uc\Module\Code\Service\CodeExecuteServiceInterface;
 use Uc\Module\Feedback\Service\FeedbackServiceInterface;
+use Uc\Module\Solution\Service\SolutionServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
@@ -40,6 +44,7 @@ class WebController extends BaseController
     protected TeacherQueryInterface $teacherQuery;
 
     protected StudentQueryInterface $studentQuery;
+    protected StudentServiceInterface $studentService;
     protected StudentPreferenceQueryInterface $studentPreferenceQuery;
 
     protected ChapterServiceInterface $chapterService;
@@ -54,6 +59,11 @@ class WebController extends BaseController
     protected FeedbackQueryInterface $feedbackQuery;
     protected FeedbackServiceInterface $feedbackService;
 
+    protected SolutionQueryInterface $solutionQuery;
+    protected SolutionServiceInterface $solutionService;
+
+    protected CodeExecuteServiceInterface $codeService;
+
     public function __construct(
         LanguageQueryInterface $languageQuery,
         CourseQueryInterface $courseQuery,
@@ -65,6 +75,7 @@ class WebController extends BaseController
         TeacherQueryInterface $teacherQuery,
 
         StudentQueryInterface $studentQuery,
+        StudentServiceInterface $studentService,
         StudentPreferenceQueryInterface $studentPreferenceQuery,
 
         ChapterQueryInterface $chapterQuery,
@@ -74,7 +85,12 @@ class WebController extends BaseController
         ProblemServiceInterface $problemService,
 
         FeedbackQueryInterface $feedbackQuery,
-        FeedbackServiceInterface $feedbackService
+        FeedbackServiceInterface $feedbackService,
+
+        SolutionQueryInterface $solutionQuery,
+        SolutionServiceInterface $solutionService,
+
+        CodeExecuteServiceInterface $codeService,
     ) {
         $this->languageQuery = $languageQuery;
         $this->courseQuery = $courseQuery;
@@ -86,6 +102,7 @@ class WebController extends BaseController
         $this->teacherQuery = $teacherQuery;
 
         $this->studentQuery = $studentQuery;
+        $this->studentService = $studentService;
         $this->studentPreferenceQuery = $studentPreferenceQuery;
 
         $this->chapterQuery = $chapterQuery;
@@ -96,6 +113,11 @@ class WebController extends BaseController
 
         $this->feedbackQuery = $feedbackQuery;
         $this->feedbackService = $feedbackService;
+
+        $this->solutionQuery = $solutionQuery;
+        $this->solutionService = $solutionService;
+
+        $this->codeService = $codeService;
     }
 
     /**
@@ -128,6 +150,33 @@ class WebController extends BaseController
         $res = response();
 
         return $res->noContent();
+    }
+
+    protected function error(string $message, int $status): JsonResponse
+    {
+        return $this->json([
+            'message' => $message,
+        ], $status);
+    }
+
+    protected function bad(string $message = 'bad request'): JsonResponse
+    {
+        return $this->error($message, 400);
+    }
+
+    protected function forbidden(string $message = 'forbidden'): JsonResponse
+    {
+        return $this->error($message, 403);
+    }
+
+    protected function notFound(string $message = 'not found'): JsonResponse
+    {
+        return $this->error($message, 404);
+    }
+
+    protected function internalError(string $message = 'internal error'): JsonResponse
+    {
+        return $this->error($message, 500);
     }
 
     /**

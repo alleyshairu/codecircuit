@@ -16,12 +16,16 @@ use Uc\Module\Student\Query\StudentQuery;
 use Uc\Module\Teacher\Query\TeacherQuery;
 use Uc\Module\Feedback\Query\FeedbackQuery;
 use Uc\Module\Language\Query\LanguageQuery;
+use Uc\Module\Solution\Query\SolutionQuery;
 use Uc\Module\Course\Service\ChapterService;
 use Uc\Module\Course\Service\ProblemService;
 use Uc\Module\User\Query\UserQueryInterface;
+use Uc\Module\Student\Service\StudentService;
 use Uc\Module\Teacher\Service\TeacherService;
+use Uc\Module\Code\Service\CodeExecuteService;
 use Uc\Module\Feedback\Service\FeedbackService;
 use Uc\Module\Language\Service\LanguageService;
+use Uc\Module\Solution\Service\SolutionService;
 use Uc\Module\Course\Query\CourseQueryInterface;
 use Uc\Module\User\Service\UserServiceInterface;
 use Uc\Module\Course\Query\ChapterQueryInterface;
@@ -31,11 +35,15 @@ use Uc\Module\Teacher\Query\TeacherQueryInterface;
 use Uc\Module\Student\Query\StudentPreferenceQuery;
 use Uc\Module\Feedback\Query\FeedbackQueryInterface;
 use Uc\Module\Language\Query\LanguageQueryInterface;
+use Uc\Module\Solution\Query\SolutionQueryInterface;
 use Uc\Module\Course\Service\ChapterServiceInterface;
 use Uc\Module\Course\Service\ProblemServiceInterface;
+use Uc\Module\Student\Service\StudentServiceInterface;
 use Uc\Module\Teacher\Service\TeacherServiceInterface;
+use Uc\Module\Code\Service\CodeExecuteServiceInterface;
 use Uc\Module\Feedback\Service\FeedbackServiceInterface;
 use Uc\Module\Language\Service\LanguageServiceInterface;
+use Uc\Module\Solution\Service\SolutionServiceInterface;
 use Uc\Module\Student\Query\StudentPreferenceQueryInterface;
 
 class UcServiceProvider extends ServiceProvider
@@ -124,6 +132,10 @@ class UcServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(
+            StudentServiceInterface::class, StudentService::class
+        );
+
+        $this->app->singleton(
             ProblemQueryInterface::class, ProblemQuery::class
         );
 
@@ -137,6 +149,23 @@ class UcServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             FeedbackServiceInterface::class, FeedbackService::class
+        );
+
+        $this->app->singleton(
+            SolutionQueryInterface::class, SolutionQuery::class
+        );
+
+        $this->app->singleton(
+            SolutionServiceInterface::class, SolutionService::class
+        );
+
+        $this->app->singleton(
+            CodeExecuteServiceInterface::class, function () {
+                /** @var string */
+                $url = config('app.compiler_url');
+
+                return new CodeExecuteService($url);
+            }
         );
     }
 }

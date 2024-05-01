@@ -1,3 +1,7 @@
+@section('title')
+    Languages
+@endsection
+
 <x-portal-layout>
     <x-slot name="header">
         <h1 class="page-title">Languages</h1>

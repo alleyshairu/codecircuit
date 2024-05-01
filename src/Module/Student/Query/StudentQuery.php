@@ -6,10 +6,14 @@ namespace Uc\Module\Student\Query;
 
 use App\Models\User\User;
 use App\Models\User\UserKind;
+use Uc\Module\Student\View\Stats;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Uc\Module\Course\Model\Problem;
 use Uc\Module\Student\View\Student;
+use Uc\Module\Feedback\Model\Feedback;
 use Uc\Module\Language\Model\Language;
+use Uc\Module\Solution\Model\Solution;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Uc\Module\Student\Request\StudentSearchRequest;
 
@@ -50,6 +54,18 @@ class StudentQuery implements StudentQueryInterface
         return $result;
     }
 
+    public function top10StudentsWithPoints(): Collection
+    {
+        $points = DB::table('student_points')
+            ->join('users', 'users.user_id', 'student_points.student_id')
+            ->select(['users.name', 'users.user_id'])
+            ->selectRaw('SUM(points_earned) as points')
+            ->groupBy(['users.user_id', 'users.name'])
+            ->get();
+
+        return $points;
+    }
+
     /**
      * @return LengthAwarePaginator<Student>
      */
@@ -78,5 +94,82 @@ class StudentQuery implements StudentQueryInterface
             });
 
         return $result;
+    }
+
+    public function stats(string $id): Stats
+    {
+        /** @var int */
+        $dailyStreak = DB::table('student_points')
+        ->where('event_type', 'activity')
+        ->groupBy('created_at')
+        ->count();
+
+        /** @var int */
+        $problemSolved = Solution::query()
+        ->where('student_id', $id)
+        ->count();
+
+        /** @var int */
+        $feedbackProvided = Feedback::query()
+            ->where('student_id', $id)
+            ->count();
+
+        /** @var int */
+        $points = DB::table('student_points')
+            ->where('student_id', $id)
+            ->sum('points_earned');
+
+        return new Stats($points, $problemSolved, $feedbackProvided, $dailyStreak);
+    }
+
+    /**
+     * @return Collection<int, object>
+     */
+    public function recentEvents(string $student): Collection
+    {
+        /**
+         * @var Collection<int, object>
+         * */
+        $result = DB::table('student_points')
+            ->where('student_id', $student)
+            ->limit(10)
+            ->get();
+
+        return $result;
+    }
+
+    /**
+     * @return array<int, float>
+     */
+    public function coursesProgress(string $student): array
+    {
+        $courses = $this->coursesEnrolled($student);
+        $result = [];
+        foreach ($courses as $course) {
+            $result[$course->id] = $this->courseProgress($course->id, $student);
+        }
+
+        return $result;
+    }
+
+    public function courseProgress(int $language, string $student): float
+    {
+        $total = Problem::query()
+        ->join('chapters', 'chapters.chapter_id', 'problems.chapter_id')
+        ->where('chapters.language_id', $language)
+        ->count();
+
+        if (0 === $total) {
+            return 0;
+        }
+
+        $solved = Solution::query()
+        ->join('problems', 'problems.problem_id', 'solutions.problem_id')
+        ->join('chapters', 'chapters.chapter_id', 'problems.chapter_id')
+        ->where('chapters.language_id', $language)
+        ->where('student_id', $student)
+        ->count();
+
+        return ($solved / $total) * 100;
     }
 }
