@@ -20,7 +20,7 @@ class CourseControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-        ->get(sprintf('/p/courses/%d', $course->id()));
+            ->get(sprintf('/p/courses/%d/chapters', $course->id()));
 
         $response->assertStatus(403);
     }
@@ -34,7 +34,7 @@ class CourseControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get(sprintf('/p/courses/%d', $course->id()));
+            ->get(sprintf('/p/courses/%d/chapters', $course->id()));
 
         $response->assertStatus(200);
         $response->assertViewIs('portal.course.show');

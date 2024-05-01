@@ -41,9 +41,9 @@
                                 <div class="flex items-center justify-center">
 
                                     @if ($feedbacks->get($problem->id()))
-                                @include('portal.feedback.yes-no', ['check' => true])
-                                @else
-                                    @include('portal.feedback.yes-no', ['check' => false])
+                                        @include('portal.feedback.yes-no', ['check' => true])
+                                    @else
+                                        @include('portal.feedback.yes-no', ['check' => false])
                                     @endif
                                 </div>
                             </td>

@@ -12,18 +12,18 @@
                 <div class="text-2xl font-bold mb-3">{{ $problem->title() }}</div>
             </div>
 
-        <div class="flex items-center gap-3">
-            @if (null !== $solution)
-                <a class="btn btn-primary" href="{{ route('solution.show', $solution->id())}}">Your Solution</a>
-            @endif
+            <div class="flex items-center gap-3">
+                @if (null !== $solution)
+                    <a class="btn btn-primary" href="{{ route('solution.show', $solution->id()) }}">Your Solution</a>
+                @endif
 
-            @if (null === $feedback)
+                @if (null === $feedback)
                     <div>
                         @include('site.feedback.form')
                     </div>
                 @endif
-</div>
-</div>
+            </div>
+        </div>
 
         <div class="mb-3 grid gap-2">
             <div class="flex gap-3">

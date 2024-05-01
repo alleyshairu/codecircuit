@@ -49,8 +49,8 @@
             </fieldset>
 
             <fieldset class="rounded-lg border p-4">
-            <legend class="-ml-1 px-1 text-sm font-medium">Code Output</legend>
+                <legend class="-ml-1 px-1 text-sm font-medium">Code Output</legend>
                 <pre><code class="language-json">{{ json_encode(json_decode($solution->output()), JSON_PRETTY_PRINT) }}</code>
-            </fieldset>
-        </div>
-    @endsection
+                </fieldset>
+            </div>
+@endsection

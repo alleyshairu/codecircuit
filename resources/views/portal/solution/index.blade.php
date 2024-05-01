@@ -64,3 +64,16 @@
         </div>
     </div>
 </x-portal-layout>
+
+HarrisBox is an online video streaming platform that offers a diverse library of movies, and TV shows through a user-friendly,
+subscription-based model.
+It is designed to cater to a wide audience, the platform aims to provide an great viewing experience with features like high-definition
+streaming, personalized content recommendations, and robust parental controls.
+
+Features:
+Multiple subscription tiers with different benefits (e.g., basic, premium).
+Secure payment gateway integration for subscription payments.
+Support for multiple video resolutions (HD, Ultra HD/4K).
+Advanced search functionality to find shows by title, genre, and cast.
+Ability to create and manage multiple viewer profiles under one account.
+Enable the creation of child profiles with customized viewing restrictions, ensuring children can only access suitable content.
